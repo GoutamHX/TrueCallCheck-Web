@@ -2,15 +2,15 @@
 .footer {
   font-family: 'Poppins', sans-serif;
   transition: background 0.3s ease, color 0.3s ease;
-  /* background-color: rgb(55 65 81); */
+  /* background-color: rgb(55 65 81); */   
   color: var(--footer-text);
   padding-top: 4rem;
-  padding-bottom: 3rem;
+  padding-bottom: 3rem;   
 }
 
 .footer a,
 .footer p,
-.footer span,
+.footer span,   
 .footer-heading {
   color: var(--footer-text);
 }
@@ -21,7 +21,7 @@
 }
 
 .footer-brand:hover .icon-wrapper {
-  transform: rotate(15deg);
+  transform: rotate(15deg);   
   background: rgba(0, 180, 219, 0.2) !important;
 }
 
@@ -29,7 +29,7 @@
 .footer-heading {
   display: inline-block;
   position: relative;
-  padding-bottom: 8px;
+  padding-bottom: 8px;  
   font-weight: 600;
 }
 
