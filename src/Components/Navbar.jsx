@@ -4,18 +4,18 @@ import "../Style/Navbar.css";
 
 function Navbar({ darkMode, toggleDarkMode }) {
   return (
-    <nav className={`navbar sticky-top shadow-sm ${darkMode ? 'navbar-dark bg-dark' : 'navbar-light bg-light'}`}>
+    <nav className={`navbar sticky-top shadow-sm ${darkMode ? 'navbar-background ' : 'navbar-light bg-light'}`}>
       <div className="container d-flex justify-content-between align-items-center py-2">
         
         {/* Brand */}
-        <div className="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4">
+        <div className={`${darkMode?'text-light':''} d-flex align-items-center gap-2 fw-bold fs-4`}>
           <span className="logo-icon">📱</span>
           <span>TrueCallCheck</span>
         </div>
 
         {/* Toggle Dark Mode */}
         <button 
-          className="btn btn-outline-secondary d-flex align-items-center toggle-theme-btn"
+          className="btn navbar-btn d-flex align-items-center toggle-theme-btn text-h6"
           onClick={toggleDarkMode}
           aria-label="Toggle dark mode"
         >

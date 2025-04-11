@@ -5,10 +5,10 @@ import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import '../Style/Home.css';
 import Navbar from './Navbar';
-import { 
-  FaMobileAlt, FaSearch, FaUserCircle, FaPhone, 
-  FaSimCard, FaMapMarkerAlt, FaGlobe, FaClock, 
-  FaCheckCircle, FaFileAlt 
+import {
+  FaMobileAlt, FaSearch, FaUserCircle, FaPhone,
+  FaSimCard, FaMapMarkerAlt, FaGlobe, FaClock,
+  FaCheckCircle, FaFileAlt
 } from "react-icons/fa";
 import { AiFillFire } from "react-icons/ai";
 
@@ -21,7 +21,7 @@ function Home({ darkMode, toggleDarkMode }) {
   const [timezones, setTimezones] = useState([]);
   const [name, setName] = useState("");
   const [num, setNum] = useState("");
-  const [developer,setDevloper] = useState("");
+  const [developer, setDevloper] = useState("");
   const [loading, setLoading] = useState(false);
   const [showResult, setShowResult] = useState(false);
 
@@ -67,7 +67,7 @@ function Home({ darkMode, toggleDarkMode }) {
             <div className="col-lg-8 col-md-10">
               <div className="card glass-panel border-0">
                 <div className="card-body p-4 p-md-5">
-                  
+
                   {/* Header */}
                   <div className="text-center mb-4">
                     <div className="icon-container mx-auto mb-3 d-flex align-items-center justify-content-center">
@@ -81,19 +81,19 @@ function Home({ darkMode, toggleDarkMode }) {
 
                   {/* Input Section */}
                   <div className="mb-4">
-                    <div className="input-group input-group-lg mb-3 glow-on-hover">
-                      <span className="input-group-text bg-white border-end-0 fw-bold">+91</span>
+                    <div className=" mb-3 d-flex justify-content-center">
+                      <span className="input-group-text bg-white border-end-0 fw-bold me-2">+91</span>
                       <input
                         type="tel"
-                        className="form-control border-start-0"
+                        className="input input-group-text text-start me-2"
                         placeholder="Enter 10-digit number"
                         value={num}
                         maxLength={10}
                         onChange={(e) => setNum(e.target.value.replace(/\D/g, ''))}
                         onKeyPress={(e) => e.key === 'Enter' && handleGetDetails()}
                       />
-                      <button 
-                        onClick={handleGetDetails} 
+                      <button
+                        onClick={handleGetDetails}
                         className="btn btn-primary px-4"
                         disabled={loading}
                       >
@@ -114,110 +114,106 @@ function Home({ darkMode, toggleDarkMode }) {
 
                   {/* Results Section */}
                   {showResult && (
-  <div className="mt-5">
-    <div className={`card result-card border-0 shadow-sm ${darkMode ? 'bg-dark text-light' : 'bg-white'}`}>
-      <div className={`card-header ${darkMode ? 'bg-dark border-secondary' : 'bg-white border-bottom'} pb-3`}>
-        <div className="d-flex justify-content-between align-items-center">
-          <h3 className="h5 mb-0">
-            <FaFileAlt className="me-2 text-primary" />
-            Analysis Report
-          </h3>
-          <span className="badge bg-success d-flex align-items-center">
-            <FaCheckCircle className="me-1" />
-            Verified
-          </span>
-        </div>
-      </div>
-      <div className="card-body">
-        <div className="row g-4">
-          {/* Registered Name */}
-          <div className="col-md-6">
-            <div className="border rounded p-3 bg-light bg-opacity-25">
-              <h6 className="text-muted small mb-1 d-flex align-items-center">
-                <FaUserCircle className="me-1" /> Registered Name
-              </h6>
-              <p className="fs-5 fw-semibold mb-0">{name}</p>
-            </div>
-          </div>
+                    <div className="mt-5">
+                      <div className={`border-0 `}>
+                        <div className={` ${darkMode ? 'text-light border-secondary' : 'bg-white border-bottom'} pb-3`}>
+                          <div className="d-flex justify-content-between align-items-center">
+                            <h3 className="h5 mb-0">
+                              <FaFileAlt className="me-2 text-primary" />
+                              Analysis Report
+                            </h3>
+                            <span className="badge bg-success d-flex align-items-center">
+                              <FaCheckCircle className="me-1" />
+                              Verified
+                            </span>
+                          </div>
+                        </div>
+                        <div className="card-body">
+                          <div className={`${darkMode ? 'text-light' : "card-text"} row g-4`}>
+                            {/* Registered Name */}
+                            <div className="col-md-6">
+                              <div className="rounded p-3 bg-opacity-25 card-body-result" >
+                                <h6 className={`small mb-1 d-flex align-items-center text-h6`}>
+                                  <FaUserCircle className="me-1" /> Registered Name
+                                </h6>
+                                <p className="fs-5 fw-semibold mb-0">{name}</p>
+                              </div>
+                            </div>
 
-          {/* Phone Number */}
-          <div className="col-md-6">
-            <div className="border rounded p-3 bg-light bg-opacity-25">
-              <h6 className="text-muted small mb-1 d-flex align-items-center">
-                <FaPhone className="me-1" /> Phone Number
-              </h6>
-              <p className="mb-0 fw-bold">{localFormat || `+91 ${num}`}</p>
-            </div>
-          </div>
+                            {/* Phone Number */}
+                            <div className="col-md-6">
+                              <div className="rounded p-3 bg-opacity-25 card-body-result" >
+                                <h6 className={`small mb-1 d-flex align-items-center  text-h6`}>
+                                  <FaPhone className="me-1" /> Phone Number
+                                </h6>
+                                <p className="mb-0 fw-bold">{localFormat || `+91 ${num}`}</p>
+                              </div>
+                            </div>
 
-          {/* Carrier */}
-          <div className="col-md-6">
-            <div className="border rounded p-3 bg-light bg-opacity-25">
-              <h6 className="text-muted small mb-1 d-flex align-items-center">
-                <FaSimCard className="me-1" /> Carrier
-              </h6>
-              <p className="mb-0 fw-bold">{carrier}</p>
-            </div>
-          </div>
+                            {/* Carrier */}
+                            <div className="col-md-6">
+                              <div className="rounded p-3 bg-opacity-25 card-body-result" >
+                                <h6 className={`small mb-1 d-flex align-items-center  text-h6`}>
+                                  <FaSimCard className="me-1" /> Carrier
+                                </h6>
+                                <p className="mb-0 fw-bold">{carrier}</p>
+                              </div>
+                            </div>
 
-          {/* Location */}
-          <div className="col-md-6">
-            <div className="border rounded p-3 bg-light bg-opacity-25">
-              <h6 className="text-muted small mb-1 d-flex align-items-center">
-                <FaMapMarkerAlt className="me-1" /> Location
-              </h6>
-              <p className="mb-0 fw-bold">{location}</p>
-            </div>
-          </div>
+                            {/* Location */}
+                            <div className="col-md-6">
+                              <div className="rounded p-3 bg-opacity-25 card-body-result" >
+                                <h6 className={`small mb-1 d-flex align-items-center  text-h6`}>
+                                  <FaMapMarkerAlt className="me-1" /> Location
+                                </h6>
+                                <p className="mb-0 fw-bold">{location}</p>
+                              </div>
+                            </div>
 
-          {/* Country */}
-          <div className="col-md-6">
-            <div className="border rounded p-3 bg-light bg-opacity-25">
-              <h6 className="text-muted small mb-1 d-flex align-items-center">
-                <FaGlobe className="me-1" /> Country
-              </h6>
-              <p className="mb-0 fw-bold">{country}</p>
-            </div>
-          </div>
+                            {/* Country */}
+                            <div className="col-md-6">
+                              <div className="rounded p-3 bg-opacity-25 card-body-result" >
+                                <h6 className={`small mb-1 d-flex align-items-center  text-h6`}>
+                                  <FaGlobe className="me-1" /> Country
+                                </h6>
+                                <p className="mb-0 fw-bold">{country}</p>
+                              </div>
+                            </div>
 
-          {/* Timezone */}
-          <div className="col-md-6">
-            <div className="border rounded p-3 bg-light bg-opacity-25">
-              <h6 className="text-muted small mb-1 d-flex align-items-center">
-                <FaClock className="me-1" /> Timezone
-              </h6>
-              <p className="mb-0 fw-bold">{timezones[0]}</p>
-            </div>
-          </div>
-          {/* Devloper */}
-          <div className="col-md-6">
-            <div className="border rounded p-3 bg-light bg-opacity-25">
-              <h6 className="text-muted small mb-1 d-flex align-items-center">
-                <AiFillFire className="me-1" /> Devloper
-              </h6>
-              <p className="mb-0 fw-bold">{developer}</p>
-            </div>
-          </div>
-        </div>
+                            {/* Timezone */}
+                            <div className="col-md-6">
+                              <div className="rounded p-3 bg-opacity-25 card-body-result" >
+                                <h6 className={`small mb-1 d-flex align-items-center  text-h6`}>
+                                  <FaClock className="me-1" /> Timezone
+                                </h6>
+                                <p className="mb-0 fw-bold">{timezones[0]}</p>
+                              </div>
+                            </div>
+                            {/* Devloper */}
+                            <div className="col-md-6">
+                              <div className="rounded p-3 bg-opacity-25 card-body-result" >
+                                <h6 className={`small mb-1 d-flex align-items-center  text-h6`}>
+                                  <AiFillFire className="me-1" /> Devloper
+                                </h6>
+                                <p className="mb-0 fw-bold">{developer}</p>
+                              </div>
+                            </div>
+                          </div>
 
-        {/* Confidence Level */}
-        <div className="mt-4">
-          <div className="d-flex justify-content-between mb-1">
-            <small className="">Confidence Level</small>
-            <small className="fw-bold">100%</small>
-          </div>
-          <div className="progress rounded-pill" style={{ height: "8px" }}>
-            <div 
-              className="progress-bar bg-success" 
-              role="progressbar" 
-              style={{ width: "100%" }}
-            ></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-)}
+                          {/* Confidence Level */}
+                          <div className="mt-4">
+                            <div className="progress rounded-pill" style={{ height: "8px" }}>
+                              <div
+                                className="progress-bar bg-success"
+                                role="progressbar"
+                                style={{ width: "100%" }}
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -225,7 +221,7 @@ function Home({ darkMode, toggleDarkMode }) {
         </div>
       </div>
 
-      <ToastContainer 
+      <ToastContainer
         position="top-center"
         autoClose={3000}
         hideProgressBar={false}
