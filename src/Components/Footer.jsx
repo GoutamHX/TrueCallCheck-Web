@@ -8,7 +8,7 @@ import { AiFillInstagram } from 'react-icons/ai';
 
 const Footer = ({ darkMode }) => {
   return (
-    <footer className={`footer mt-auto ${darkMode ? 'bg-dark text-white' : 'bg-light text-dark'} pt-5 pb-4`}>
+    <footer className={`footer mt-auto ${darkMode ? 'footer-background text-white' : 'bg-light text-dark'} pt-5 pb-4`}>
       <div className="container">
         <div className="row g-4">
           {/* Brand Column */}

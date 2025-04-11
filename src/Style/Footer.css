@@ -2,7 +2,7 @@
 .footer {
   font-family: 'Poppins', sans-serif;
   transition: background 0.3s ease, color 0.3s ease;
-  background: var(--footer-bg) !important;
+  /* background-color: rgb(55 65 81); */
   color: var(--footer-text);
   padding-top: 4rem;
   padding-bottom: 3rem;
@@ -129,4 +129,9 @@
     margin-right: 0 !important;
     margin-bottom: 1rem !important;
   }
+}
+
+.footer-background {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }

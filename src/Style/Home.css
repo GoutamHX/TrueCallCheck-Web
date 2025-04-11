@@ -112,8 +112,10 @@ body {
 
 /* ===== Dark Mode Styles ===== */
 .dark-mode {
-  background: #121212;
-  color: #e0e0e0;
+  /* background: #121212;
+  color: #e0e0e0; */
+  --tw-bg-opacity: 1;
+  background-color: rgb(35 39 47 / var(--tw-bg-opacity)) !important;
 }
 
 .bg-dark-2 {
@@ -208,8 +210,10 @@ body.light-mode .glass-panel {
 
 /* Dark Mode Styles */
 body.dark-mode {
-  background-color: #121212;
-  color: #e0e0e0;
+  /* background-color: #121212;
+  color: #e0e0e0; */
+  --tw-bg-opacity: 1;
+  background-color: rgb(35 39 47 / var(--tw-bg-opacity)) !important;
 }
 
 body.dark-mode .bg-sleek {
@@ -217,7 +221,7 @@ body.dark-mode .bg-sleek {
 }
 
 body.dark-mode .glass-panel {
-  background: rgba(40, 40, 40, 0.9);
+  background: rgba(0, 0, 0, 0.9);
   color: #e0e0e0;
 }
 
@@ -360,4 +364,14 @@ body.dark-mode .result-value {
 /* --- Icons --- */
 .result-label svg {
   opacity: 0.7;
+}
+.text-h6{
+  color: #58c4dc !important;
+}
+
+.card-text{
+  color:#3c4f61 !important;
+}
+.card-body-result{
+  background-color:#58afdf40 !important;
 }
