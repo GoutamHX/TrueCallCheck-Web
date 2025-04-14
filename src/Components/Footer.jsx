@@ -27,7 +27,7 @@ const Footer = ({ darkMode }) => {
               <a href="https://github.com/GoutamHX" target="_blank" rel="noopener noreferrer" className="social-icon">
                 <FaGithub className="fs-5" />
               </a>
-              <a href="https://t.me/TheAdvanceBots" target="_blank" rel="noopener noreferrer" className="social-icon">
+              <a href="https://telegram.me/MAXX_MODS" target="_blank" rel="noopener noreferrer" className="social-icon">
                 <FaTelegram className="fs-5" />
               </a>
               <a href="https://instagram.com/ig.goutam_" target ="_blank"className="social-icon">
@@ -79,7 +79,7 @@ const Footer = ({ darkMode }) => {
                 </a>
               </li>
               <li className="mb-2 d-flex align-items-center justify-content-center justify-content-md-start">
-                <a href="https://t.me/TheAdvanceBots" target="_blank" rel="noopener noreferrer" className="text-decoration-none hover-primary">
+                <a href="https://telegram.dog/TheAdvanceBots" target="_blank" rel="noopener noreferrer" className="text-decoration-none hover-primary">
                   <FaTelegram className="me-2" /><span>Telegram</span>
                 </a>
               </li>
@@ -89,7 +89,7 @@ const Footer = ({ darkMode }) => {
                 </a>
               </li>
               <li className="mb-2 d-flex align-items-center justify-content-center justify-content-md-start">
-                <a href="https://t.me/MR_GOUTAM08" target="_blank" className="text-decoration-none hover-primary">
+                <a href="https://tx.me/MR_GOUTAM08" target="_blank" className="text-decoration-none hover-primary">
                   <FaInfoCircle className="me-2" /><span>Contact</span>
                 </a>
               </li>

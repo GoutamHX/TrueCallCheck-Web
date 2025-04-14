@@ -9,7 +9,8 @@ function Navbar({ darkMode, toggleDarkMode }) {
         
         {/* Brand */}
         <div className={`${darkMode?'text-light':''} d-flex align-items-center gap-2 fw-bold fs-4`}>
-          <span className="logo-icon">📱</span>
+          <span className="logo-icon">📱
+          </span>
           <span>TrueCallCheck</span>
         </div>
 

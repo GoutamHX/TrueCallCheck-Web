@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { LuPhoneCall } from "react-icons/lu";
 import '../Style/Home.css';
 import Navbar from './Navbar';
 import {
@@ -144,7 +145,7 @@ function Home({ darkMode, toggleDarkMode }) {
                             <div className="col-md-6">
                               <div className="rounded p-3 bg-opacity-25 card-body-result" >
                                 <h6 className={`small mb-1 d-flex align-items-center  text-h6`}>
-                                  <FaPhone className="me-1" /> Phone Number
+                                  <LuPhoneCall className="me-1"/> Phone Number
                                 </h6>
                                 <p className="mb-0 fw-bold">{localFormat || `+91 ${num}`}</p>
                               </div>
