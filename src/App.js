@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Footer from '../src/Components/Footer';
 import Home from "./Components/Home";
+import { AnimatePresence } from 'framer-motion';
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("darkMode") === "true";
   });
+  
+
+  
+
 
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode);
@@ -16,6 +21,7 @@ function App() {
 
   return (
     <>
+    
       <Home darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <Footer darkMode={darkMode} />
     </>
