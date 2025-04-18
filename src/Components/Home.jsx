@@ -94,19 +94,6 @@ function Home({ darkMode, toggleDarkMode }) {
       description: "Track and analyze your call patterns"
     }
   ];
-  const userAgent = navigator.userAgent;
-const screenWidth = window.screen.width;
-const screenHeight = window.screen.height;
-const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-const language = navigator.language;
-
-console.log({
-  userAgent, // e.g., "Mozilla/5.0 (Windows NT 10.0...)"
-  screenWidth,
-  screenHeight,
-  timezone, // e.g., "America/New_York"
-  language, // e.g., "en-US"
-});
 
   return (
     <div 
