@@ -22,13 +22,16 @@ function Home({ darkMode, toggleDarkMode }) {
 
   const handleGetDetails = async () => {
     if (!num) return toast.warn("Please enter a number!");
-    if (num.length !== 10) return toast.warn("Please enter a valid 10-digit number!");
+    // Validate Indian number format (10 digits)
+  if (!/^\d{10}$/.test(num)) {
+    return toast.warn("Please enter a valid 10-digit Indian number!");
+  }
   
     try {
       setLoading(true);
       setShowResult(false);
       const result = await axios.get(
-        `https://true-call-check.vercel.app/truecaller?q=+91${num}`
+        `https://true-call-check.vercel.app/api/truecaller?q=+91${num}`
       );
   
       if (result.status === 200) {
