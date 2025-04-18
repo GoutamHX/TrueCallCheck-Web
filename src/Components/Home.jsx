@@ -71,6 +71,7 @@ function Home({ darkMode, toggleDarkMode }) {
     }
   };
   
+console.log(`Devloper Info :\nGithub:- @GoutamHX\nTelegram Admin:- @MR_GOUTAM08\nTelegram Channel:- @TheAdvanceBots`);
 
   const features = [
     {
