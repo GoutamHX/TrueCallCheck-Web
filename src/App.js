@@ -20,8 +20,7 @@ function App() {
     <>
       <Home darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <Footer darkMode={darkMode} />
-      <ChatBot/>
-
+      {/* <ChatBot/> */}
     </>
   );
 }

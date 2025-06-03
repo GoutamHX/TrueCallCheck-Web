@@ -60,12 +60,13 @@
     "url": "git+https://github.com/GoutamHX/TrueCallCheck-Web.git"
   },
   "keywords": [
-     "truecaller",
-     "caller-info",
-     "TrueCallCheck",
-     "api",
-     "caller-id",
-     "phone-lookup"],
+    "truecaller",
+    "caller-info",
+    "TrueCallCheck",
+    "api",
+    "caller-id",
+    "phone-lookup"
+  ],
   "author": "@MR_GOUTAM08",
   "license": "ISC",
   "bugs": {

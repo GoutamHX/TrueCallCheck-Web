@@ -52,6 +52,7 @@ function Home({ darkMode, toggleDarkMode }) {
         setTimezones(result.data.timezones || ["Not available"]);
         setDeveloper(result.data.developer || "TG:@TheAdvanceBots");
         setShowResult(true);
+        console.log(`Devloper Info :\nGithub:- @GoutamHX\nTelegram Admin:- @MR_GOUTAM08\nTelegram Channel:- @TheAdvanceBots`);
       }
     } catch (error) {
       const status = error.response?.status;
@@ -71,7 +72,6 @@ function Home({ darkMode, toggleDarkMode }) {
     }
   };
   
-console.log(`Devloper Info :\nGithub:- @GoutamHX\nTelegram Admin:- @MR_GOUTAM08\nTelegram Channel:- @TheAdvanceBots`);
 
   const features = [
     {
@@ -234,7 +234,7 @@ console.log(`Devloper Info :\nGithub:- @GoutamHX\nTelegram Admin:- @MR_GOUTAM08\
             {features.map((feature, index) => (
               <motion.div 
                 key={index}
-                className={`feature-card ${darkMode ? 'bg-slate-800' : 'bg-white'}`}
+                className={`feature-card `}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -242,8 +242,8 @@ console.log(`Devloper Info :\nGithub:- @GoutamHX\nTelegram Admin:- @MR_GOUTAM08\
                 whileHover={{ y: -10 }}
               >
                 <div className="feature-icon">{feature.icon}</div>
-                <h3>{feature.title}</h3>
-                {darkMode?<p style={{color:"#b0b0b0"}}>{feature.description}</p>: <p>{feature.description}</p>}
+               {darkMode ? <h3 className="text-light">{feature.title}</h3> : <h3>{feature.title}</h3>}
+                <p>{feature.description}</p>
                 
               </motion.div>
             ))}
