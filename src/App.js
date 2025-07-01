@@ -3,8 +3,10 @@ import "./App.css";
 import Footer from '../src/Components/Footer';
 import Home from "./Components/Home";
 import ChatBot from "./Components/ChatBot";
+import { useAntiInspect } from "./hooks/useAntiInspect";
 
 function App() {
+  useAntiInspect()
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem("darkMode") === "true";
   });
