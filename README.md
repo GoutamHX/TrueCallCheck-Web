@@ -45,6 +45,7 @@ To run locally, follow these simple steps:
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black&style=flat)
 ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=black&style=flat)
 ![Git](https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white&style=flat)
+![bootstrap]()
 
 ## 🤝 Contributing
 
@@ -71,7 +72,7 @@ This project is licensed under the [MIT License](https://github.com/goutamhx/Tru
 
 [![Telegram](https://img.shields.io/badge/Telegram-%40MR__GOUTAM08-26A5E4?style=for-the-badge&logo=telegram)](https://t.me/MR_GOUTAM08)
 [![GitHub](https://img.shields.io/badge/GitHub-%40goutamhx-181717?style=for-the-badge&logo=github)](https://github.com/goutamhx)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Goutam%20Hx-0077B5?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/yourprofile)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Goutam%20Hx-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/goutamsepta-a016262a0)
 
 </div>
 
