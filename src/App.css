@@ -1,105 +1,351 @@
-.App {
-  text-align: center;
+:root {
+  /* ========================================
+     BRAND — Cyan Professional
+  ======================================== */
+  --primary-50:  #ecfeff;
+  --primary-100: #cffafe;
+  --primary-200: #a5f3fc;
+  --primary-300: #67e8f9;
+  --primary-400: #22d3ee;
+  --primary-500: #58c4dc; 
+  --primary-600: #06b6d4;
+  --primary-700: #0891b2;
+  --primary-800: #0e7490;
+  --primary-900: #155e75;
+
+  --primary-gradient: linear-gradient(
+    135deg,
+    #58c4dc 0%,
+    #22d3ee 100%
+  );
+
+  /* ========================================
+     NEUTRALS
+  ======================================== */
+  --white: #ffffff;
+  --black: #000000;
+
+  --gray-50:  #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  /* ========================================
+     SEMANTIC
+  ======================================== */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error:   #ef4444;
+  --info:    #58c4dc;
+
+  /* ========================================
+     SHADOWS
+  ======================================== */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.12), 0 8px 10px -6px rgba(0,0,0,0.12);
+
+  /* ========================================
+     FOCUS RING (🔥 UX BOOST)
+  ======================================== */
+  --focus-ring: 0 0 0 3px rgba(88, 196, 220, 0.35);
+
+  /* ========================================
+     RADIUS
+  ======================================== */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* ========================================
+     SPACING
+  ======================================== */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  /* ========================================
+     TYPOGRAPHY
+  ======================================== */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  /* ========================================
+     TRANSITIONS
+  ======================================== */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-/* :root {
-  --footer-bg: #f8f9fa;
-  --footer-text: #212529;
-  --footer-accent: #00b4db;
-  --footer-social-bg: rgba(0, 0, 0, 0.05);
-  --footer-border: rgba(0, 0, 0, 0.1);
-  --primary: #2563EB;
-  --background: #FFFFFF;
-  --text: #4B5563;
-}
-
-body.dark-mode {
-  --footer-bg: linear-gradient(135deg, #2b2d42, #1e1e30);
-  --footer-text: #f8f9fa;
-  --footer-accent: #00b4db;
-  --footer-social-bg: rgba(255, 255, 255, 0.08);
-  --footer-border: rgba(255, 255, 255, 0.1);
-  --primary: #3B82F6;
-  --background: #1F2937;
-  --text: #F3F4F6;
-} */
-
-.glass-light {
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.glass-dark {
-  backdrop-filter: blur(12px);
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.hover-scale {
-  transition: transform 0.2s ease;
-}
-.hover-scale:hover {
-  transform: scale(1.03);
-}
-
-/* App.css */
+/* =========================================================
+   🌞 LIGHT MODE — PREMIUM
+========================================================= */
 .light-mode {
-  --bg-color: #F9FAFB;
-  --text-color: #111827;
-  --surface-color: #FFFFFF;
-  --primary: #2A63F2;
+  /* Backgrounds */
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  --bg-elevated: #ffffff;
+
+  /* Text */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #64748b;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+
+  /* Borders */
+  --border-primary: #e2e8f0;
+  --border-secondary: #cbd5e1;
+  --border-focus: var(--primary-500);
+
+  /* Surfaces */
+  --surface-default: #ffffff;
+  --surface-hover: #f8fafc;
+  --surface-active: #f1f5f9;
+  --surface-elevated: #ffffff;
+
+  /* Primary actions */
+  --primary-default: var(--primary-600);
+  --primary-hover: var(--primary-700);
+  --primary-active: var(--primary-800);
+  --primary-subtle: var(--primary-50);
+  --primary-subtle-hover: var(--primary-100);
+
+  /* Status */
+  --status-success-bg: #d1fae5;
+  --status-success-text: #065f46;
+
+  --status-warning-bg: #fef3c7;
+  --status-warning-text: #92400e;
+
+  --status-error-bg: #fee2e2;
+  --status-error-text: #991b1b;
+
+  --status-info-bg: #e6fbff;
+  --status-info-text: #0e7490;
+
+  /* Shadows */
+  --shadow-card: var(--shadow-md);
+  --shadow-card-hover: var(--shadow-lg);
+  --shadow-dropdown: var(--shadow-lg);
+  --shadow-modal: var(--shadow-xl);
+}
+
+/* =========================================================
+   🌙 DARK MODE — PREMIUM
+========================================================= */
+.dark-mode {
+  /* Backgrounds */
+  --bg-primary: #0b1220;
+  --bg-secondary: #111827;
+  --bg-tertiary: #1f2937;
+  --bg-elevated: #1e293b;
+
+  /* Text */
+  --text-primary: #f9fafb;
+  --text-secondary: #e5e7eb;
+  --text-tertiary: #9ca3af;
+  --text-muted: #6b7280;
+  --text-inverse: #111827;
+
+  /* Borders */
+  --border-primary: #374151;
+  --border-secondary: #4b5563;
+  --border-focus: var(--primary-400);
+
+  /* Surfaces */
+  --surface-default: #1e293b;
+  --surface-hover: #27354f;
+  --surface-active: #334155;
+  --surface-elevated: #1e293b;
+
+  /* Primary actions */
+  --primary-default: var(--primary-500);
+  --primary-hover: var(--primary-400);
+  --primary-active: var(--primary-300);
+  --primary-subtle: rgba(88, 196, 220, 0.15);
+  --primary-subtle-hover: rgba(88, 196, 220, 0.25);
+
+  /* Status */
+  --status-success-bg: rgba(16,185,129,0.15);
+  --status-success-text: #34d399;
+
+  --status-warning-bg: rgba(245,158,11,0.15);
+  --status-warning-text: #fbbf24;
+
+  --status-error-bg: rgba(239,68,68,0.15);
+  --status-error-text: #f87171;
+
+  --status-info-bg: rgba(88,196,220,0.15);
+  --status-info-text: #58c4dc;
+
+  /* Shadows */
+  --shadow-card: 0 4px 6px rgba(0,0,0,0.4);
+  --shadow-card-hover: 0 10px 15px rgba(0,0,0,0.5);
+  --shadow-dropdown: 0 10px 15px rgba(0,0,0,0.5);
+  --shadow-modal: 0 25px 50px rgba(0,0,0,0.7);
+}
+
+/* ------------------------------------------
+   Base Styles
+   ------------------------------------------ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* Legacy variable support for backward compatibility */
+.light-mode {
+  --bg-color: var(--bg-primary);
+  --text-color: var(--text-primary);
+  --surface-color: var(--surface-default);
+  --primary: var(--primary-default);
   --secondary: #15C39A;
   --accent: #FACC15;
   --danger: #EF4444;
 }
 
 .dark-mode {
-  --bg-color: #0F172A;
-  --text-color: #F8FAFC;
-  --surface-color: #1E293B;
-  --primary: #3B82F6;
+  --bg-color: var(--bg-primary);
+  --text-color: var(--text-primary);
+  --surface-color: var(--surface-default);
+  --primary: var(--primary-default);
   --secondary: #22D3EE;
   --accent: #FDE68A;
   --danger: #F87171;
 }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+/* ------------------------------------------
+   Utility Classes
+   ------------------------------------------ */
+.glass-light {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  backdrop-filter: blur(12px);
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hover-scale {
+  transition: transform var(--transition-fast);
+}
+
+.hover-scale:hover {
+  transform: scale(1.02);
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary-default);
+  outline-offset: 2px;
+}
+
+/* Selection colors */
+::selection {
+  background-color: var(--primary-200);
+  color: var(--gray-900);
+}
+
+.dark-mode ::selection {
+  background-color: var(--primary-700);
+  color: var(--white);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-secondary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* ------------------------------------------
+   Animation Keyframes
+   ------------------------------------------ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

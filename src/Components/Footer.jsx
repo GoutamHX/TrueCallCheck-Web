@@ -55,7 +55,6 @@ const Footer = ({ darkMode }) => {
   return (
     <motion.footer
       className={`footer ${darkMode ? "dark" : "light"}`}
-      initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       role="contentinfo"
