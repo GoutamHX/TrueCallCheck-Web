@@ -58,22 +58,25 @@ function Home({ darkMode, toggleDarkMode }) {
         }
 
         // Handle new API response structure
-        const results = data?.result?.results ?? [];
-
+        const results =
+          data?.result?.results ??
+          data?.results?.records ??
+          [];
+        // console.log(results);
         if (results.length > 0) {
           setSearchResults(results);
           setSearchMeta({
-            status: data.result.status,
-            count: data.result.count,
-            searchTime: data.result.search_time,
+            status: data?.result?.status || (data?.status ? "success" : "failed"),
+            count: data?.result?.count || data?.results?.total_records || results.length,
+            searchTime: data?.result?.search_time || "N/A",
           });
           setShowResult(true);
-          setNoData(false); 
+          setNoData(false);
         } else {
           setSearchResults([]);
           setSearchMeta(null);
           setShowResult(false);
-          setNoData(true); 
+          setNoData(true);
         }
 
         setDeveloper(data?.developer || "Github:@GoutamHX");
@@ -366,14 +369,14 @@ function Home({ darkMode, toggleDarkMode }) {
                         </div>
                       )}
 
-                      {result.fname && (
+                      {(result.fname || result.father_name) && (
                         <div className="info-row">
                           <div className="info-icon-wrapper">
                             <FaUser className="info-icon" />
                           </div>
                           <div className="info-content">
                             <span className="info-label">Father's Name</span>
-                            <span className="info-value">{result.fname}</span>
+                            <span className="info-value">{result.fname || result.father_name}</span>
                           </div>
                         </div>
                       )}
@@ -390,14 +393,14 @@ function Home({ darkMode, toggleDarkMode }) {
                         </div>
                       )}
 
-                      {result.alt && (
+                      {(result.alt || result.alt_mobile) && (
                         <div className="info-row">
                           <div className="info-icon-wrapper">
                             <FaPhoneAlt className="info-icon" />
                           </div>
                           <div className="info-content">
                             <span className="info-label">Alternate Number</span>
-                            <span className="info-value">{result.alt}</span>
+                            <span className="info-value">{result.alt || result.alt_mobile}</span>
                           </div>
                         </div>
                       )}
