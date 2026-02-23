@@ -59,8 +59,10 @@ function Home({ darkMode, toggleDarkMode }) {
 
         // Handle new API response structure
         const results =
-          data?.result?.results ??
-          data?.results?.records ??
+          data?.data?.results ||
+          data?.result?.results ||
+          data?.results?.records ||
+          data?.results ||
           [];
         // console.log(results);
         if (results.length > 0) {
