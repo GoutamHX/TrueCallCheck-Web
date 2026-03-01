@@ -572,7 +572,7 @@
 
   .hero-section {
     min-height: auto;
-    padding: var(--space-8) 0;
+    padding: var(--space-10) 0;
   }
 
   .hero-content {
