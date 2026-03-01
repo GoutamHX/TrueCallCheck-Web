@@ -57,13 +57,45 @@ function Home({ darkMode, toggleDarkMode }) {
           });
         }
 
-        // Handle new API response structure
-        const results =
-          data?.data?.results ||
-          data?.result?.results ||
-          data?.results?.records ||
-          data?.results ||
-          [];
+        // Handle all possible API response formats
+        let records = [];
+
+        // Format 1: { data: { result: { results: [...] } } }
+        if (data.data?.result?.results && Array.isArray(data.data.result.results)) {
+          records = data.data.result.results;
+        }
+        // Format 2: { data: { results: [...] } }
+        else if (data.data?.results && Array.isArray(data.data.results)) {
+          records = data.data.results;
+        }
+        // Format 3: { result: { results: [...] } }
+        else if (data.result?.results && Array.isArray(data.result.results)) {
+          records = data.result.results;
+        }
+        // Format X: { results: { records: [...] } }
+        else if (data.results?.records && Array.isArray(data.results.records)) {
+          records = data.results.records;
+        }
+        // Format 4: { results: [...] }
+        else if (data.results && Array.isArray(data.results)) {
+          records = data.results;
+        }
+        // Format 5: { data: [...] }
+        else if (data.data && Array.isArray(data.data)) {
+          records = data.data;
+        }
+        // Format 6: Direct array
+        else if (Array.isArray(data)) {
+          records = data;
+        }
+        // Format 7: Single object with known fields
+        else if (typeof data === "object" && data !== null) {
+          if (data.mobile || data.name || data.father_name || data.fname || data.address) {
+            records = [data];
+          }
+        }
+
+        const results = records;
         // console.log(results);
         if (results.length > 0) {
           setSearchResults(results);
