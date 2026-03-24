@@ -172,13 +172,27 @@
   transform: translateX(4px);
 }
 
-/* Feature List */
+/* Feature / Platform List */
 .footer-features li {
   display: flex;
   align-items: center;
   gap: var(--space-2);
   font-size: 0.9375rem;
   color: var(--text-secondary);
+}
+
+.footer-features li a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.footer-features li a:hover {
+  color: var(--primary-default);
+  transform: translateX(4px);
 }
 
 .feature-icon {
@@ -220,6 +234,35 @@
 @keyframes heartbeat {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.1); }
+}
+
+.footer-section-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-align: left;
+  transition: color var(--transition-fast);
+}
+
+.footer-section-link:hover {
+  color: var(--primary-default);
+}
+
+.dev-portfolio-link {
+  color: var(--primary-default);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color var(--transition-fast);
+}
+
+.dev-portfolio-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
 }
 
 /* ------------------------------------------

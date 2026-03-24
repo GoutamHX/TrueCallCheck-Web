@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "TrueCallCheck",
+  "name": "TrueCallCheck - Phone Number Lookup & Caller ID",
+  "description": "Free phone number lookup tool for India. Identify unknown callers, detect spam calls, and get caller details instantly.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,8 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0b1220",
+  "background_color": "#0b1220",
+  "categories": ["utilities", "productivity"],
+  "lang": "en-IN"
 }

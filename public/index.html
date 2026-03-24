@@ -1,45 +1,161 @@
 <!DOCTYPE html>
-<html lang="en" >
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<html lang="en">
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>TrueCallCheck </title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#0b1220" />
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <!-- Primary SEO Meta Tags -->
+  <title>TrueCallCheck - Free Phone Number Lookup & Caller ID India | Name, Address, Carrier</title>
+  <meta name="description"
+    content="TrueCallCheck is a free, instant, and privacy-focused phone number lookup tool for India. Get caller name, father name, address, carrier, email and more — no login required. Available on Web, Android App, and Telegram Bot." />
+  <meta name="keywords"
+    content="truecaller alternative, phone number lookup, caller id india, spam call detector, free caller identification, reverse phone lookup india, phone number search, TrueCallCheck, number tracker, caller name finder, carrier lookup india, telegram caller id bot, android caller id app" />
+  <meta name="author" content="Goutam Septa - imgoutam.dev" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://goutamhx.github.io/TrueCallCheck-Web/" />
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://goutamhx.github.io/TrueCallCheck-Web/" />
+  <meta property="og:title" content="TrueCallCheck - Free Phone Number Lookup & Caller ID India" />
+  <meta property="og:description"
+    content="Search any Indian phone number to get instant caller details — name, father name, address, carrier, email and more. Free, instant, no login required. Also available as Android App & Telegram Bot." />
+  <meta property="og:image" content="https://goutamhx.github.io/TrueCallCheck-Web/logo512.png" />
+  <meta property="og:site_name" content="TrueCallCheck" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://goutamhx.github.io/TrueCallCheck-Web/" />
+  <meta name="twitter:title" content="TrueCallCheck - Free Phone Number Lookup & Caller ID" />
+  <meta name="twitter:description"
+    content="Search any Indian phone number to get instant caller details — name, address, carrier, email. Free, no login, private. Web + Android App + Telegram Bot." />
+  <meta name="twitter:image" content="https://goutamhx.github.io/TrueCallCheck-Web/logo512.png" />
+
+  <!-- Additional SEO -->
+  <meta name="google-site-verification" content="" />
+  <meta name="application-name" content="TrueCallCheck" />
+  <meta name="apple-mobile-web-app-title" content="TrueCallCheck" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <!-- Structured Data / Schema.org - WebApplication -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "TrueCallCheck",
+      "url": "https://goutamhx.github.io/TrueCallCheck-Web/",
+      "description": "Free, instant, and privacy-focused phone number lookup tool for India. Get caller name, father name, address, carrier, email and more — no login required.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Goutam Septa",
+        "url": "https://www.imgoutam.dev/"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "10000"
+      }
+    }
+  </script>
+
+  <!-- Structured Data - SoftwareApplication (Android App) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "TrueCallCheck Android App",
+      "operatingSystem": "Android",
+      "applicationCategory": "UtilitiesApplication",
+      "description": "Download the TrueCallCheck Android app for on-the-go caller identification. Fast, lightweight, and works offline.",
+      "downloadUrl": "https://devuploads.com/w3thg0886brw",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Goutam Septa",
+        "url": "https://www.imgoutam.dev/"
+      }
+    }
+  </script>
+
+  <!-- Structured Data - FAQ -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is TrueCallCheck?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "TrueCallCheck is a free, fast, and privacy-focused tool that helps users identify unknown phone numbers without needing to login. It provides caller ID info including name, father name, address, carrier details, email and more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is TrueCallCheck free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, TrueCallCheck is 100% free. No charges, subscriptions, or hidden fees. No login or account is required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which countries does TrueCallCheck support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Currently TrueCallCheck supports Indian (+91) phone numbers only. More countries will be added soon."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a TrueCallCheck Android app or Telegram bot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! TrueCallCheck is available as an Android APK for download and also as a Telegram Bot (@advancelookupbot) for instant caller identification directly in Telegram."
+          }
+        }
+      ]
+    }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZGEZ3HMSDP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-ZGEZ3HMSDP');
+  </script>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+
 </html>

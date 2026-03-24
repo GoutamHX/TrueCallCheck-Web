@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import {
   FaSearch,
   FaPhoneAlt,
-  FaChartLine,
   FaTelegram,
   FaTools,
   FaExclamationTriangle,
@@ -18,7 +17,20 @@ import {
   FaGithub,
   FaClock,
   FaDatabase,
+  FaAndroid,
+  FaDownload,
+  FaRobot,
+  FaGlobe,
+  FaShieldAlt,
+  FaBolt,
+  FaCheckCircle,
+  FaUserCheck,
+  FaMobileAlt,
+  FaEyeSlash,
+  FaCookieBite,
+  FaHandHoldingHeart,
 } from "react-icons/fa";
+import { HiOutlineStatusOnline } from "react-icons/hi";
 import Navbar from "./Navbar";
 import "../Style/Home.css";
 import { Link } from "react-router-dom";
@@ -37,7 +49,6 @@ function Home({ darkMode, toggleDarkMode }) {
 
   const handleGetDetails = async () => {
     if (!num) return toast.warn("Please enter a number!");
-    // Validate Indian number format (10 digits)
     if (!/^\d{10}$/.test(num)) {
       return toast.warn("Please enter a valid 10-digit Indian number!");
     }
@@ -51,52 +62,32 @@ function Home({ darkMode, toggleDarkMode }) {
       if (result.status === 200) {
         const data = result.data;
 
-        if (data.notice) {
-          toast.info(data.notice, {
-            autoClose: 9000,
-          });
-        }
+        // if (data.notice) {
+        //   toast.info(data.notice, { autoClose: 9000 });
+        // }
 
-        // Handle all possible API response formats
         let records = [];
-
-        // Format 1: { data: { result: { results: [...] } } }
         if (data.data?.result?.results && Array.isArray(data.data.result.results)) {
           records = data.data.result.results;
-        }
-        // Format 2: { data: { results: [...] } }
-        else if (data.data?.results && Array.isArray(data.data.results)) {
+        } else if (data.data?.results && Array.isArray(data.data.results)) {
           records = data.data.results;
-        }
-        // Format 3: { result: { results: [...] } }
-        else if (data.result?.results && Array.isArray(data.result.results)) {
+        } else if (data.result?.results && Array.isArray(data.result.results)) {
           records = data.result.results;
-        }
-        // Format X: { results: { records: [...] } }
-        else if (data.results?.records && Array.isArray(data.results.records)) {
+        } else if (data.results?.records && Array.isArray(data.results.records)) {
           records = data.results.records;
-        }
-        // Format 4: { results: [...] }
-        else if (data.results && Array.isArray(data.results)) {
+        } else if (data.results && Array.isArray(data.results)) {
           records = data.results;
-        }
-        // Format 5: { data: [...] }
-        else if (data.data && Array.isArray(data.data)) {
+        } else if (data.data && Array.isArray(data.data)) {
           records = data.data;
-        }
-        // Format 6: Direct array
-        else if (Array.isArray(data)) {
+        } else if (Array.isArray(data)) {
           records = data;
-        }
-        // Format 7: Single object with known fields
-        else if (typeof data === "object" && data !== null) {
+        } else if (typeof data === "object" && data !== null) {
           if (data.mobile || data.name || data.father_name || data.fname || data.address) {
             records = [data];
           }
         }
 
         const results = records;
-        // console.log(results);
         if (results.length > 0) {
           setSearchResults(results);
           setSearchMeta({
@@ -115,7 +106,6 @@ function Home({ darkMode, toggleDarkMode }) {
 
         setDeveloper(data?.developer || "Github:@GoutamHX");
         setTelegram(data?.Telegram || "@MR_GOUTAM08");
-
       }
     } catch (error) {
       const status = error.response?.status;
@@ -124,14 +114,11 @@ function Home({ darkMode, toggleDarkMode }) {
       if (status === 400) {
         toast.error(serverMsg || "Bad request. Please try again.");
       } else if (status === 500) {
-        toast.error("🔴 Server is currently down or busy. Try again later!");
-      } else if (
-        error.code === "ECONNABORTED" ||
-        error.message === "Network Error"
-      ) {
-        toast.error("🔌 Website is currently offline. Check your connection.");
+        toast.error("Server is currently down or busy. Try again later!");
+      } else if (error.code === "ECONNABORTED" || error.message === "Network Error") {
+        toast.error("Website is currently offline. Check your connection.");
       } else {
-        toast.error("❌ Something went wrong. Try again.");
+        toast.error("Something went wrong. Try again.");
       }
     } finally {
       setLoading(false);
@@ -140,9 +127,7 @@ function Home({ darkMode, toggleDarkMode }) {
 
   const handleGetNotice = async () => {
     try {
-      const response = await axios.get(
-        "https://true-call-check.vercel.app/web-notice"
-      );
+      const response = await axios.get("https://true-call-check.vercel.app/web-notice");
       const data = response.data;
       if (data.notice) {
         setNotice(data);
@@ -152,45 +137,73 @@ function Home({ darkMode, toggleDarkMode }) {
       console.error("Error fetching notice:", error);
     }
   };
+
+  const trustBadges = ["Free", "Instant", "No Login", "Private"];
+
   const features = [
     {
       icon: <FaPhoneAlt />,
-      title: "Number Lookup",
-      description: "Get complete details about any phone number instantly",
+      title: "Instant Number Lookup",
+      description: "Just enter a number and get real-time info including name, father name, address, carrier, email and more.",
     },
-    // {
-    //   icon: <FaGlobe />,
-    //   title: "Global Coverage",
-    //   description: "Works with numbers from over 200 countries worldwide"
-    // },
-    // {
-    //   icon: <FaUserShield />,
-    //   title: "Spam Protection",
-    //   description: "Identify potential spam calls before answering"
-    // },
     {
-      icon: <FaChartLine />,
-      title: "Call Analytics",
-      description: "Track and analyze your call patterns",
+      icon: <FaNetworkWired />,
+      title: "Carrier & Location Info",
+      description: "See the service provider and general region for any Indian mobile number instantly.",
     },
+    {
+      icon: <FaHandHoldingHeart />,
+      title: "100% Free Forever",
+      description: "No charges, subscriptions, or hidden fees. TrueCallCheck is completely free to use.",
+    },
+    {
+      icon: <FaMobileAlt />,
+      title: "Mobile Responsive",
+      description: "Works seamlessly on both mobile and desktop browsers with a beautiful adaptive UI.",
+    },
+    {
+      icon: <FaBolt />,
+      title: "Lightning Fast Results",
+      description: "Get accurate caller information in milliseconds with our high-speed lookup engine.",
+    },
+    {
+      icon: <FaGithub />,
+      title: "Open Source",
+      description: "Community-supported, transparent, and fully customizable. Contribute on GitHub.",
+    },
+  ];
+
+  const dataPoints = [
+    { icon: <FaUser />, label: "Full Name & Father Name" },
+    { icon: <FaMapMarkerAlt />, label: "Address Information" },
+    { icon: <FaNetworkWired />, label: "Carrier & Circle Details" },
+    { icon: <FaEnvelope />, label: "Email Address" },
+    { icon: <FaMobileAlt />, label: "Mobile & Alternate Numbers" },
+    { icon: <FaIdCard />, label: "Unique ID Details" },
+  ];
+
+  const privacyPoints = [
+    { icon: <FaEyeSlash />, title: "No Data Storage", desc: "We do not store any user data or lookup history. Your searches remain private." },
+    { icon: <FaUserCheck />, title: "No Login Required", desc: "No account or login is required to use TrueCallCheck. Just search and go." },
+    { icon: <FaCookieBite />, title: "No Tracking", desc: "We don't use cookies, analytics trackers, or any form of user tracking." },
+    { icon: <FaHandHoldingHeart />, title: "Free Forever", desc: "No charges, subscriptions, or hidden fees. Ever." },
   ];
 
   useEffect(() => {
     handleGetNotice();
   }, []);
+
   return (
     <div className="home-app">
       {/* Maintenance Mode Overlay */}
       {showNotice && (
         <div className="maintenance-overlay">
           <motion.div
-            className={`maintenance-box ${darkMode ? "dark-maintenance" : "light-maintenance"
-              }`}
+            className={`maintenance-box ${darkMode ? "dark-maintenance" : "light-maintenance"}`}
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            {/* Decorative elements */}
             <div className="maintenance-decoration">
               <div className="corner corner-tl"></div>
               <div className="corner corner-tr"></div>
@@ -198,7 +211,6 @@ function Home({ darkMode, toggleDarkMode }) {
               <div className="corner corner-br"></div>
             </div>
 
-            {/* Main content */}
             <div className="maintenance-icon-container">
               <div className="maintenance-icon-circle">
                 <FaTools size={28} className="main-tool-icon" />
@@ -237,36 +249,50 @@ function Home({ darkMode, toggleDarkMode }) {
               <div className="footer-divider"></div>
               <p>
                 Admin:{" "}
-                <Link
-                  className="admin-link"
-                  to="https://t.me/MR_GOUTAM08"
-                  target="_blank"
-                >
-                  @MR_GOUTAM08
+                <Link className="admin-link" to="https://imgoutam.dev" target="_blank">
+                  imgoutam
                 </Link>
               </p>
             </div>
           </motion.div>
         </div>
       )}
+
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+
       <main className="home-main">
-        {/* Hero Section */}
-        <section className="hero-section">
+        {/* ========== Hero Section ========== */}
+        <section id="home" className="hero-section">
           <motion.div
             className="hero-content"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
+            <span className="hero-badge">
+              <HiOutlineStatusOnline className="badge-dot" />
+              Free & Open Source Caller ID
+            </span>
+
             <h1 className="hero-title">
               <span className="gradient-text">TrueCallCheck</span>
-              <span className="text"> - Advanced Phone Number Analysis</span>
+              <br />
+              <span className="hero-title-sub">Advanced Phone Number Analysis</span>
             </h1>
             <p className="hero-subtitle">
-              Uncover caller details, detect spam, and protect yourself from
-              unwanted calls
+              Search any Indian phone number to get instant caller details — name,
+              father name, address, carrier, email and more.
             </p>
+
+            {/* Trust Badges */}
+            <div className="trust-badges">
+              {trustBadges.map((badge, i) => (
+                <span key={i} className="trust-badge">
+                  <FaCheckCircle className="trust-icon" />
+                  {badge}
+                </span>
+              ))}
+            </div>
 
             <motion.div
               initial={{ opacity: 0 }}
@@ -299,33 +325,28 @@ function Home({ darkMode, toggleDarkMode }) {
                 </motion.button>
               </div>
             </motion.div>
+
+            <p className="hero-hint">
+              Currently supports Indian (+91) phone numbers only. More countries coming soon.
+            </p>
           </motion.div>
+
           {/* No Data State */}
           {noData && !loading && (
             <motion.div
-              className="container mt-4"
+              className="no-data-card"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <div className="card shadow-sm border-0 text-center mx-auto" style={{ maxWidth: 420 }}>
-                <div className="card-body py-5">
-                  <div className="mb-3">
-                    <FaSearch size={40} className="text-info" />
-                  </div>
-
-                  <h5 className="fw-semibold mb-2">
-                    No Data Found
-                  </h5>
-
-                  <p className="text-muted mb-0">
-                    We couldn't find any details for this number.
-                    Please check the number and try again.
-                  </p>
-                </div>
+              <div className="no-data-icon">
+                <FaSearch />
               </div>
+              <h3 className="no-data-title">No Data Found</h3>
+              <p className="no-data-text">
+                We couldn't find any details for this number. Please check the number and try again.
+              </p>
             </motion.div>
           )}
-
 
           {/* Results Section */}
           {showResult && (
@@ -335,7 +356,6 @@ function Home({ darkMode, toggleDarkMode }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {/* Search Meta Info */}
               {searchMeta && (
                 <motion.div
                   className="search-meta-card"
@@ -358,16 +378,15 @@ function Home({ darkMode, toggleDarkMode }) {
                       <span className="meta-value">{searchMeta.searchTime}</span>
                     </div>
                   </div>
-                  <div className="meta-divider"></div>
+                  {/* <div className="meta-divider"></div>
                   <div className="meta-item">
                     <div className={`status-badge ${searchMeta.status}`}>
                       {searchMeta.status}
                     </div>
-                  </div>
+                  </div> */}
                 </motion.div>
               )}
 
-              {/* Results Cards */}
               <div className="results-grid">
                 {searchResults.map((result, index) => (
                   <motion.div
@@ -378,7 +397,6 @@ function Home({ darkMode, toggleDarkMode }) {
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ y: -4, transition: { duration: 0.2 } }}
                   >
-                    {/* Card Header */}
                     <div className="result-card-header">
                       <div className="phone-avatar">
                         <FaPhoneAlt />
@@ -389,82 +407,63 @@ function Home({ darkMode, toggleDarkMode }) {
                       </div>
                     </div>
 
-                    {/* Card Body */}
                     <div className="result-card-body">
                       {result.name && (
                         <div className="info-row">
-                          <div className="info-icon-wrapper">
-                            <FaUser className="info-icon" />
-                          </div>
+                          <div className="info-icon-wrapper"><FaUser className="info-icon" /></div>
                           <div className="info-content">
                             <span className="info-label">Name</span>
                             <span className="info-value">{result.name}</span>
                           </div>
                         </div>
                       )}
-
                       {(result.fname || result.father_name) && (
                         <div className="info-row">
-                          <div className="info-icon-wrapper">
-                            <FaUser className="info-icon" />
-                          </div>
+                          <div className="info-icon-wrapper"><FaUser className="info-icon" /></div>
                           <div className="info-content">
                             <span className="info-label">Father's Name</span>
                             <span className="info-value">{result.fname || result.father_name}</span>
                           </div>
                         </div>
                       )}
-
-                      {result.address && (
+                      {result?.email && (
                         <div className="info-row">
-                          <div className="info-icon-wrapper">
-                            <FaMapMarkerAlt className="info-icon" />
-                          </div>
-                          <div className="info-content">
-                            <span className="info-label">Address</span>
-                            <span className="info-value address">{result.address}</span>
-                          </div>
-                        </div>
-                      )}
-
-                      {(result.alt || result.alt_mobile) && (
-                        <div className="info-row">
-                          <div className="info-icon-wrapper">
-                            <FaPhoneAlt className="info-icon" />
-                          </div>
-                          <div className="info-content">
-                            <span className="info-label">Alternate Number</span>
-                            <span className="info-value">{result.alt || result.alt_mobile}</span>
-                          </div>
-                        </div>
-                      )}
-
-                      {result.id && (
-                        <div className="info-row">
-                          <div className="info-icon-wrapper">
-                            <FaIdCard className="info-icon" />
-                          </div>
-                          <div className="info-content">
-                            <span className="info-label">ID</span>
-                            <span className="info-value id-number">{result.id}</span>
-                          </div>
-                        </div>
-                      )}
-
-                      {result.email && (
-                        <div className="info-row">
-                          <div className="info-icon-wrapper">
-                            <FaEnvelope className="info-icon" />
-                          </div>
+                          <div className="info-icon-wrapper"><FaEnvelope className="info-icon" /></div>
                           <div className="info-content">
                             <span className="info-label">Email</span>
                             <span className="info-value">{result.email}</span>
                           </div>
                         </div>
                       )}
+                      {result.address && (
+                        <div className="info-row">
+                          <div className="info-icon-wrapper"><FaMapMarkerAlt className="info-icon" /></div>
+                          <div className="info-content">
+                            <span className="info-label">Address</span>
+                            <span className="info-value address">{result.address}</span>
+                          </div>
+                        </div>
+                      )}
+                      {(result.alt || result.alt_mobile) && (
+                        <div className="info-row">
+                          <div className="info-icon-wrapper"><FaPhoneAlt className="info-icon" /></div>
+                          <div className="info-content">
+                            <span className="info-label">Alternate Number</span>
+                            <span className="info-value">{result.alt || result.alt_mobile}</span>
+                          </div>
+                        </div>
+                      )}
+                      {result.id && (
+                        <div className="info-row">
+                          <div className="info-icon-wrapper"><FaIdCard className="info-icon" /></div>
+                          <div className="info-content">
+                            <span className="info-label">ID</span>
+                            <span className="info-value id-number">{result.id}</span>
+                          </div>
+                        </div>
+                      )}
                     </div>
 
-                    {/* Card Footer */}
                     <div className="result-card-footer">
                       <FaNetworkWired className="carrier-icon" />
                       <span>{result.circle}</span>
@@ -473,7 +472,6 @@ function Home({ darkMode, toggleDarkMode }) {
                 ))}
               </div>
 
-              {/* Developer Info */}
               <motion.div
                 className="developer-info"
                 initial={{ opacity: 0 }}
@@ -495,39 +493,97 @@ function Home({ darkMode, toggleDarkMode }) {
               </motion.div>
             </motion.section>
           )}
-
-          {/* Stats Section */}
-          <motion.div
-            className="hero-stats"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <div className="stat-card">
-              <div className="stat-value">10K+</div>
-              <div className="stat-label">Numbers Analyzed</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-value">India</div>
-              <div className="stat-label">Country</div>
-            </div>
-            <div className="stat-card">
-              <div className="stat-value">99.9%</div>
-              <div className="stat-label">Accuracy</div>
-            </div>
-          </motion.div>
         </section>
 
-        {/* Features Section */}
-        <section className="features-section">
-          <motion.h2
+        {/* ========== What is TrueCallCheck ========== */}
+        <section id="about" className="about-section">
+          <div className="about-layout">
+            <motion.div
+              className="about-text"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="section-tag">About</span>
+              <h2 className="section-title">
+                What is <span className="gradient-text">TrueCallCheck</span>?
+              </h2>
+              <p className="about-desc">
+                TrueCallCheck is a free, fast, and privacy-focused tool that helps users
+                identify unknown phone numbers — without needing to login. It provides caller
+                ID info including name, address, carrier details, and more — helping users
+                stay safe and informed when receiving unknown calls.
+              </p>
+              <div className="about-highlights">
+                <div className="highlight-item">
+                  <FaCheckCircle className="highlight-icon" />
+                  <span>Instant Number Lookup — Just enter a number and get real-time info</span>
+                </div>
+                <div className="highlight-item">
+                  <FaCheckCircle className="highlight-icon" />
+                  <span>Carrier & Location Info — See the service provider and general region</span>
+                </div>
+                <div className="highlight-item">
+                  <FaCheckCircle className="highlight-icon" />
+                  <span>100% Free — No charges, subscriptions, or hidden fees</span>
+                </div>
+                <div className="highlight-item">
+                  <FaCheckCircle className="highlight-icon" />
+                  <span>Mobile Responsive — Works seamlessly on both mobile and desktop</span>
+                </div>
+                <div className="highlight-item">
+                  <FaCheckCircle className="highlight-icon" />
+                  <span>Open Source — Community-supported, customizable project</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="about-data-card"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+            >
+              <h3 className="data-card-title">What You Get</h3>
+              <div className="data-points-grid">
+                {dataPoints.map((dp, i) => (
+                  <motion.div
+                    key={i}
+                    className="data-point"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.06 }}
+                  >
+                    <div className="data-point-icon">{dp.icon}</div>
+                    <span className="data-point-label">{dp.label}</span>
+                  </motion.div>
+                ))}
+              </div>
+              <p className="data-card-note">
+                Currently supports Indian (+91) phone numbers only. More countries will be added soon.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ========== Features Section ========== */}
+        <section id="features" className="features-section">
+          <motion.div
+            className="section-header"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="features-title"
           >
-            Why Choose TrueCallCheck?
-          </motion.h2>
+            <span className="section-tag">Features</span>
+            <h2 className="section-title">
+              Why Choose <span className="gradient-text">TrueCallCheck</span>?
+            </h2>
+            <p className="section-subtitle">
+              Powerful tools to identify callers, block spam, and stay safe — completely free
+            </p>
+          </motion.div>
 
           <div className="features-grid">
             {features.map((feature, index) => (
@@ -537,17 +593,156 @@ function Home({ darkMode, toggleDarkMode }) {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.08 }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
               >
                 <div className="feature-icon">{feature.icon}</div>
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-description">{feature.description}</p>
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
               </motion.div>
             ))}
           </div>
         </section>
+
+        {/* ========== Privacy Section ========== */}
+        <section id="privacy" className="privacy-section">
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="section-tag">Privacy</span>
+            <h2 className="section-title">
+              Privacy & <span className="gradient-text">Transparency</span>
+            </h2>
+            <p className="section-subtitle">
+              We take your privacy seriously. TrueCallCheck is designed to be transparent
+              and respectful of your personal data.
+            </p>
+          </motion.div>
+
+          <div className="privacy-grid">
+            {privacyPoints.map((item, index) => (
+              <motion.div
+                key={index}
+                className="privacy-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08 }}
+              >
+                <div className="privacy-icon-wrapper">{item.icon}</div>
+                <h4>{item.title}</h4>
+                <p>{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* ========== Platforms Section ========== */}
+        <section id="platforms" className="get-app-section">
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="section-tag">Platforms</span>
+            <h2 className="section-title">
+              Use TrueCallCheck <span className="gradient-text">Everywhere</span>
+            </h2>
+            <p className="section-subtitle">
+              Access our powerful phone lookup on your favorite platform
+            </p>
+          </motion.div>
+
+          <div className="platform-cards">
+            <motion.a
+              href="https://devuploads.com/w3thg0886brw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="platform-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            >
+              <div className="platform-icon-wrapper android-icon-bg">
+                <FaAndroid className="platform-icon" />
+              </div>
+              <div className="platform-info">
+                <span className="platform-badge">Android App</span>
+                <h3 className="platform-name">TrueCallCheck App</h3>
+                <p className="platform-desc">
+                  Download our Android app for on-the-go caller identification. Fast, lightweight, and works offline.
+                </p>
+              </div>
+              <div className="platform-cta">
+                <span className="cta-btn android-cta">
+                  <FaDownload /> Download APK
+                </span>
+              </div>
+            </motion.a>
+
+            <motion.a
+              href="https://t.me/advancelookupbot"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="platform-card"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            >
+              <div className="platform-icon-wrapper telegram-icon-bg">
+                <FaRobot className="platform-icon" />
+              </div>
+              <div className="platform-info">
+                <span className="platform-badge">Telegram Bot</span>
+                <h3 className="platform-name">Advance Lookup Bot</h3>
+                <p className="platform-desc">
+                  Send any phone number directly in Telegram and get instant caller details. No app install needed.
+                </p>
+              </div>
+              <div className="platform-cta">
+                <span className="cta-btn telegram-cta">
+                  <FaTelegram /> Open in Telegram
+                </span>
+              </div>
+            </motion.a>
+
+            <motion.div
+              className="platform-card active-platform"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            >
+              <div className="active-badge-ribbon">You are here</div>
+              <div className="platform-icon-wrapper web-icon-bg">
+                <FaGlobe className="platform-icon" />
+              </div>
+              <div className="platform-info">
+                <span className="platform-badge">Web App</span>
+                <h3 className="platform-name">TrueCallCheck Web</h3>
+                <p className="platform-desc">
+                  Use right from your browser with full features. Dark mode, instant search, and detailed results.
+                </p>
+              </div>
+              <div className="platform-cta">
+                <span className="cta-btn web-cta">
+                  <FaShieldAlt /> Currently Using
+                </span>
+              </div>
+            </motion.div>
+          </div>
+        </section>
       </main>
+
       <ToastContainer
         position="top-center"
         autoClose={3000}

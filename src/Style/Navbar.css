@@ -99,6 +99,14 @@
   color: var(--text-primary) !important;
 }
 
+/* Nav link as button (no default button styles) */
+.nav-link-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
 /* Underline animation */
 .nav-link::after {
   content: "";
@@ -193,84 +201,7 @@
   color: var(--primary-default);
 }
 
-/* ------------------------------------------
-   Search Functionality
-   ------------------------------------------ */
-.d-flex.align-items-center {
-  position: relative;
-  min-width: 180px;
-}
-
-.search-container {
-  position: absolute;
-  right: 120px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0;
-  opacity: 0;
-  transition: all var(--transition-base);
-  overflow: hidden;
-  z-index: 5;
-}
-
-.search-container.open {
-  width: 220px;
-  opacity: 1;
-}
-
-.search-input {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  font-size: 0.9375rem;
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-full);
-  background-color: var(--bg-tertiary);
-  color: var(--text-primary);
-  transition: all var(--transition-fast);
-}
-
-.search-input:focus {
-  outline: none;
-  border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-.dark .search-input:focus {
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-}
-
-.search-input::placeholder {
-  color: var(--text-muted);
-}
-
-/* Search Button */
-.search-btn {
-  position: relative;
-  z-index: 10;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: var(--radius-full);
-  background: transparent;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  margin-right: 0.5rem;
-}
-
-.search-btn:hover {
-  background-color: var(--primary-subtle);
-  color: var(--primary-default);
-}
-
-.search-btn.active {
-  background-color: var(--primary-subtle);
-  color: var(--primary-default);
-  transform: rotate(90deg);
-}
+/* (Search removed - using in-page search box instead) */
 
 /* ------------------------------------------
    Theme Toggle Button
@@ -417,6 +348,12 @@
   color: var(--text-secondary);
   text-decoration: none;
   transition: all var(--transition-fast);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
 }
 
 .mobile-nav-link:hover,
