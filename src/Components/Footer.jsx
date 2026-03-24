@@ -213,7 +213,7 @@ const Footer = ({ darkMode }) => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <span className="fs-6">
+          <span className="fs-6 fw-light">
             © {new Date().getFullYear()} TrueCallCheck. All rights reserved.
             <span className="separator"> | </span>
             Designed and developed with <FaHeart className="heart-icon" aria-hidden="true" /> by{" "}
