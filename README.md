@@ -12,8 +12,9 @@
 
 A powerful web application to identify unknown callers, block spam, and protect your privacy.
 
-🔗 *Live Demo*: [goutamhx.github.io/TrueCallCheck-Web](https://goutamhx.github.io/TrueCallCheck-Web/)
-🔗 *More Details* : [https://www.imgoutam.dev/projects/truecallcheck](https://www.imgoutam.dev/projects/truecallcheck)
+🔗 Live Demo: [goutamhx.github.io/TrueCallCheck-Web](https://goutamhx.github.io/TrueCallCheck-Web/) 
+🔗 More Details : [https://www.imgoutam.dev/projects/truecallcheck](https://www.imgoutam.dev/projects/truecallcheck)
+
 ---
 
 ## ✨ Features
