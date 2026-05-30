@@ -1,164 +1,145 @@
-import React, { useState } from 'react';
-import { Button, Form, InputGroup } from 'react-bootstrap';
-import '../Style/ChatBot.css'
-import img from '../assets/ChatBot.png'
+import { useState, useRef, useEffect } from 'react';
+import '../Style/ChatBot.css';
+
+const QUICK_QUESTIONS = [
+  "What is TrueCallCheck?",
+  "What data does the lookup show?",
+  "What are Main vs Alternative records?",
+  "Is it free to use?",
+];
+
 const ChatBot = () => {
-    const [messages, setMessages] = useState([]);
-    const [input, setInput] = useState('');
-    const [show, setShow] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [show, setShow] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef(null);
 
-    const sendMessage = async () => {
-        if (!input.trim()) return;
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, isLoading]);
 
-        // Add user message
-        setMessages((prevMessages) => [
-            ...prevMessages,
-            { sender: 'user', text: input }
-        ]);
+  const sendMessage = async (overrideText) => {
+    const msg = (overrideText ?? input).trim();
+    if (!msg || isLoading) return;
 
-        setInput('');
+    setMessages(prev => [...prev, { sender: 'user', text: msg, time: new Date() }]);
+    setInput('');
+    setIsLoading(true);
 
-        // Scroll to the bottom
-        const chatBox = document.getElementById('chatMessages');
-        chatBox.scrollTop = chatBox.scrollHeight;
-
-        try {
-            // Simulating a chat response (replace with API request)
-            const response = await fetch('https://true-call-check.vercel.app/api/chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: input })
-            });
-            const data = await response.json();
-
-            const botReply = data.reply || "🤖 Sorry, I didn't get that.";
-
-            // Add bot response
-            setMessages((prevMessages) => [
-                ...prevMessages,
-                { sender: 'bot', text: botReply }
-            ]);
-
-            // Scroll to the bottom
-            chatBox.scrollTop = chatBox.scrollHeight;
-
-        } catch (error) {
-            console.error('Error:', error);
-            setMessages((prevMessages) => [
-                ...prevMessages,
-                { sender: 'bot', text: '❌ Error occurred. Try again later.' }
-            ]);
-        }
-    };
-    function OpenChat() {
-        setShow(true)
+    try {
+      const response = await fetch('https://true-call-check.vercel.app/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: msg }),
+      });
+      const data = await response.json();
+      setMessages(prev => [
+        ...prev,
+        { sender: 'bot', text: data.reply || "Sorry, I couldn't get a response.", time: new Date() },
+      ]);
+    } catch {
+      setMessages(prev => [
+        ...prev,
+        { sender: 'bot', text: '❌ Something went wrong. Please try again.', time: new Date() },
+      ]);
+    } finally {
+      setIsLoading(false);
     }
-    function CloseChat() {
-        setShow(false)
-        }
-    return (
-        <div>
-        {show ? (
-          <div className="chatbot-container" style={{ width: "380px", zIndex: 9999 }}>
-            <div className="chatbot-header">
-              <div className="d-flex align-items-center">
-                <div className="chatbot-avatar me-2">🤖</div>
-                <div>
-                  <h6 className="mb-0">TrueCallCheck Assistant</h6>
-                  <small className="status-badge">Online</small>
-                </div>
-              </div>
-              <button className="chatbot-close-btn" onClick={CloseChat}>
-                &times;
-              </button>
-            </div>
-      
-            <div className="chatbot-messages" id="chatMessages">
-              {messages.length === 0 ? (
-                <div className="welcome-message">
-                  <p>👋 Hi there! I'm your TrueCallCheck Assistant.</p>
-                  <p>How can I help you today?</p>
-                  <div className="quick-questions">
-                    <button onClick={() => setInput("How does TrueCallCheck work?")}>
-                      How does TrueCallCheck work?
-                    </button>
-                    <button onClick={() => setInput("Is my number verified?")}>
-                      Is my number verified?
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                messages.map((msg, index) => (
-                  <div
-                    key={index}
-                    className={`message-bubble ${
-                      msg.sender === "user" ? "user-message" : "bot-message"
-                    }`}
-                  >
-                    {msg.sender !== "user" && (
-                      <div className="message-sender">Assistant</div>
-                    )}
-                    <div className="message-content">{msg.text}</div>
-                    <div className="message-time">
-                      {new Date().toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-      
-            <div className="chatbot-input-area">
-              <div className="input-group">
-                <input
-                  type="text"
-                  value={input}
-                  placeholder="Type your message..."
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyPress={(e) => e.key === "Enter" && sendMessage()}
-                  className="chat-input"
-                />
-                <button className="send-button" onClick={sendMessage}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <button className="chatbot-launcher" onClick={OpenChat}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-          </button>
-        )}
-      </div>
+  };
 
-    );
+  const fmt = (date) =>
+    date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  return (
+    <div>
+      {show ? (
+        <div className="chatbot-container">
+          {/* Header */}
+          <div className="chatbot-header">
+            <div className="chatbot-header-info">
+              <div className="chatbot-avatar">🤖</div>
+              <div>
+                <p className="chatbot-title">TrueCallCheck Assistant</p>
+                <span className="chatbot-status">● Online</span>
+              </div>
+            </div>
+            <button className="chatbot-close-btn" onClick={() => setShow(false)} aria-label="Close">
+              ✕
+            </button>
+          </div>
+
+          {/* Messages */}
+          <div className="chatbot-messages">
+            {messages.length === 0 ? (
+              <div className="chatbot-welcome">
+                <div className="welcome-avatar">🤖</div>
+                <p className="welcome-title">Hi! I'm your TrueCallCheck Assistant</p>
+                <p className="welcome-sub">Ask me anything about the service.</p>
+                <div className="quick-questions">
+                  {QUICK_QUESTIONS.map((q, i) => (
+                    <button key={i} onClick={() => sendMessage(q)}>{q}</button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <>
+                {messages.map((msg, i) => (
+                  <div
+                    key={i}
+                    className={`message-bubble ${msg.sender === 'user' ? 'user-message' : 'bot-message'}`}
+                  >
+                    <div className="message-content">{msg.text}</div>
+                    <div className="message-time">{fmt(msg.time)}</div>
+                  </div>
+                ))}
+                {isLoading && (
+                  <div className="message-bubble bot-message typing-bubble">
+                    <span className="typing-dot" />
+                    <span className="typing-dot" />
+                    <span className="typing-dot" />
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </>
+            )}
+          </div>
+
+          {/* Input */}
+          <div className="chatbot-input-area">
+            <input
+              type="text"
+              value={input}
+              placeholder="Ask about TrueCallCheck…"
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+              className="chat-input"
+              disabled={isLoading}
+            />
+            <button
+              className="send-button"
+              onClick={() => sendMessage()}
+              disabled={isLoading || !input.trim()}
+              aria-label="Send"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      ) : (
+        <button className="chatbot-launcher" onClick={() => setShow(true)} aria-label="Open chat">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+        </button>
+      )}
+    </div>
+  );
 };
 
 export default ChatBot;
