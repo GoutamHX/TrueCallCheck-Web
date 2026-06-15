@@ -65,7 +65,14 @@
     "TrueCallCheck",
     "api",
     "caller-id",
-    "phone-lookup"
+    "phone-lookup",
+    "email-info",
+    "document-number",
+    "passport-number",
+    "alternate-number",
+    "mobile-friendly",
+    "fast-lightweight",
+    "Goutam Septa"
   ],
   "author": "Goutam Septa",
   "license": "ISC",
