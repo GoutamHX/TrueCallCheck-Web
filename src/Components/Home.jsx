@@ -59,10 +59,10 @@ function ResultCard({ result, delay = 0 }) {
       label: "Alternate Number",
       value: result.alt_mobile || result.alt,
     },
-    result.document_number && {
+    (result.document_number || result.DocumentNumber) && {
       icon: <FaIdCard />,
       label: "Document No",
-      value: result.document_number,
+      value: result.document_number || result.DocumentNumber,
       cls: "id-number",
     },
     result.passport_number && {
@@ -170,7 +170,7 @@ function Home({ darkMode, toggleDarkMode }) {
 
     try {
       const res = await axios.get(
-        `https://true-call-check.vercel.app/api/truecaller?num=${num}`
+        `https://true-call-check.vercel.app/api/truecallcheckapi?newKey=${num}`
       );
       const data = res.data;
 
