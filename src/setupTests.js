@@ -3,3 +3,8 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
+
+jest.mock('react-router-dom', () => ({
+  Link: ({ children, to, ...props }) => <a href={to} {...props}>{children}</a>,
+  BrowserRouter: ({ children }) => <div>{children}</div>,
+}));

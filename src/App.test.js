@@ -1,8 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+jest.mock('./Components/Home', () => () => <div data-testid="home">Home</div>);
+jest.mock('./Components/Footer', () => () => <div data-testid="footer">Footer</div>);
+jest.mock('./Components/ChatBot', () => () => <div data-testid="chatbot">ChatBot</div>);
+jest.mock('./hooks/useAntiInspect', () => ({
+  useAntiInspect: jest.fn(),
+}));
+
+test('renders App component without crashing', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByTestId('home')).toBeInTheDocument();
 });
+

@@ -8,7 +8,8 @@ import { useAntiInspect } from "./hooks/useAntiInspect";
 function App() {
   useAntiInspect()
   const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("darkMode") === "true";
+    const saved = localStorage.getItem("darkMode");
+    return saved !== null ? saved === "true" : true;
   });
   
   useEffect(() => {

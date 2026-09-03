@@ -5,9 +5,7 @@ import {
   FaGithub,
   FaTelegram,
   FaCode,
-  FaInfoCircle,
   FaMobileAlt,
-  FaCheckCircle,
   FaHeart,
   FaAndroid,
   FaRobot,
@@ -15,7 +13,7 @@ import {
 } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import "../Style/Footer.css";
-import { User, User2 } from "lucide-react";
+import { User } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = ({ darkMode }) => {

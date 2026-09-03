@@ -5,9 +5,9 @@ import { useEffect } from "react";
  */
 export function useAntiInspect() {
   useEffect(() => {
-    const handleContextMenu = (e: MouseEvent) => e.preventDefault();
+    const handleContextMenu = (e) => e.preventDefault();
 
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
       const k = e.key.toUpperCase();
       const devtoolsKey = k === "I" || k === "J" || k === "C";
       if (
