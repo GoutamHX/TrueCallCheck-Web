@@ -1,14 +1,21 @@
 import { useEffect } from "react";
 
-export const useAntiInspect = () => {
+/**
+ * Disables context menu and devtools inspection shortcuts.
+ */
+export function useAntiInspect() {
   useEffect(() => {
-    const handleContextMenu = (e) => e.preventDefault();
+    const handleContextMenu = (e: MouseEvent) => e.preventDefault();
 
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const k = e.key.toUpperCase();
+      const devtoolsKey = k === "I" || k === "J" || k === "C";
       if (
         e.key === "F12" ||
-        (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
-        (e.ctrlKey && e.key === "U")
+        (e.ctrlKey && e.shiftKey && devtoolsKey) ||
+        (e.ctrlKey && k === "U") ||
+        (e.metaKey && e.altKey && (devtoolsKey || k === "U")) ||
+        (e.metaKey && e.shiftKey && devtoolsKey)
       ) {
         e.preventDefault();
       }
@@ -22,5 +29,4 @@ export const useAntiInspect = () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
-};
-
+}
