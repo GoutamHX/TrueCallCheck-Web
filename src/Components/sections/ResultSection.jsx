@@ -2,11 +2,11 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaDatabase,
-  FaLayerGroup,
   FaCodeBranch,
   FaStar,
   FaGithub,
   FaTelegram,
+  FaShieldAlt,
 } from "react-icons/fa";
 import ResultGroup from "./ResultGroup";
 
@@ -28,38 +28,34 @@ export function ResultSection({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
         >
-          {/* Meta bar */}
+          {/* Sleek, Compact Telemetry Bar */}
           {searchMeta && (
-            <motion.div
-              className="search-meta-card"
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.05 }}
-            >
-              <div className="meta-item">
-                <FaDatabase className="meta-icon" />
-                <div className="meta-content">
-                  <span className="meta-label">Total Matches</span>
-                  <span className="meta-value mono-num">{searchMeta.total}</span>
+            <div className="telemetry-bar-shelf">
+              <div className="telemetry-pill-group">
+                <div className="telemetry-pill">
+                  <FaDatabase className="pill-icon" aria-hidden="true" />
+                  <span className="pill-title mono-num">TOTAL MATCHES</span>
+                  <span className="pill-badge mono-num">{searchMeta.total}</span>
+                </div>
+
+                <div className="telemetry-pill is-primary">
+                  <FaStar className="pill-icon primary" aria-hidden="true" />
+                  <span className="pill-title mono-num">DIRECT TARGET</span>
+                  <span className="pill-badge primary-badge mono-num">{searchMeta.main}</span>
+                </div>
+
+                <div className="telemetry-pill">
+                  <FaCodeBranch className="pill-icon" aria-hidden="true" />
+                  <span className="pill-title mono-num">ALTERNATIVE LINES</span>
+                  <span className="pill-badge mono-num">{searchMeta.alt}</span>
                 </div>
               </div>
-              <div className="meta-divider" />
-              <div className="meta-item">
-                <FaLayerGroup className="meta-icon" />
-                <div className="meta-content">
-                  <span className="meta-label">Direct Matches</span>
-                  <span className="meta-value mono-num">{searchMeta.main}</span>
-                </div>
+
+              <div className="telemetry-route-tag">
+                <FaShieldAlt className="route-icon" aria-hidden="true" />
+                <span className="mono-num">200 OK · RESOLVED</span>
               </div>
-              <div className="meta-divider" />
-              <div className="meta-item">
-                <FaCodeBranch className="meta-icon" />
-                <div className="meta-content">
-                  <span className="meta-label">Alternative Matches</span>
-                  <span className="meta-value mono-num">{searchMeta.alt}</span>
-                </div>
-              </div>
-            </motion.div>
+            </div>
           )}
 
           {/* Main Records */}
