@@ -1,0 +1,48 @@
+# TrueCallCheck
+
+> TrueCallCheck is a free, privacy-first caller identification and phone number analysis utility for Indian (+91) phone numbers.
+
+## Overview
+- **Name**: TrueCallCheck
+- **Website**: https://goutamhx.github.io/TrueCallCheck-Web/
+- **Author**: Goutam Septa (https://www.imgoutam.dev/)
+- **Pricing**: 100% Free forever (No subscription, No paywall, No account required)
+- **Supported Region**: India (+91)
+- **Coverage**: Indian Mobile Operators (Airtel, Reliance Jio, Vi - Vodafone Idea, BSNL, MTNL)
+
+## Key Features
+- **Phone Lookup**: Enter any 10-digit Indian phone number to find subscriber name, father's name, registered address, email, carrier, and telecom circle.
+- **Record Categorization**:
+  - *Main Records*: Direct registered subscriber details for the queried phone number.
+  - *Alternative Records*: Linked or secondary telephone lines detected under the same subscriber profile.
+- **Zero-Tracking Privacy**: No queries or personal lookup data are stored or logged on servers.
+- **Multiple Platforms**:
+  - Web Application: Browser interface with dark and light mode support.
+  - Android APK: Lightweight mobile package for on-the-go lookup.
+  - Telegram Bot: Interactive bot (@advancelookupbot) for in-messenger lookup.
+
+## Endpoints & Architecture
+- Web Application: Static React single page application hosted on GitHub Pages.
+- API Backend: `https://true-call-check.vercel.app`
+  - Lookup: `GET /api/truecallcheckapi?newKey={10_digit_number}`
+  - Notice / Status: `GET /web-notice`
+  - Chat Assistant: `POST /api/chat` { "message": "string" }
+
+## Developer & Portfolio
+- **Developer**: Goutam Septa
+- **Aliases**: GoutamHX, imgoutam
+- **Role**: Software Developer & Full Stack Engineer
+- **Official Portfolio**: https://www.imgoutam.dev/
+- **GitHub**: https://github.com/GoutamHX
+- **Notable Projects by Goutam Septa**:
+  - **TrueCallCheck Web**: Free Indian caller ID & phone number lookup utility (https://goutamhx.github.io/TrueCallCheck-Web/)
+  - **TrueCallCheck Android App**: Native APK for mobile caller lookup
+  - **Advance Lookup Bot**: Telegram bot (@advancelookupbot) for automated phone number identification
+  - **Developer Tools**: Open-source utilities and web applications at https://github.com/GoutamHX
+
+## Links
+- Repository: https://github.com/GoutamHX/TrueCallCheck-Web
+- Telegram Bot: https://t.me/advancelookupbot
+- Telegram Channel: https://telegram.dog/TheAdvanceBots
+- Android APK: https://devuploads.com/w3thg0886brw
+- Developer Portfolio: https://www.imgoutam.dev/
