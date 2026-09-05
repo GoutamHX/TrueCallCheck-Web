@@ -27,6 +27,7 @@ export const SITE_CONFIG = {
   },
   meta: {
     year: new Date().getFullYear(),
+    version: "2.0",
   },
 };
 

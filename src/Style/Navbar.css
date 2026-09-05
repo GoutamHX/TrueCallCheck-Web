@@ -5,110 +5,136 @@
  * contrast: pass (40–41) · mobile: pass (34, 49, 50–57)
  */
 /* ============================================
-   Navbar — Hallmark Modern-Minimal Precision Pill
+   Navbar — Hallmark Modern-Minimal Floating Island (N5)
    ============================================ */
 
-.navbar {
-  font-family: var(--font-sans);
-  padding: 0.85rem 1rem;
-  transition: padding var(--transition-base), background-color var(--transition-base);
+.hallmark-nav-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
-}
-
-.navbar .container {
+  padding: 0.85rem var(--space-4);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1.25rem;
-  border-radius: var(--radius-full);
-  transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+  pointer-events: none;
+  transition: padding var(--transition-base);
 }
 
-/* Light Theme Bar */
-.navbar.light .container {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-primary);
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-}
-
-/* Dark Theme Bar */
-.navbar.dark .container {
-  background: rgba(14, 20, 34, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-primary);
-  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
-}
-
-/* Scrolled State */
-.navbar.scrolled {
+.hallmark-nav-wrapper.is-scrolled {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
-.navbar.scrolled.light .container {
-  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.08);
-  border-color: var(--border-secondary);
+.hallmark-nav-pill {
+  width: 100%;
+  max-width: 1120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.65rem 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  pointer-events: auto;
+  border: 1px solid var(--border-primary);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+  transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
-.navbar.scrolled.dark .container {
-  box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.6);
-  border-color: var(--border-secondary);
+.dark-mode .hallmark-nav-pill {
+  background: rgba(14, 20, 34, 0.88);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.5);
+}
+
+.hallmark-nav-wrapper.is-scrolled .hallmark-nav-pill {
+  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.1);
+}
+
+.dark-mode .hallmark-nav-wrapper.is-scrolled .hallmark-nav-pill {
+  box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.7);
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 /* ------------------------------------------
-   Brand / Logo
+   Brand Identity
    ------------------------------------------ */
-.brand {
+.nav-brand {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.125rem;
-  letter-spacing: -0.02em;
-  color: var(--text-primary);
   cursor: pointer;
   user-select: none;
-  transition: opacity var(--transition-fast);
+  text-decoration: none;
+  outline: none;
+  border-radius: var(--radius-md);
 }
 
-.brand:hover {
-  opacity: 0.88;
+.nav-brand:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
 }
 
-.brand-icon-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
+.nav-brand-icon {
+  position: relative;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-md);
   background: var(--primary-subtle);
   color: var(--primary-default);
-  border: 1px solid var(--border-primary);
-  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9375rem;
+  border: 1px solid var(--border-subtle);
+  flex-shrink: 0;
 }
 
-.logo-badge {
+.brand-pulse-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 0 2px var(--surface-default);
+}
+
+.nav-brand-text {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.nav-brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.nav-brand-badge {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.04em;
-  padding: 0.15rem 0.5rem;
+  padding: 0.15rem 0.45rem;
   border-radius: var(--radius-full);
   background: var(--primary-subtle);
   color: var(--primary-default);
   border: 1px solid var(--border-subtle);
-  margin-left: 0.35rem;
 }
 
 /* ------------------------------------------
-   Navigation Links
+   Desktop Navigation Links
    ------------------------------------------ */
-.navbar-nav {
+.nav-links-cluster {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -117,72 +143,120 @@
   list-style: none;
 }
 
-.nav-link-btn {
+.nav-item {
   position: relative;
-  font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  padding: 0.45rem 0.9rem !important;
-  border-radius: var(--radius-full);
-  transition: color var(--transition-fast), background-color var(--transition-fast);
-  white-space: nowrap;
-  text-decoration: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
 }
 
-.nav-link-btn:hover {
-  color: var(--text-primary);
-  background: var(--surface-hover);
-}
-
-.nav-link-btn.active {
-  color: var(--primary-default) !important;
-  background: var(--primary-subtle);
-  font-weight: 600;
-}
-
-/* ------------------------------------------
-   Theme Toggle Button
-   ------------------------------------------ */
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-full);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  background: var(--surface-hover);
-  border: 1px solid var(--border-primary);
-  transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.theme-toggle:hover {
-  color: var(--text-primary);
-  border-color: var(--border-secondary);
-  background: var(--surface-active);
-}
-
-.theme-toggle svg {
-  font-size: 0.875rem;
-  color: var(--primary-default);
-}
-
-/* ------------------------------------------
-   Mobile Menu Button & Drawer
-   ------------------------------------------ */
-.mobile-menu-btn {
+.nav-pill-btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+  z-index: 1;
+}
+
+.nav-pill-btn:hover {
+  color: var(--text-primary);
+}
+
+.nav-pill-btn.is-active {
+  color: var(--primary-default);
+  font-weight: 600;
+}
+
+.nav-active-pill {
+  position: absolute;
+  inset: 0;
+  background: var(--primary-subtle);
+  border-radius: var(--radius-full);
+  z-index: -1;
+  border: 1px solid var(--border-subtle);
+}
+
+/* ------------------------------------------
+   Right Controls (Theme, CTA, Mobile Toggle)
+   ------------------------------------------ */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--surface-hover);
+  border: 1px solid var(--border-primary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.theme-switch-btn:hover {
+  color: var(--primary-default);
+  background: var(--surface-active);
+  border-color: var(--border-secondary);
+  transform: rotate(15deg);
+}
+
+.theme-glyph {
+  font-size: 0.875rem;
+}
+
+.theme-glyph.sun {
+  color: #f59e0b;
+}
+
+.nav-quick-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  background: var(--primary-default);
+  color: var(--color-accent-ink, #ffffff);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: var(--shadow-xs);
+  transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.nav-quick-cta:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.cta-icon {
+  font-size: 0.75rem;
+}
+
+.mobile-hamburger-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-full);
   background: var(--surface-hover);
   border: 1px solid var(--border-primary);
@@ -191,231 +265,133 @@
   transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
-.mobile-menu-btn:hover {
+.mobile-hamburger-btn:hover {
   background: var(--surface-active);
 }
 
-.mobile-menu {
-  margin-top: 0.65rem;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-primary);
-  animation: mobileMenuSlide 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.light .mobile-menu {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: var(--shadow-lg);
-}
-
-.dark .mobile-menu {
-  background: rgba(14, 20, 34, 0.98);
-  box-shadow: var(--shadow-lg);
-}
-
-@keyframes mobileMenuSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.mobile-nav-link {
-  display: block;
+/* ------------------------------------------
+   Mobile Drawer Sheet
+   ------------------------------------------ */
+.nav-mobile-sheet {
   width: 100%;
-  text-align: left;
-  padding: 0.75rem 1rem;
-  font-weight: 500;
-  font-size: 0.9375rem;
-  border-radius: var(--radius-md);
-  color: var(--text-secondary);
-  transition: color var(--transition-fast), background-color var(--transition-fast);
-  white-space: nowrap;
-  background: transparent;
-  border: none;
-}
-
-.mobile-nav-link:hover,
-.mobile-nav-link.active {
-  color: var(--primary-default);
-  background: var(--primary-subtle);
-}
-
-@media (max-width: 991px) {
-  .navbar-collapse {
-    display: none !important;
-  }
-  .navbar .container {
-    border-radius: var(--radius-lg);
-  }
-}
-
-@media (min-width: 992px) {
-  .mobile-menu {
-    display: none !important;
-  }
-}
-
-/* Mobile Search */
-.mobile-search {
-  margin-bottom: 1rem;
-}
-
-.mobile-search .input-group {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  max-width: 1120px;
+  margin-top: 0.5rem;
+  padding: 0.85rem;
+  border-radius: var(--radius-xl);
   border: 1px solid var(--border-primary);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: var(--shadow-xl);
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.mobile-search .input-group-text {
-  padding: 0.75rem 1rem;
-  background-color: var(--bg-tertiary);
-  border: none;
-  color: var(--text-muted);
+.dark-mode .nav-mobile-sheet {
+  background: rgba(14, 20, 34, 0.96);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 40px -4px rgba(0, 0, 0, 0.8);
 }
 
-.mobile-search-input {
-  padding: 0.75rem 1rem;
-  font-size: 0.9375rem;
-  border: none;
-  background-color: var(--bg-tertiary);
-  color: var(--text-primary);
+.mobile-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-.mobile-search-input:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.mobile-search-input::placeholder {
-  color: var(--text-muted);
-}
-
-/* Mobile Navigation Links */
-.mobile-nav-item {
-  border-bottom: 1px solid var(--border-primary);
-}
-
-.mobile-nav-item:last-child {
-  border-bottom: none;
-}
-
-.mobile-nav-link {
+.mobile-sheet-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  min-height: 44px;
   font-size: 0.9375rem;
   font-weight: 500;
   color: var(--text-secondary);
-  text-decoration: none;
-  transition: color var(--transition-fast), padding-left var(--transition-fast);
-  white-space: nowrap;
-  background: none;
+  border-radius: var(--radius-lg);
+  background: transparent;
   border: none;
   cursor: pointer;
-  font-family: inherit;
-  width: 100%;
   text-align: left;
-}
-
-.mobile-nav-link:hover,
-.mobile-nav-link.active {
-  color: var(--primary-default);
-  padding-left: 0.5rem;
-}
-
-.mobile-dropdown-icon {
-  transition: transform var(--transition-fast);
-  font-size: 0.875rem;
-}
-
-.mobile-dropdown-icon.open {
-  transform: rotate(180deg);
-}
-
-/* Mobile Submenu */
-.mobile-submenu {
-  margin: 0;
-  padding: 0 0 0.5rem 1rem;
-  list-style: none;
-  border-left: 2px solid var(--primary-subtle);
-  margin-left: 0.5rem;
-}
-
-.mobile-submenu-link {
-  display: block;
-  padding: 0.625rem 0;
-  font-size: 0.9375rem;
-  color: var(--text-tertiary);
-  text-decoration: none;
-  transition: color var(--transition-fast), padding-left var(--transition-fast);
   white-space: nowrap;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
 }
 
-.mobile-submenu-link:hover,
-.mobile-submenu-link.active {
+.mobile-sheet-item:hover,
+.mobile-sheet-item.is-active {
   color: var(--primary-default);
-  padding-left: 0.5rem;
+  background: var(--primary-subtle);
+  font-weight: 600;
 }
 
-/* Mobile Theme Toggle */
-.mobile-theme-toggle {
+.mobile-active-dot {
+  font-size: 0.6875rem;
+  color: var(--primary-default);
+}
+
+.mobile-sheet-footer {
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.mobile-theme-pill {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   width: 100%;
-  padding: 0.875rem;
-  margin-top: 1rem;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  border: 1px solid var(--border-primary);
+  padding: 0.65rem 1rem;
+  min-height: 44px;
+  font-size: 0.875rem;
+  font-weight: 600;
   border-radius: var(--radius-lg);
-  background-color: var(--primary-subtle);
-  color: var(--primary-default);
+  background: var(--surface-hover);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
   cursor: pointer;
-  transition: background-color var(--transition-fast), border-color var(--transition-fast);
   white-space: nowrap;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
-.mobile-theme-toggle:hover {
-  background-color: var(--primary-subtle-hover);
-  border-color: var(--primary-default);
+.mobile-theme-pill:hover {
+  background: var(--surface-active);
+  border-color: var(--border-secondary);
 }
 
 /* ------------------------------------------
-   Responsive Design
+   Responsive Breakpoints
    ------------------------------------------ */
-@media (max-width: 992px) {
-  .navbar-collapse {
+@media (max-width: 860px) {
+  .nav-links-cluster {
     display: none;
   }
 
-  .mobile-menu {
-    top: 60px;
+  .nav-quick-cta {
+    display: none;
+  }
+
+  .mobile-hamburger-btn {
+    display: inline-flex;
   }
 }
 
-@media (max-width: 576px) {
-  .brand {
-    font-size: 1.125rem;
+@media (max-width: 480px) {
+  .hallmark-nav-wrapper {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
   }
 
-  .logo-icon {
-    font-size: 1.125rem;
+  .nav-brand-badge {
+    display: none;
   }
 
-  .theme-toggle {
-    padding: 0.5rem;
-    min-width: 40px;
-  }
-
-  .theme-text {
-    display: none !important;
+  .nav-brand-name {
+    font-size: 1rem;
   }
 }

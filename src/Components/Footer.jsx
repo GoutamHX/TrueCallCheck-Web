@@ -8,6 +8,7 @@ import {
   FaHeart,
   FaAndroid,
   FaExternalLinkAlt,
+  FaShieldAlt,
 } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { User } from "lucide-react";
@@ -183,27 +184,47 @@ const Footer = ({ darkMode }) => {
           </motion.div>
         </div>
 
-        {/* Copyright */}
+        {/* Modern Colophon Bottom Bar */}
         <motion.div
-          className="copyright"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          className="footer-bottom-bar"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.3 }}
         >
-          <span className="fs-6 fw-light">
-            © {SITE_CONFIG.meta.year} {SITE_CONFIG.name}. All rights reserved.
-            <span className="separator"> | </span>
-            Designed and developed with <FaHeart className="heart-icon" aria-hidden="true" /> by{" "}
-            <a
-              href={SITE_CONFIG.author.portfolioUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="dev-portfolio-link"
-              title="Goutam Septa Developer Portfolio"
-            >
-              Goutam シ
-            </a>
-          </span>
+          <div className="bottom-bar-left">
+            <span className="copyright-statement">
+              © {SITE_CONFIG.meta.year} {SITE_CONFIG.name}. Open-source telecom directory.
+            </span>
+            <div className="bottom-pills-row">
+              <span className="bottom-meta-pill">
+                <FaShieldAlt className="pill-icon" aria-hidden="true" />
+                Zero Request Logging
+              </span>
+              <span className="bottom-meta-pill">
+                <span className="live-route-dot" aria-hidden="true" />
+                Direct Gateway Route (+91 IND)
+              </span>
+            </div>
+          </div>
+
+          <div className="bottom-bar-right">
+            <div className="dev-signature-card">
+              <span className="dev-signature-label">
+                Crafted with <FaHeart className="heart-icon" aria-hidden="true" /> by
+              </span>
+              <a
+                href={SITE_CONFIG.author.portfolioUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="dev-signature-link"
+                title="Goutam Septa — Software Engineer Portfolio"
+              >
+                <span className="dev-name">Goutam Septa</span>
+                <FaExternalLinkAlt className="dev-link-icon" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
         </motion.div>
       </div>
     </motion.footer>

@@ -194,68 +194,111 @@
 }
 
 /* ------------------------------------------
-   Copyright
+   Modern Colophon Bottom Bar
    ------------------------------------------ */
-.copyright {
-  text-align: center;
+.footer-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-6);
   padding-top: var(--space-8);
   border-top: 1px solid var(--border-primary);
 }
 
-.copyright p {
+.bottom-bar-left {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--space-1);
-  font-size: 0.875rem;
-  color: var(--text-tertiary);
-  margin: 0;
+  flex-direction: column;
+  gap: var(--space-2);
 }
 
-.separator {
-  color: var(--border-secondary);
-  margin: 0 var(--space-1);
+.copyright-statement {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  font-weight: 400;
+}
+
+.bottom-pills-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.bottom-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--surface-hover);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+
+.pill-icon {
+  color: var(--primary-default);
+  font-size: 0.6875rem;
+}
+
+.live-route-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.bottom-bar-right {
+  display: flex;
+  align-items: center;
+}
+
+.dev-signature-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-lg);
+  background: var(--surface-hover);
+  border: 1px solid var(--border-primary);
+  font-size: 0.8125rem;
+}
+
+.dev-signature-label {
+  color: var(--text-tertiary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .heart-icon {
-  color: var(--error);
-  margin: 0 var(--space-1);
-  animation: heartbeat 1.5s ease-in-out infinite;
+  color: #ef4444;
+  font-size: 0.75rem;
 }
 
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-.footer-section-link {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  color: inherit;
-  text-align: left;
-  transition: color var(--transition-fast);
-}
-
-.footer-section-link:hover {
+.dev-signature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   color: var(--primary-default);
-}
-
-.dev-portfolio-link {
-  color: var(--primary-default);
-  text-decoration: none;
   font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
   transition: color var(--transition-fast);
 }
 
-.dev-portfolio-link:hover {
+.dev-signature-link:hover {
   color: var(--primary-hover);
   text-decoration: underline;
+}
+
+.dev-link-icon {
+  font-size: 0.6875rem;
 }
 
 /* ------------------------------------------
@@ -273,16 +316,22 @@
   .brand-description {
     max-width: 100%;
   }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
 }
 
 @media (max-width: 480px) {
-  .copyright p {
+  .bottom-pills-row {
     flex-direction: column;
-    gap: var(--space-2);
-    line-height: 1.5;
+    align-items: flex-start;
   }
 
-  .separator {
-    display: none;
+  .dev-signature-card {
+    width: 100%;
+    justify-content: center;
   }
 }
