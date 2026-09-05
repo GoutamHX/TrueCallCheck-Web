@@ -8,23 +8,24 @@ import {
   FaTelegram,
   FaShieldAlt,
 } from "react-icons/fa";
-import { PLATFORMS_DATA, SITE_CONFIG } from "../../data";
+import { PLATFORMS_DATA } from "../../data";
 
 export function PlatformsSection() {
   return (
     <section id="platforms" className="get-app-section">
       <motion.div
         className="section-header"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
+        transition={{ duration: 0.35 }}
       >
-        <span className="section-tag">Platforms</span>
+        <span className="section-tag">Client Ecosystem</span>
         <h2 className="section-title">
-          Use {SITE_CONFIG.name} <span className="gradient-text">Everywhere</span>
+          Access Across <span className="highlight-text">Every Client</span>
         </h2>
         <p className="section-subtitle">
-          Access our powerful phone lookup on your favorite platform
+          Execute directory lookups across modern web browsers, native Android installations, or automated Telegram messaging bots.
         </p>
       </motion.div>
 

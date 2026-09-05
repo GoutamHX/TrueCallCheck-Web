@@ -1,7 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaSearch, FaCheckCircle } from "react-icons/fa";
-import { HiOutlineStatusOnline } from "react-icons/hi";
+import { FaSearch, FaCheck, FaTimes, FaShieldAlt } from "react-icons/fa";
 import { TRUST_BADGES, SITE_CONFIG } from "../../data";
 
 export function HeroSection({
@@ -11,80 +10,112 @@ export function HeroSection({
   onSearch,
   noData,
 }) {
+  const hasInput = Boolean(phoneNumber);
+
+  const handleClear = () => {
+    setPhoneNumber("");
+  };
+
   return (
     <section id="home" className="hero-section">
       <motion.div
         className="hero-content"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.4 }}
       >
-        <span className="hero-badge">
-          <HiOutlineStatusOnline className="badge-dot" />
-          Free &amp; Open Source Caller ID
-        </span>
-
-        <h1 className="hero-title">
-          <span className="gradient-text">{SITE_CONFIG.name}</span>
-          <br />
-          <span className="hero-title-sub">{SITE_CONFIG.tagline}</span>
-        </h1>
-        <p className="hero-subtitle">{SITE_CONFIG.description}</p>
-
-        {/* Trust Badges */}
-        <div className="trust-badges">
-          {TRUST_BADGES.map((badge, i) => (
-            <span key={i} className="trust-badge">
-              <FaCheckCircle className="trust-icon" />
-              {badge}
-            </span>
-          ))}
+        {/* Telemetry Status Badge */}
+        <div className="telecom-status-badge">
+          <span className="live-ping-dot" aria-hidden="true" />
+          <span className="badge-text">TELECOM DIRECTORY ENGINE · ZERO DATA LOGGING</span>
         </div>
 
-        {/* Search Input Box */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-        >
+        <h1 className="hero-title">
+          <span className="hero-brand-name">{SITE_CONFIG.name}</span>
+          <span className="hero-title-sub">{SITE_CONFIG.tagline}</span>
+        </h1>
+        
+        <p className="hero-subtitle">{SITE_CONFIG.description}</p>
+
+        {/* Tactical Search Workbench Console */}
+        <div className="search-console-wrapper">
           <form
-            className="search-box"
+            className="search-console-form"
             onSubmit={(e) => {
               e.preventDefault();
               onSearch();
             }}
           >
-            <span className="country-code">{SITE_CONFIG.countryCode}</span>
-            <input
-              type="tel"
-              placeholder="Enter 10-digit number"
-              value={phoneNumber}
-              maxLength={10}
-              aria-label="Phone number"
-              onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ""))}
-              onKeyDown={(e) => e.key === "Enter" && onSearch()}
-            />
-            <motion.button
+            <div className="country-prefix-tag" title="Country: India (+91)">
+              <span className="country-flag-icon" aria-hidden="true">🇮🇳</span>
+              <span className="mono-num country-code-num">{SITE_CONFIG.countryCode}</span>
+            </div>
+
+            <div className="input-field-container">
+              <input
+                type="tel"
+                className="search-input mono-num"
+                placeholder="Enter 10-digit mobile number"
+                value={phoneNumber}
+                maxLength={10}
+                autoComplete="off"
+                aria-label="10-digit Indian phone number"
+                onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ""))}
+              />
+
+              {hasInput && (
+                <button
+                  type="button"
+                  className="input-clear-btn"
+                  onClick={handleClear}
+                  aria-label="Clear input"
+                  title="Clear"
+                >
+                  <FaTimes />
+                </button>
+              )}
+            </div>
+
+            <button
               type="submit"
+              className="search-action-btn"
               disabled={loading}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              aria-label="Search caller details"
+              aria-label="Run phone lookup"
             >
               {loading ? (
-                <span className="spinner" />
+                <span className="btn-spinner" aria-hidden="true" />
               ) : (
                 <>
-                  <FaSearch /> Search
+                  <FaSearch className="btn-icon" />
+                  <span className="btn-label">Lookup</span>
+                  <span className="shortcut-kbd mono-num d-none d-md-inline">↵</span>
                 </>
               )}
-            </motion.button>
+            </button>
           </form>
-        </motion.div>
 
-        <p className="hero-hint">
-          Currently supports Indian ({SITE_CONFIG.countryCode}) phone numbers only.
-        </p>
+          <div className="console-telemetry-bar">
+            <div className="telemetry-item">
+              <FaShieldAlt className="telemetry-icon" />
+              <span>Direct Gateway Query</span>
+            </div>
+            <div className="telemetry-separator" />
+            <div className="telemetry-item">
+              <span className="telemetry-bullet">●</span>
+              <span>10-Digit Mobile Numbers Only</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Trust Badges - Crisp pill badges */}
+        <div className="trust-strip">
+          {TRUST_BADGES.map((badge, i) => (
+            <span key={i} className="trust-pill">
+              <FaCheck className="trust-pill-icon" />
+              {badge}
+            </span>
+          ))}
+        </div>
       </motion.div>
 
       {/* No Data Card */}
@@ -92,20 +123,22 @@ export function HeroSection({
         {noData && !loading && (
           <motion.div
             className="no-data-card"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
           >
-            <div className="no-data-icon">
-              <FaSearch />
+            <div className="no-data-header">
+              <div className="no-data-icon-box">
+                <FaSearch />
+              </div>
+              <div>
+                <h3 className="no-data-title">No Records Returned</h3>
+                <span className="no-data-meta mono-num">TARGET: {SITE_CONFIG.countryCode} {phoneNumber}</span>
+              </div>
             </div>
-            <h3 className="no-data-title">No Data Found</h3>
             <p className="no-data-text">
-              We couldn't find any records for{" "}
-              <strong>
-                {SITE_CONFIG.countryCode} {phoneNumber}
-              </strong>
-              . Please verify the number and try again.
+              Our registry lookup returned no verified matches for this number. Please ensure the 10-digit number is correct and currently active in India.
             </p>
           </motion.div>
         )}
@@ -115,3 +148,4 @@ export function HeroSection({
 }
 
 export default HeroSection;
+

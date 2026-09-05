@@ -20,33 +20,40 @@ export function PrivacySection() {
     <section id="privacy" className="privacy-section">
       <motion.div
         className="section-header"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
+        transition={{ duration: 0.35 }}
       >
-        <span className="section-tag">Privacy</span>
+        <span className="section-tag">Privacy Protocol</span>
         <h2 className="section-title">
-          Privacy &amp; <span className="gradient-text">Transparency</span>
+          Transparent by <span className="highlight-text">Architecture</span>
         </h2>
         <p className="section-subtitle">
-          We take your privacy seriously. {SITE_CONFIG.name} is designed to be transparent
-          and respectful of your personal data.
+          Unlike conventional caller ID applications, {SITE_CONFIG.name} does not harvest your address book, sell search telemetry, or store lookup histories.
         </p>
       </motion.div>
 
-      <div className="privacy-grid">
+      <div className="protocol-ledger">
         {PRIVACY_POINTS.map((item, index) => (
           <motion.div
             key={item.title}
-            className="privacy-card"
-            initial={{ opacity: 0, y: 20 }}
+            className="protocol-row"
+            initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.08 }}
+            transition={{ delay: index * 0.06, duration: 0.3 }}
           >
-            <div className="privacy-icon-wrapper">{PRIVACY_ICONS[item.iconType]}</div>
-            <h4>{item.title}</h4>
-            <p>{item.desc}</p>
+            <div className="protocol-meta">
+              <span className="protocol-code mono-num">0{index + 1}</span>
+              <div className="protocol-icon-cell" aria-hidden="true">
+                {PRIVACY_ICONS[item.iconType]}
+              </div>
+            </div>
+            <div className="protocol-details">
+              <h3 className="protocol-title">{item.title}</h3>
+              <p className="protocol-desc">{item.desc}</p>
+            </div>
           </motion.div>
         ))}
       </div>

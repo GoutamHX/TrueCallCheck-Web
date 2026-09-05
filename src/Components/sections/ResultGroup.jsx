@@ -8,16 +8,16 @@ export function ResultGroup({ label, icon, count, records, colorClass, baseDelay
     <div className="result-group">
       <div className={`result-group-header ${colorClass}`}>
         <div className="rg-label">
-          {icon}
-          <span>{label}</span>
+          <span className="rg-icon-box">{icon}</span>
+          <span className="rg-title">{label}</span>
         </div>
-        <span className="rg-count">
-          {count} record{count !== 1 ? "s" : ""}
+        <span className="rg-count mono-num">
+          {count} {count !== 1 ? "records" : "record"}
         </span>
       </div>
       <div className="results-grid">
         {records.map((r, i) => (
-          <ResultCard key={i} result={r} delay={baseDelay + i * 0.07} />
+          <ResultCard key={i} result={r} delay={baseDelay + i * 0.05} />
         ))}
       </div>
     </div>

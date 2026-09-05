@@ -32,31 +32,31 @@ export function ResultSection({
           {searchMeta && (
             <motion.div
               className="search-meta-card"
-              initial={{ opacity: 0, scale: 0.97 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.05 }}
             >
               <div className="meta-item">
                 <FaDatabase className="meta-icon" />
                 <div className="meta-content">
-                  <span className="meta-label">Total Records</span>
-                  <span className="meta-value">{searchMeta.total}</span>
+                  <span className="meta-label">Total Matches</span>
+                  <span className="meta-value mono-num">{searchMeta.total}</span>
                 </div>
               </div>
               <div className="meta-divider" />
               <div className="meta-item">
                 <FaLayerGroup className="meta-icon" />
                 <div className="meta-content">
-                  <span className="meta-label">Main</span>
-                  <span className="meta-value">{searchMeta.main}</span>
+                  <span className="meta-label">Direct Matches</span>
+                  <span className="meta-value mono-num">{searchMeta.main}</span>
                 </div>
               </div>
               <div className="meta-divider" />
               <div className="meta-item">
                 <FaCodeBranch className="meta-icon" />
                 <div className="meta-content">
-                  <span className="meta-label">Alternative</span>
-                  <span className="meta-value">{searchMeta.alt}</span>
+                  <span className="meta-label">Alternative Matches</span>
+                  <span className="meta-value mono-num">{searchMeta.alt}</span>
                 </div>
               </div>
             </motion.div>

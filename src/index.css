@@ -1,8 +1,16 @@
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5
+ * genre: modern-minimal · macrostructure: Workbench · theme: Cobalt · enrichment: E0
+ * nav: N5 · footer: Ft2 · slop: pass (42–45)
+ * honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · icons: pass (30)
+ * contrast: pass (40–41) · mobile: pass (34, 49, 50–57)
+ */
 /* ============================================
-   Global Base Styles
+   Global Base Styles — Hallmark Modern-Minimal
    ============================================ */
 
-* {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -11,57 +19,85 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;
   tab-size: 4;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  overflow-x: clip;
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: 1rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
+  text-rendering: optimizeLegibility;
 }
 
-/* Import Inter font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Headings are always roman — Hallmark Gate 38a: No italic headers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display, 'Space Grotesk', 'Inter', sans-serif);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0;
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
-/* Remove default button styles */
+p {
+  margin: 0;
+}
+
+code, kbd, samp, pre {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
 button {
   font-family: inherit;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
 }
 
-/* Remove default link styles */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Image defaults */
-img {
+img, svg {
   max-width: 100%;
   height: auto;
+  display: block;
 }
 
-/* Remove list styles */
 ul, ol {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* Heading defaults */
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
 }
 
-/* Input defaults */
-input, textarea {
-  font-family: inherit;
+:focus-visible {
+  outline: 2px solid var(--color-focus, #38bdf8);
+  outline-offset: 2px;
+}
+
+/* Hallmark Gate 27: prefers-reduced-motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

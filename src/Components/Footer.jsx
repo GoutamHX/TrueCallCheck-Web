@@ -11,7 +11,6 @@ import {
 } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { User } from "lucide-react";
-import { Link } from "react-router-dom";
 import {
   FOOTER_SECTIONS_DATA,
   SOCIAL_LINKS_DATA,
@@ -133,15 +132,16 @@ const Footer = ({ darkMode }) => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   {item.url ? (
-                    <Link
-                      to={item.url}
+                    <a
+                      href={item.url}
                       target={item.url.startsWith("http") ? "_blank" : undefined}
                       rel={item.url.startsWith("http") ? "noopener noreferrer" : undefined}
                       aria-label={item.text}
+                      onClick={item.url.startsWith("#") ? (e) => { e.preventDefault(); scrollToSection(item.url.substring(1)); } : undefined}
                     >
                       {ICON_MAP[item.type]}
                       <span>{item.text}</span>
-                    </Link>
+                    </a>
                   ) : (
                     <>
                       {ICON_MAP[item.type]}
@@ -168,15 +168,15 @@ const Footer = ({ darkMode }) => {
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Link
-                    to={link.url}
+                  <a
+                    href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Visit ${link.text}`}
                   >
                     {ICON_MAP[link.type]}
                     {link.text}
-                  </Link>
+                  </a>
                 </motion.li>
               ))}
             </ul>

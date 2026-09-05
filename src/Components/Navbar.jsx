@@ -71,12 +71,17 @@ function Navbar({ darkMode, toggleDarkMode }) {
       <div className="container">
         {/* Logo */}
         <div
-          className="brand d-flex align-items-center"
+          className="brand"
           onClick={() => scrollToSection("home")}
-          style={{ cursor: "pointer" }}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === "Enter" && scrollToSection("home")}
         >
-          <FaPhoneAlt className="logo-icon me-2" />
-          <span className="logo">{SITE_CONFIG.name}</span>
+          <div className="brand-icon-box">
+            <FaPhoneAlt />
+          </div>
+          <span>{SITE_CONFIG.name}</span>
+          <span className="logo-badge d-none d-sm-inline">TELECOM</span>
         </div>
 
         {/* Mobile Menu Button */}

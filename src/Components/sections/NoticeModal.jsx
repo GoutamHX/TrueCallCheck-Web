@@ -1,7 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTools, FaExclamationTriangle, FaTelegram } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { SITE_CONFIG } from "../../data";
 
 export function NoticeModal({ showNotice, notice, darkMode }) {
@@ -61,13 +60,14 @@ export function NoticeModal({ showNotice, notice, darkMode }) {
               <div className="footer-divider" />
               <p>
                 Admin:{" "}
-                <Link
+                <a
                   className="admin-link"
-                  to={SITE_CONFIG.author.adminUrl}
+                  href={SITE_CONFIG.author.adminUrl}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   imgoutam
-                </Link>
+                </a>
               </p>
             </div>
           </motion.div>

@@ -23,3 +23,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .qodo
+
+
+.agents
+.agents/skills
+skills-lock.json

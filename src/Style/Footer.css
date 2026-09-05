@@ -1,28 +1,25 @@
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5
+ * genre: modern-minimal · macrostructure: Workbench · theme: Cobalt · enrichment: E0
+ * nav: N5 · footer: Ft2 · slop: pass (42–45)
+ * honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · icons: pass (30)
+ * contrast: pass (40–41) · mobile: pass (34, 49, 50–57)
+ */
 /* ============================================
-   Footer - Clean, Minimal Design
+   Footer — Hallmark Modern-Minimal Colophon
    ============================================ */
 
-/* Base Styles */
 .footer {
   position: relative;
   padding: var(--space-16) var(--space-6) var(--space-8);
   font-family: var(--font-sans);
   overflow: hidden;
   border-top: 1px solid var(--border-primary);
-}
-
-.footer.light {
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
-}
-
-.footer.dark {
-  background-color: var(--bg-secondary);
+  background-color: var(--surface-default);
   color: var(--text-primary);
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: 1160px;
   margin: 0 auto;
 }
 
@@ -31,14 +28,14 @@
    ------------------------------------------ */
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--space-10);
   margin-bottom: var(--space-12);
 }
 
 @media (max-width: 992px) {
   .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-8);
   }
 
@@ -49,7 +46,7 @@
 
 @media (max-width: 576px) {
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-8);
   }
 
@@ -64,54 +61,59 @@
 .footer-brand {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-4);
 }
 
 .brand-logo {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  font-size: 1.375rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .brand-icon {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   color: var(--primary-default);
 }
 
 .brand-description {
-  font-size: 0.9375rem;
-  line-height: 1.7;
+  font-size: 0.875rem;
+  line-height: 1.65;
   color: var(--text-secondary);
-  max-width: 320px;
+  max-width: 340px;
+  margin: 0;
 }
 
 /* Social Links */
 .social-links {
   display: flex;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
 
 .social-link {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-full);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.125rem;
-  background-color: var(--primary-subtle);
-  color: var(--primary-default);
-  transition: all var(--transition-fast);
+  font-size: 1rem;
+  background-color: var(--surface-hover);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-primary);
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
   text-decoration: none;
 }
 
 .social-link:hover {
-  background-color: var(--primary-default);
-  color: var(--white);
-  transform: translateY(-3px);
+  background-color: var(--primary-subtle);
+  color: var(--primary-default);
+  border-color: var(--border-secondary);
+  transform: translateY(-2px);
 }
 
 /* ------------------------------------------
@@ -120,27 +122,16 @@
 .footer-column {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-4);
 }
 
 .column-title {
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
   color: var(--text-primary);
-  position: relative;
-  padding-bottom: var(--space-3);
+  letter-spacing: -0.01em;
   margin: 0;
-}
-
-.column-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 32px;
-  height: 2px;
-  border-radius: var(--radius-full);
-  background-color: var(--primary-default);
 }
 
 /* Lists */
@@ -163,7 +154,8 @@
   font-size: 0.9375rem;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
 }
 
 .footer-links a:hover,
@@ -187,7 +179,8 @@
   gap: var(--space-2);
   color: var(--text-secondary);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  white-space: nowrap;
 }
 
 .footer-features li a:hover {

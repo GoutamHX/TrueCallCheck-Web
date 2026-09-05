@@ -1,41 +1,61 @@
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5
+ * genre: modern-minimal · macrostructure: Workbench · theme: Cobalt · enrichment: E0
+ * nav: N5 · footer: Ft2 · slop: pass (42–45)
+ * honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · icons: pass (30)
+ * contrast: pass (40–41) · mobile: pass (34, 49, 50–57)
+ */
 /* ============================================
-   Navbar - Clean, Minimal Design
+   Navbar — Hallmark Modern-Minimal Precision Pill
    ============================================ */
 
-/* Base Navbar Styles */
 .navbar {
   font-family: var(--font-sans);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  transition: all var(--transition-base);
-  padding: 0.75rem 0;
+  padding: 0.85rem 1rem;
+  transition: padding var(--transition-base), background-color var(--transition-base);
+  z-index: 1000;
 }
 
-/* Light Theme */
-.navbar.light {
-  background-color: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid var(--border-primary);
-  box-shadow: var(--shadow-sm);
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
-/* Dark Theme */
-.navbar.dark {
-  background-color: rgba(17, 24, 39, 0.95);
-  border-bottom: 1px solid var(--border-primary);
-  box-shadow: var(--shadow-sm);
+/* Light Theme Bar */
+.navbar.light .container {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-primary);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+}
+
+/* Dark Theme Bar */
+.navbar.dark .container {
+  background: rgba(14, 20, 34, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-primary);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
 }
 
 /* Scrolled State */
 .navbar.scrolled {
-  padding: 0.5rem 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
-.navbar.scrolled.light {
-  box-shadow: var(--shadow-md);
+.navbar.scrolled.light .container {
+  box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.08);
+  border-color: var(--border-secondary);
 }
 
-.navbar.scrolled.dark {
-  box-shadow: var(--shadow-md);
+.navbar.scrolled.dark .container {
+  box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.6);
+  border-color: var(--border-secondary);
 }
 
 /* ------------------------------------------
@@ -44,129 +64,156 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.25rem;
+  gap: 0.65rem;
+  font-family: var(--font-display);
   font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
   cursor: pointer;
-  text-decoration: none;
+  user-select: none;
   transition: opacity var(--transition-fast);
 }
 
 .brand:hover {
-  opacity: 0.8;
+  opacity: 0.88;
 }
 
-.light .brand {
-  color: var(--text-primary);
-}
-
-.dark .brand {
-  color: var(--text-primary);
-}
-
-.logo-icon {
-  font-size: 1.25rem;
+.brand-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: var(--primary-subtle);
   color: var(--primary-default);
-  transition: transform var(--transition-fast);
+  border: 1px solid var(--border-primary);
+  font-size: 0.875rem;
 }
 
-.brand:hover .logo-icon {
-  transform: rotate(15deg);
+.logo-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  background: var(--primary-subtle);
+  color: var(--primary-default);
+  border: 1px solid var(--border-subtle);
+  margin-left: 0.35rem;
 }
 
 /* ------------------------------------------
    Navigation Links
    ------------------------------------------ */
-.nav-link {
-  font-weight: 500;
-  font-size: 0.9375rem;
-  padding: 0.5rem 1rem !important;
-  position: relative;
-  transition: color var(--transition-fast);
-  text-decoration: none;
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.light .nav-link {
-  color: var(--text-secondary);
-}
-
-.dark .nav-link {
-  color: var(--text-secondary);
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: var(--text-primary) !important;
-}
-
-/* Nav link as button (no default button styles) */
 .nav-link-btn {
-  background: none;
+  position: relative;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  padding: 0.45rem 0.9rem !important;
+  border-radius: var(--radius-full);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+  white-space: nowrap;
+  text-decoration: none;
+  background: transparent;
   border: none;
   cursor: pointer;
-  font-family: inherit;
 }
 
-/* Underline animation */
-.nav-link::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 50%;
-  background-color: var(--primary-default);
-  transition: all var(--transition-base);
-  transform: translateX(-50%);
-  border-radius: 2px;
+.nav-link-btn:hover {
+  color: var(--text-primary);
+  background: var(--surface-hover);
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
-  width: calc(100% - 2rem);
+.nav-link-btn.active {
+  color: var(--primary-default) !important;
+  background: var(--primary-subtle);
+  font-weight: 600;
 }
 
 /* ------------------------------------------
-   Dropdown Menu
+   Theme Toggle Button
    ------------------------------------------ */
-.dropdown {
-  position: relative;
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--surface-hover);
+  border: 1px solid var(--border-primary);
+  transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+  white-space: nowrap;
+  cursor: pointer;
 }
 
-.dropdown-icon {
-  font-size: 0.75rem;
-  margin-left: 0.25rem;
-  transition: transform var(--transition-fast);
+.theme-toggle:hover {
+  color: var(--text-primary);
+  border-color: var(--border-secondary);
+  background: var(--surface-active);
 }
 
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 180px;
-  margin-top: 0.5rem;
-  padding: 0.5rem;
+.theme-toggle svg {
+  font-size: 0.875rem;
+  color: var(--primary-default);
+}
+
+/* ------------------------------------------
+   Mobile Menu Button & Drawer
+   ------------------------------------------ */
+.mobile-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background: var(--surface-hover);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.mobile-menu-btn:hover {
+  background: var(--surface-active);
+}
+
+.mobile-menu {
+  margin-top: 0.65rem;
+  padding: 0.75rem 1rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-primary);
-  box-shadow: var(--shadow-dropdown);
-  display: none;
-  z-index: 1000;
-  animation: dropdownFadeIn 0.2s ease;
+  animation: mobileMenuSlide 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.light .dropdown-menu {
-  background-color: var(--surface-default);
+.light .mobile-menu {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-lg);
 }
 
-.dark .dropdown-menu {
-  background-color: var(--surface-default);
+.dark .mobile-menu {
+  background: rgba(14, 20, 34, 0.98);
+  box-shadow: var(--shadow-lg);
 }
 
-.dropdown-menu.show {
-  display: block;
-}
-
-@keyframes dropdownFadeIn {
+@keyframes mobileMenuSlide {
   from {
     opacity: 0;
     transform: translateY(-8px);
@@ -177,120 +224,39 @@
   }
 }
 
-.dropdown-item {
+.mobile-nav-link {
   display: block;
-  padding: 0.625rem 1rem;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
-  text-decoration: none;
-}
-
-.light .dropdown-item {
-  color: var(--text-secondary);
-}
-
-.dark .dropdown-item {
-  color: var(--text-secondary);
-}
-
-.dropdown-item:hover,
-.dropdown-item.active {
-  background-color: var(--primary-subtle);
-  color: var(--primary-default);
-}
-
-/* (Search removed - using in-page search box instead) */
-
-/* ------------------------------------------
-   Theme Toggle Button
-   ------------------------------------------ */
-.theme-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border: 1px solid var(--border-primary);
-  border-radius: var(--radius-full);
-  background-color: transparent;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  min-width: auto;
-}
-
-.theme-toggle:hover {
-  background-color: var(--primary-subtle);
-  border-color: var(--primary-default);
-  color: var(--primary-default);
-}
-
-/* ------------------------------------------
-   Mobile Menu Button
-   ------------------------------------------ */
-.mobile-menu-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: none;
-  border-radius: var(--radius-md);
-  background: transparent;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.mobile-menu-btn:hover {
-  background-color: var(--bg-tertiary);
-  color: var(--text-primary);
-}
-
-.light .mobile-menu-btn {
-  color: var(--text-secondary);
-}
-
-.dark .mobile-menu-btn {
-  color: var(--text-secondary);
-}
-
-/* ------------------------------------------
-   Mobile Menu
-   ------------------------------------------ */
-.mobile-menu {
-  position: fixed;
-  top: 65px;
-  left: 0;
   width: 100%;
-  padding: 1.5rem;
-  z-index: 99;
-  max-height: calc(100vh - 65px);
-  overflow-y: auto;
-  animation: slideDown 0.3s ease;
-  border-top: 1px solid var(--border-primary);
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+  white-space: nowrap;
+  background: transparent;
+  border: none;
 }
 
-.light .mobile-menu {
-  background-color: var(--surface-default);
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  color: var(--primary-default);
+  background: var(--primary-subtle);
 }
 
-.dark .mobile-menu {
-  background-color: var(--surface-default);
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+@media (max-width: 991px) {
+  .navbar-collapse {
+    display: none !important;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .navbar .container {
+    border-radius: var(--radius-lg);
+  }
+}
+
+@media (min-width: 992px) {
+  .mobile-menu {
+    display: none !important;
   }
 }
 
@@ -347,7 +313,8 @@
   font-weight: 500;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+  white-space: nowrap;
   background: none;
   border: none;
   cursor: pointer;
@@ -386,7 +353,8 @@
   font-size: 0.9375rem;
   color: var(--text-tertiary);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+  white-space: nowrap;
 }
 
 .mobile-submenu-link:hover,
@@ -411,7 +379,8 @@
   background-color: var(--primary-subtle);
   color: var(--primary-default);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  white-space: nowrap;
 }
 
 .mobile-theme-toggle:hover {

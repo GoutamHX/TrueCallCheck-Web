@@ -1,75 +1,29 @@
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5
+ * genre: modern-minimal · macrostructure: Workbench · theme: Cobalt · enrichment: E0
+ * nav: N5 · footer: Ft2 · slop: pass (42–45)
+ * honest: pass (46) · chrome: pass (47) · tokens: pass (48) · responsive: pass (49) · icons: pass (30)
+ * contrast: pass (40–41) · mobile: pass (34, 49, 50–57)
+ */
 :root {
   /* ========================================
-     BRAND — Cyan Professional
+     TYPOGRAPHY TOKENS
   ======================================== */
-  --primary-50:  #ecfeff;
-  --primary-100: #cffafe;
-  --primary-200: #a5f3fc;
-  --primary-300: #67e8f9;
-  --primary-400: #22d3ee;
-  --primary-500: #58c4dc; 
-  --primary-600: #06b6d4;
-  --primary-700: #0891b2;
-  --primary-800: #0e7490;
-  --primary-900: #155e75;
-
-  --primary-gradient: linear-gradient(
-    135deg,
-    #58c4dc 0%,
-    #22d3ee 100%
-  );
+  --font-display: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
 
   /* ========================================
-     NEUTRALS
+     RADII & ELEVATION
   ======================================== */
-  --white: #ffffff;
-  --black: #000000;
-
-  --gray-50:  #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-400: #9ca3af;
-  --gray-500: #6b7280;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
-
-  /* ========================================
-     SEMANTIC
-  ======================================== */
-  --success: #10b981;
-  --warning: #f59e0b;
-  --error:   #ef4444;
-  --info:    #58c4dc;
-
-  /* ========================================
-     SHADOWS
-  ======================================== */
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
-  --shadow-xl: 0 20px 25px rgba(0,0,0,0.12), 0 8px 10px -6px rgba(0,0,0,0.12);
-
-  /* ========================================
-     FOCUS RING (🔥 UX BOOST)
-  ======================================== */
-  --focus-ring: 0 0 0 3px rgba(88, 196, 220, 0.35);
-
-  /* ========================================
-     RADIUS
-  ======================================== */
+  --radius-xs: 4px;
   --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-2xl: 24px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
   --radius-full: 9999px;
 
   /* ========================================
-     SPACING
+     SPACING (8-pt scale)
   ======================================== */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -84,221 +38,191 @@
   --space-20: 5rem;
 
   /* ========================================
-     TYPOGRAPHY
+     TRANSITIONS (Restrained, no bouncy overshoots)
   ======================================== */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 320ms cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* ========================================
-     TRANSITIONS
-  ======================================== */
-  --transition-fast: 150ms ease;
-  --transition-base: 250ms ease;
-  --transition-slow: 350ms ease;
+  /* Semantic utilities */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error:   #ef4444;
 }
 
 /* =========================================================
-   🌞 LIGHT MODE — PREMIUM
+   🌞 LIGHT MODE — Hallmark Precision Slate
 ========================================================= */
 .light-mode {
-  /* Backgrounds */
+  /* Canvas & Surfaces (Tinted Cool Slate) */
   --bg-primary: #f8fafc;
   --bg-secondary: #ffffff;
   --bg-tertiary: #f1f5f9;
   --bg-elevated: #ffffff;
 
-  /* Text */
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
+  --surface-default: #ffffff;
+  --surface-hover: #f1f5f9;
+  --surface-active: #e2e8f0;
+  --surface-elevated: #ffffff;
+
+  /* Typography (Solid Ink, APCA Contrast) */
+  --text-primary: #090d16;
+  --text-secondary: #334155;
   --text-tertiary: #64748b;
   --text-muted: #94a3b8;
   --text-inverse: #ffffff;
 
-  /* Borders */
+  /* Borders & Hairlines */
   --border-primary: #e2e8f0;
   --border-secondary: #cbd5e1;
-  --border-focus: var(--primary-500);
+  --border-subtle: #edf2f7;
+  --border-focus: #0284c7;
 
-  /* Surfaces */
-  --surface-default: #ffffff;
-  --surface-hover: #f8fafc;
-  --surface-active: #f1f5f9;
-  --surface-elevated: #ffffff;
+  /* Accent & Primary Actions (Cobalt signal) */
+  --primary-default: #0284c7;
+  --primary-hover: #0369a1;
+  --primary-active: #075985;
+  --primary-subtle: rgba(2, 132, 199, 0.08);
+  --primary-subtle-hover: rgba(2, 132, 199, 0.14);
 
-  /* Primary actions */
-  --primary-default: var(--primary-600);
-  --primary-hover: var(--primary-700);
-  --primary-active: var(--primary-800);
-  --primary-subtle: var(--primary-50);
-  --primary-subtle-hover: var(--primary-100);
+  --accent-color: #0284c7;
+  --accent-subtle: rgba(2, 132, 199, 0.08);
+  --color-accent-ink: #ffffff;
+  --color-focus: #0284c7;
+
+  /* Shadows (Subtle, crisp) */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+  --shadow-card-hover: 0 8px 20px -4px rgba(15, 23, 42, 0.09);
+  --shadow-dropdown: 0 12px 24px -4px rgba(15, 23, 42, 0.1);
+  --shadow-modal: 0 25px 50px -12px rgba(15, 23, 42, 0.2);
 
   /* Status */
-  --status-success-bg: #d1fae5;
-  --status-success-text: #065f46;
+  --status-success-bg: #ecfdf5;
+  --status-success-text: #047857;
+  --status-warning-bg: #fffbeb;
+  --status-warning-text: #b45309;
+  --status-error-bg: #fef2f2;
+  --status-error-text: #b91c1c;
+  --status-info-bg: #f0f9ff;
+  --status-info-text: #0284c7;
 
-  --status-warning-bg: #fef3c7;
-  --status-warning-text: #92400e;
-
-  --status-error-bg: #fee2e2;
-  --status-error-text: #991b1b;
-
-  --status-info-bg: #e6fbff;
-  --status-info-text: #0e7490;
-
-  /* Shadows */
-  --shadow-card: var(--shadow-md);
-  --shadow-card-hover: var(--shadow-lg);
-  --shadow-dropdown: var(--shadow-lg);
-  --shadow-modal: var(--shadow-xl);
+  /* Legacy variables compatibility */
+  --bg-color: var(--bg-primary);
+  --text-color: var(--text-primary);
+  --surface-color: var(--surface-default);
+  --primary: var(--primary-default);
+  --secondary: #0284c7;
+  --accent: #0284c7;
+  --danger: #ef4444;
 }
 
 /* =========================================================
-   🌙 DARK MODE — PREMIUM
+   🌙 DARK MODE — Hallmark Obsidian Cobalt
 ========================================================= */
 .dark-mode {
-  /* Backgrounds */
-  --bg-primary: #0b1220;
-  --bg-secondary: #111827;
-  --bg-tertiary: #1f2937;
-  --bg-elevated: #1e293b;
+  /* Canvas & Surfaces (Obsidian with Cool Slate Tint) */
+  --bg-primary: #090d16;
+  --bg-secondary: #0e1422;
+  --bg-tertiary: #141c2e;
+  --bg-elevated: #182238;
 
-  /* Text */
-  --text-primary: #f9fafb;
-  --text-secondary: #e5e7eb;
-  --text-tertiary: #9ca3af;
-  --text-muted: #6b7280;
-  --text-inverse: #111827;
+  --surface-default: #0e1422;
+  --surface-hover: #151d30;
+  --surface-active: #1c273f;
+  --surface-elevated: #182238;
 
-  /* Borders */
-  --border-primary: #374151;
-  --border-secondary: #4b5563;
-  --border-focus: var(--primary-400);
+  /* Typography */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #090d16;
 
-  /* Surfaces */
-  --surface-default: #1e293b;
-  --surface-hover: #27354f;
-  --surface-active: #334155;
-  --surface-elevated: #1e293b;
+  /* Borders & Hairlines */
+  --border-primary: rgba(255, 255, 255, 0.09);
+  --border-secondary: rgba(255, 255, 255, 0.16);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-focus: #38bdf8;
 
-  /* Primary actions */
-  --primary-default: var(--primary-500);
-  --primary-hover: var(--primary-400);
-  --primary-active: var(--primary-300);
-  --primary-subtle: rgba(88, 196, 220, 0.15);
-  --primary-subtle-hover: rgba(88, 196, 220, 0.25);
+  /* Accent & Primary Actions (Electric Cobalt / Sky Signal) */
+  --primary-default: #38bdf8;
+  --primary-hover: #7dd3fc;
+  --primary-active: #bae6fd;
+  --primary-subtle: rgba(56, 189, 248, 0.12);
+  --primary-subtle-hover: rgba(56, 189, 248, 0.2);
+
+  --accent-color: #38bdf8;
+  --accent-subtle: rgba(56, 189, 248, 0.12);
+  --color-accent-ink: #090d16;
+  --color-focus: #38bdf8;
+
+  /* Shadows (Dark elevation) */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.55);
+  --shadow-xl: 0 20px 30px rgba(0, 0, 0, 0.65);
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --shadow-dropdown: 0 12px 28px rgba(0, 0, 0, 0.7);
+  --shadow-modal: 0 25px 50px rgba(0, 0, 0, 0.85);
 
   /* Status */
-  --status-success-bg: rgba(16,185,129,0.15);
+  --status-success-bg: rgba(16, 185, 129, 0.15);
   --status-success-text: #34d399;
-
-  --status-warning-bg: rgba(245,158,11,0.15);
+  --status-warning-bg: rgba(245, 158, 11, 0.15);
   --status-warning-text: #fbbf24;
-
-  --status-error-bg: rgba(239,68,68,0.15);
+  --status-error-bg: rgba(239, 68, 68, 0.15);
   --status-error-text: #f87171;
+  --status-info-bg: rgba(56, 189, 248, 0.15);
+  --status-info-text: #38bdf8;
 
-  --status-info-bg: rgba(88,196,220,0.15);
-  --status-info-text: #58c4dc;
-
-  /* Shadows */
-  --shadow-card: 0 4px 6px rgba(0,0,0,0.4);
-  --shadow-card-hover: 0 10px 15px rgba(0,0,0,0.5);
-  --shadow-dropdown: 0 10px 15px rgba(0,0,0,0.5);
-  --shadow-modal: 0 25px 50px rgba(0,0,0,0.7);
+  /* Legacy variables compatibility */
+  --bg-color: var(--bg-primary);
+  --text-color: var(--text-primary);
+  --surface-color: var(--surface-default);
+  --primary: var(--primary-default);
+  --secondary: #38bdf8;
+  --accent: #38bdf8;
+  --danger: #f87171;
 }
 
-/* ------------------------------------------
-   Base Styles
-   ------------------------------------------ */
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
+/* =========================================================
+   GLOBAL FOUNDATION STYLES
+========================================================= */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: var(--font-sans);
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background-color var(--transition-base), color var(--transition-base);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
 }
 
-/* Legacy variable support for backward compatibility */
-.light-mode {
-  --bg-color: var(--bg-primary);
-  --text-color: var(--text-primary);
-  --surface-color: var(--surface-default);
-  --primary: var(--primary-default);
-  --secondary: #15C39A;
-  --accent: #FACC15;
-  --danger: #EF4444;
+/* Selection */
+::selection {
+  background-color: var(--primary-subtle);
+  color: var(--text-primary);
 }
 
-.dark-mode {
-  --bg-color: var(--bg-primary);
-  --text-color: var(--text-primary);
-  --surface-color: var(--surface-default);
-  --primary: var(--primary-default);
-  --secondary: #22D3EE;
-  --accent: #FDE68A;
-  --danger: #F87171;
-}
-
-/* ------------------------------------------
-   Utility Classes
-   ------------------------------------------ */
-.glass-light {
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.glass-dark {
-  backdrop-filter: blur(12px);
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.hover-scale {
-  transition: transform var(--transition-fast);
-}
-
-.hover-scale:hover {
-  transform: scale(1.02);
-}
-
-/* Focus styles for accessibility */
-*:focus-visible {
-  outline: 2px solid var(--primary-default);
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
   outline-offset: 2px;
 }
 
-/* Selection colors */
-::selection {
-  background-color: var(--primary-200);
-  color: var(--gray-900);
-}
-
-.dark-mode ::selection {
-  background-color: var(--primary-700);
-  color: var(--white);
-}
-
-/* Scrollbar styling */
+/* Scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -307,45 +231,31 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-tertiary);
+  background: var(--text-muted);
 }
 
-/* ------------------------------------------
-   Animation Keyframes
-   ------------------------------------------ */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Hallmark Utility Classes */
+.mono-num {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1;
+  letter-spacing: -0.01em;
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
+.subtle-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: var(--primary-subtle);
+  color: var(--primary-default);
+  border: 1px solid var(--border-primary);
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg); }
 }

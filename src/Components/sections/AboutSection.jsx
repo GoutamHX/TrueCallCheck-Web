@@ -26,19 +26,21 @@ export function AboutSection() {
       <div className="about-layout">
         <motion.div
           className="about-text"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
         >
-          <span className="section-tag">About</span>
+          <span className="section-tag">Registry Architecture</span>
           <h2 className="section-title">
-            What is <span className="gradient-text">{SITE_CONFIG.name}</span>?
+            What is <span className="highlight-text">{SITE_CONFIG.name}</span>?
           </h2>
           <p className="about-desc">
-            {SITE_CONFIG.name} is a free, fast, and privacy-focused tool that helps users
-            identify unknown phone numbers — without needing to login. It provides caller
-            ID info including name, address, carrier details, and more — helping users stay
-            safe and informed when receiving unknown calls.
+            {SITE_CONFIG.name} is a high-speed, privacy-first lookup engine designed to
+            resolve unlisted and unknown phone numbers across Indian telecom circles. Without
+            requiring an account, contact syncing, or intrusive permissions, it provides
+            actionable caller insights—including subscriber names, registered locations, carrier
+            routing, and linked contact records.
           </p>
           <div className="about-highlights">
             {ABOUT_HIGHLIGHTS.map((item, i) => (
@@ -49,28 +51,32 @@ export function AboutSection() {
             ))}
           </div>
 
-          <div className="about-developer-note" style={{ marginTop: "1.25rem", fontSize: "0.9rem", opacity: 0.85 }}>
-            <span>
-              An open-source engineering project by{" "}
-              <a
-                href={SITE_CONFIG.author.portfolioUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "var(--accent-color, #38bdf8)", textDecoration: "none", fontWeight: 600 }}
-              >
-                Goutam Septa
-              </a>{" "}
-              (imgoutam.dev). Discover more software projects on{" "}
-              <a
-                href={SITE_CONFIG.author.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "var(--accent-color, #38bdf8)", textDecoration: "none", fontWeight: 600 }}
-              >
-                GitHub (@GoutamHX)
-              </a>
-              .
-            </span>
+          <div className="provenance-card">
+            <div className="provenance-indicator" />
+            <div className="provenance-content">
+              <span className="provenance-title">Open-Source Telecom Intelligence</span>
+              <p className="provenance-text">
+                Engineered and maintained by{" "}
+                <a
+                  href={SITE_CONFIG.author.portfolioUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="provenance-link"
+                >
+                  {SITE_CONFIG.author.name}
+                </a>{" "}
+                (imgoutam.dev). Public source code and release builds hosted on{" "}
+                <a
+                  href={SITE_CONFIG.author.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="provenance-link"
+                >
+                  GitHub (@GoutamHX)
+                </a>
+                .
+              </p>
+            </div>
           </div>
         </motion.div>
 
