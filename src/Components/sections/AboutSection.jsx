@@ -48,6 +48,30 @@ export function AboutSection() {
               </div>
             ))}
           </div>
+
+          <div className="about-developer-note" style={{ marginTop: "1.25rem", fontSize: "0.9rem", opacity: 0.85 }}>
+            <span>
+              An open-source engineering project by{" "}
+              <a
+                href={SITE_CONFIG.author.portfolioUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "var(--accent-color, #38bdf8)", textDecoration: "none", fontWeight: 600 }}
+              >
+                Goutam Septa
+              </a>{" "}
+              (imgoutam.dev). Discover more software projects on{" "}
+              <a
+                href={SITE_CONFIG.author.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "var(--accent-color, #38bdf8)", textDecoration: "none", fontWeight: 600 }}
+              >
+                GitHub (@GoutamHX)
+              </a>
+              .
+            </span>
+          </div>
         </motion.div>
 
         <motion.div

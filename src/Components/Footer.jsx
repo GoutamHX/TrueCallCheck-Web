@@ -69,7 +69,7 @@ const Footer = ({ darkMode }) => {
               <h3>{SITE_CONFIG.name}</h3>
             </motion.div>
             <p className="brand-description">
-              Advanced phone number analysis platform providing carrier details,
+              An open-source developer project by Goutam Septa providing carrier details,
               geographical location, and caller identification.
             </p>
             <div className="social-links">
@@ -199,6 +199,7 @@ const Footer = ({ darkMode }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="dev-portfolio-link"
+              title="Goutam Septa Developer Portfolio"
             >
               Goutam シ
             </a>

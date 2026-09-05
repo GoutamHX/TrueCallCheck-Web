@@ -28,8 +28,21 @@
   - Notice / Status: `GET /web-notice`
   - Chat Assistant: `POST /api/chat` { "message": "string" }
 
+## Developer & Portfolio
+- **Developer**: Goutam Septa
+- **Aliases**: GoutamHX, imgoutam
+- **Role**: Software Developer & Full Stack Engineer
+- **Official Portfolio**: https://www.imgoutam.dev/
+- **GitHub**: https://github.com/GoutamHX
+- **Notable Projects by Goutam Septa**:
+  - **TrueCallCheck Web**: Free Indian caller ID & phone number lookup utility (https://goutamhx.github.io/TrueCallCheck-Web/)
+  - **TrueCallCheck Android App**: Native APK for mobile caller lookup
+  - **Advance Lookup Bot**: Telegram bot (@advancelookupbot) for automated phone number identification
+  - **Developer Tools**: Open-source utilities and web applications at https://github.com/GoutamHX
+
 ## Links
 - Repository: https://github.com/GoutamHX/TrueCallCheck-Web
 - Telegram Bot: https://t.me/advancelookupbot
 - Telegram Channel: https://telegram.dog/TheAdvanceBots
 - Android APK: https://devuploads.com/w3thg0886brw
+- Developer Portfolio: https://www.imgoutam.dev/
