@@ -42,8 +42,8 @@ export function AboutSection() {
             linked contact records—helping you stay safe and informed when receiving unknown calls.
           </p>
           <div className="about-highlights">
-            {ABOUT_HIGHLIGHTS.map((item, i) => (
-              <div key={i} className="highlight-item">
+            {ABOUT_HIGHLIGHTS.map((item) => (
+              <div key={item} className="highlight-item">
                 <FaCheckCircle className="highlight-icon" />
                 <span>{item}</span>
               </div>

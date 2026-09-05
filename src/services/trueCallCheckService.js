@@ -4,7 +4,7 @@ import { API_CONFIG } from "../config/api.config";
 /**
  * Service for TrueCallCheck number lookup and notice operations
  */
-export const trueCallerService = {
+export const trueCallCheckService = {
   /**
    * Fetch caller details for a given phone number
    * @param {string} phoneNumber - 10-digit Indian phone number
@@ -51,4 +51,4 @@ export const trueCallerService = {
   },
 };
 
-export default trueCallerService;
+export default trueCallCheckService;

@@ -109,8 +109,8 @@ export function HeroSection({
 
         {/* Trust Badges - Crisp pill badges */}
         <div className="trust-strip">
-          {TRUST_BADGES.map((badge, i) => (
-            <span key={i} className="trust-pill">
+          {TRUST_BADGES.map((badge) => (
+            <span key={badge} className="trust-pill">
               <FaCheck className="trust-pill-icon" />
               {badge}
             </span>

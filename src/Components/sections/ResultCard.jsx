@@ -18,7 +18,13 @@ export function ResultCard({ result, delay = 0 }) {
 
   const copyToClipboard = (text, key) => {
     if (!text) return;
-    navigator.clipboard?.writeText(String(text));
+    try {
+      if (navigator?.clipboard?.writeText) {
+        navigator.clipboard.writeText(String(text)).catch(() => {});
+      }
+    } catch {
+      // Ignore clipboard error in unsupported contexts
+    }
     setCopiedKey(key);
     setTimeout(() => setCopiedKey(null), 1800);
   };
@@ -109,7 +115,7 @@ export function ResultCard({ result, delay = 0 }) {
       {/* Dossier Field Entries */}
       <div className="dossier-body">
         {fields.map((f, i) => (
-          <div key={i} className={`dossier-row${f.cls ? ` ${f.cls}` : ""}`}>
+          <div key={f.label || i} className={`dossier-row${f.cls ? ` ${f.cls}` : ""}`}>
             <div className="row-icon-cell" aria-hidden="true">
               {f.icon}
             </div>

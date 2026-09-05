@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Footer from '../src/Components/Footer';
+import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import ChatBot from "./Components/ChatBot";
 import { useAntiInspect } from "./hooks/useAntiInspect";
 
 function App() {
-  useAntiInspect()
+  useAntiInspect();
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("darkMode");
     return saved !== null ? saved === "true" : true;
@@ -14,7 +14,8 @@ function App() {
   
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode);
-    document.body.className = darkMode ? "dark-mode" : "light-mode";
+    document.body.classList.remove(darkMode ? "light-mode" : "dark-mode");
+    document.body.classList.add(darkMode ? "dark-mode" : "light-mode");
   }, [darkMode]);
 
   const toggleDarkMode = () => setDarkMode((prev) => !prev);

@@ -17,7 +17,7 @@ export function ResultGroup({ label, icon, count, records, colorClass, baseDelay
       </div>
       <div className="results-grid">
         {records.map((r, i) => (
-          <ResultCard key={i} result={r} delay={baseDelay + i * 0.05} />
+          <ResultCard key={r.mobile ? `${r.mobile}-${i}` : i} result={r} delay={baseDelay + i * 0.05} />
         ))}
       </div>
     </div>

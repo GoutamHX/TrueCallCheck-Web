@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaTools, FaExclamationTriangle, FaTelegram } from "react-icons/fa";
+import { FaTools, FaExclamationTriangle, FaTelegram, FaTimes } from "react-icons/fa";
 import { SITE_CONFIG } from "../../data";
 
-export function NoticeModal({ showNotice, notice, darkMode }) {
+export function NoticeModal({ showNotice, notice, darkMode, onClose }) {
+  useEffect(() => {
+    if (!showNotice || !onClose) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [showNotice, onClose]);
+
   return (
     <AnimatePresence>
       {showNotice && (
-        <div className="maintenance-overlay">
+        <div
+          className="maintenance-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="notice-modal-title"
+        >
           <motion.div
             className={`maintenance-box ${darkMode ? "dark-maintenance" : "light-maintenance"}`}
             initial={{ scale: 0.95, opacity: 0 }}
@@ -15,6 +31,17 @@ export function NoticeModal({ showNotice, notice, darkMode }) {
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
+            {onClose && (
+              <button
+                type="button"
+                className="modal-dismiss-btn"
+                onClick={onClose}
+                aria-label="Dismiss notice"
+                title="Dismiss notice"
+              >
+                <FaTimes />
+              </button>
+            )}
             <div className="maintenance-decoration">
               <div className="corner corner-tl" />
               <div className="corner corner-tr" />
@@ -35,7 +62,7 @@ export function NoticeModal({ showNotice, notice, darkMode }) {
             </div>
 
             <h2 className="maintenance-title">
-              <span className="title-highlight">{notice?.title || "Notice"}</span>
+              <span id="notice-modal-title" className="title-highlight">{notice?.title || "Notice"}</span>
             </h2>
 
             <div className="maintenance-message-container">

@@ -73,9 +73,9 @@ const Footer = ({ darkMode }) => {
               geographical location, and caller identification.
             </p>
             <div className="social-links">
-              {SOCIAL_LINKS_DATA.map((social, index) => (
+              {SOCIAL_LINKS_DATA.map((social) => (
                 <motion.a
-                  key={index}
+                  key={social.type || social.label}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -99,9 +99,9 @@ const Footer = ({ darkMode }) => {
           >
             <h4 className="column-title">{FOOTER_SECTIONS_DATA[0].title}</h4>
             <ul className="footer-links">
-              {FOOTER_SECTIONS_DATA[0].links.map((link, index) => (
+              {FOOTER_SECTIONS_DATA[0].links.map((link) => (
                 <motion.li
-                  key={index}
+                  key={link.sectionId || link.name}
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -126,9 +126,9 @@ const Footer = ({ darkMode }) => {
           >
             <h4 className="column-title">{FOOTER_SECTIONS_DATA[1].title}</h4>
             <ul className="footer-features">
-              {FOOTER_SECTIONS_DATA[1].items.map((item, index) => (
+              {FOOTER_SECTIONS_DATA[1].items.map((item) => (
                 <motion.li
-                  key={index}
+                  key={item.type || item.text}
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
@@ -163,9 +163,9 @@ const Footer = ({ darkMode }) => {
           >
             <h4 className="column-title">{FOOTER_SECTIONS_DATA[2].title}</h4>
             <ul className="developer-links">
-              {FOOTER_SECTIONS_DATA[2].links.map((link, index) => (
+              {FOOTER_SECTIONS_DATA[2].links.map((link) => (
                 <motion.li
-                  key={index}
+                  key={link.type || link.text}
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >

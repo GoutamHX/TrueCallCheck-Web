@@ -9,10 +9,23 @@ const ChatBot = () => {
   const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
+
+  useEffect(() => {
+    if (!show) return;
+    inputRef.current?.focus();
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setShow(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [show]);
 
   const sendMessage = async (overrideText) => {
     const msg = (overrideText ?? input).trim();
@@ -51,7 +64,12 @@ const ChatBot = () => {
   return (
     <div>
       {show ? (
-        <div className="chatbot-container" role="dialog" aria-label="TrueCallCheck Chat Assistant">
+        <div
+          className="chatbot-container"
+          role="dialog"
+          aria-modal="true"
+          aria-label="TrueCallCheck Chat Assistant"
+        >
           {/* Header */}
           <div className="chatbot-header">
             <div className="chatbot-header-info">
@@ -78,8 +96,8 @@ const ChatBot = () => {
                 <p className="welcome-title">{CHATBOT_CONFIG.welcomeMessage}</p>
                 <p className="welcome-sub">{CHATBOT_CONFIG.welcomeSub}</p>
                 <div className="quick-questions">
-                  {CHATBOT_CONFIG.quickQuestions.map((q, i) => (
-                    <button key={i} onClick={() => sendMessage(q)}>
+                  {CHATBOT_CONFIG.quickQuestions.map((q) => (
+                    <button key={q} onClick={() => sendMessage(q)}>
                       {q}
                     </button>
                   ))}
@@ -89,7 +107,7 @@ const ChatBot = () => {
               <>
                 {messages.map((msg, i) => (
                   <div
-                    key={i}
+                    key={`${msg.sender}-${i}`}
                     className={`message-bubble ${
                       msg.sender === "user" ? "user-message" : "bot-message"
                     }`}
@@ -113,6 +131,7 @@ const ChatBot = () => {
           {/* Input */}
           <div className="chatbot-input-area">
             <input
+              ref={inputRef}
               type="text"
               value={input}
               placeholder="Ask about TrueCallCheck…"

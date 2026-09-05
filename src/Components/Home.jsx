@@ -11,7 +11,7 @@ import {
   PrivacySection,
   PlatformsSection,
 } from "./sections";
-import { trueCallerService } from "../services/trueCallerService";
+import { trueCallCheckService } from "../services/trueCallCheckService";
 import "../Style/Home.css";
 
 function Home({ darkMode, toggleDarkMode }) {
@@ -45,7 +45,7 @@ function Home({ darkMode, toggleDarkMode }) {
     setLoading(true);
 
     try {
-      const data = await trueCallerService.fetchNumberDetails(num);
+      const data = await trueCallCheckService.fetchNumberDetails(num);
 
       const main = Array.isArray(data?.data?.main_records)
         ? data.data.main_records
@@ -70,7 +70,7 @@ function Home({ darkMode, toggleDarkMode }) {
       setDeveloper(data?.developer || "Github:@GoutamHX");
       setTelegram(data?.Telegram || "@MR_GOUTAM08");
     } catch (error) {
-      const errorMsg = trueCallerService.getErrorMessage(error);
+      const errorMsg = trueCallCheckService.getErrorMessage(error);
       if (errorMsg === "NOT_FOUND") {
         setNoData(true);
       } else {
@@ -82,7 +82,7 @@ function Home({ darkMode, toggleDarkMode }) {
   };
 
   const handleGetNotice = async () => {
-    const data = await trueCallerService.fetchNotice();
+    const data = await trueCallCheckService.fetchNotice();
     if (data && data.notice) {
       setNotice(data);
       setShowNotice(true);
@@ -100,6 +100,7 @@ function Home({ darkMode, toggleDarkMode }) {
         showNotice={showNotice}
         notice={notice}
         darkMode={darkMode}
+        onClose={() => setShowNotice(false)}
       />
 
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />

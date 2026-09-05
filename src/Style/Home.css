@@ -1427,6 +1427,30 @@
   color: var(--text-primary);
 }
 
+.modal-dismiss-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  background: var(--surface-hover);
+  border: 1px solid var(--border-subtle);
+  transition: color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.modal-dismiss-btn:hover {
+  color: var(--text-primary);
+  background: var(--surface-active);
+  transform: scale(1.06);
+}
+
 .maintenance-icon-container {
   margin: 0 auto var(--space-4);
   width: 56px;

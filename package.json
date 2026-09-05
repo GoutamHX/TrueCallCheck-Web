@@ -1,7 +1,7 @@
 {
   "homepage": "https://GoutamHX.github.io/TrueCallCheck-Web",
-  "name": "truecaller-web",
-  "version": "2.0",
+  "name": "truecallcheck-web",
+  "version": "2.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
@@ -23,7 +23,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --passWithNoTests",
+    "lint": "eslint src/",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -47,18 +48,20 @@
   "devDependencies": {
     "gh-pages": "^6.3.0"
   },
-  "description": "![Project Banner](https://github.com/user-attachments/assets/ba5a3f02-b225-49b9-8147-8dde385060e0)",
+  "description": "Free, instant, and privacy-focused phone number lookup and caller identification web platform for India.",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GoutamHX/TrueCallCheck-Web.git"
   },
   "keywords": [
-    "truecaller",
-    "caller-info",
     "TrueCallCheck",
+    "caller-info",
+    "caller-id",
     "api",
     "caller-id",
+    "truecaller",
+    "caller-info",
     "phone-lookup",
     "email-info",
     "document-number",
@@ -74,7 +77,7 @@
     "imgoutam"
   ],
   "author": "Goutam Septa",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/GoutamHX/TrueCallCheck-Web/issues"
   }
