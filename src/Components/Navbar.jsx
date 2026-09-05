@@ -8,6 +8,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { NAV_LINKS, SITE_CONFIG } from "../data";
 import "../Style/Navbar.css";
 
 function Navbar({ darkMode, toggleDarkMode }) {
@@ -15,20 +16,13 @@ function Navbar({ darkMode, toggleDarkMode }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
-  const navLinks = [
-    { name: "Home", id: "home" },
-    { name: "About", id: "about" },
-    { name: "Features", id: "features" },
-    { name: "Privacy", id: "privacy" },
-    { name: "Platforms", id: "platforms" },
-  ];
-
   // Smooth scroll to section
   const scrollToSection = useCallback((id) => {
     const element = document.getElementById(id);
     if (element) {
       const navbarHeight = 72;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
         top: elementPosition - navbarHeight,
         behavior: "smooth",
@@ -44,7 +38,7 @@ function Navbar({ darkMode, toggleDarkMode }) {
       setScrolled(window.scrollY > 10);
 
       const navbarHeight = 80;
-      const sections = navLinks.map((link) => ({
+      const sections = NAV_LINKS.map((link) => ({
         id: link.id,
         el: document.getElementById(link.id),
       }));
@@ -67,7 +61,9 @@ function Navbar({ darkMode, toggleDarkMode }) {
 
   return (
     <motion.nav
-      className={`navbar navbar-expand-lg fixed-top ${darkMode ? "dark" : "light"} ${scrolled ? "scrolled" : ""}`}
+      className={`navbar navbar-expand-lg fixed-top ${
+        darkMode ? "dark" : "light"
+      } ${scrolled ? "scrolled" : ""}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
@@ -80,7 +76,7 @@ function Navbar({ darkMode, toggleDarkMode }) {
           style={{ cursor: "pointer" }}
         >
           <FaPhoneAlt className="logo-icon me-2" />
-          <span className="logo">TrueCallCheck</span>
+          <span className="logo">{SITE_CONFIG.name}</span>
         </div>
 
         {/* Mobile Menu Button */}
@@ -106,10 +102,12 @@ function Navbar({ darkMode, toggleDarkMode }) {
         {/* Desktop Navigation */}
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <li className="nav-item" key={link.id}>
                 <button
-                  className={`nav-link nav-link-btn ${activeSection === link.id ? "active" : ""}`}
+                  className={`nav-link nav-link-btn ${
+                    activeSection === link.id ? "active" : ""
+                  }`}
                   onClick={() => scrollToSection(link.id)}
                 >
                   {link.name}
@@ -123,6 +121,7 @@ function Navbar({ darkMode, toggleDarkMode }) {
             <button
               className="theme-toggle btn"
               onClick={toggleDarkMode}
+              aria-label="Toggle dark mode"
             >
               {darkMode ? <FaSun /> : <FaMoon />}
               <span className="theme-text d-none d-md-inline ms-1">
@@ -137,10 +136,12 @@ function Navbar({ darkMode, toggleDarkMode }) {
       {mobileMenuOpen && (
         <div className="mobile-menu container-fluid">
           <ul className="nav flex-column w-100">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <li className="nav-item mobile-nav-item" key={link.id}>
                 <button
-                  className={`nav-link mobile-nav-link ${activeSection === link.id ? "active" : ""}`}
+                  className={`nav-link mobile-nav-link ${
+                    activeSection === link.id ? "active" : ""
+                  }`}
                   onClick={() => scrollToSection(link.id)}
                 >
                   {link.name}

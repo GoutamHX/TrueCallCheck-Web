@@ -1,5 +1,36 @@
 # https://www.robotstxt.org/robotstxt.html
+# TrueCallCheck Robots.txt with Search Engine & AI Search Agent Directives
+
 User-agent: *
 Allow: /
 
+# AI Crawlers & LLM Agents
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemaps and AI Context
 Sitemap: https://goutamhx.github.io/TrueCallCheck-Web/sitemap.xml

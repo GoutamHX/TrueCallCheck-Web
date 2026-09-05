@@ -1,4 +1,3 @@
-// src/components/Footer.js
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -8,16 +7,34 @@ import {
   FaMobileAlt,
   FaHeart,
   FaAndroid,
-  FaRobot,
   FaExternalLinkAlt,
 } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
-import "../Style/Footer.css";
 import { User } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  FOOTER_SECTIONS_DATA,
+  SOCIAL_LINKS_DATA,
+  SITE_CONFIG,
+} from "../data";
+import "../Style/Footer.css";
+
+const ICON_MAP = {
+  android: <FaAndroid />,
+  telegram: <FaTelegram />,
+  web: <FaMobileAlt />,
+  portfolio: <FaExternalLinkAlt />,
+  github: <FaGithub />,
+  code: <FaCode />,
+};
+
+const SOCIAL_ICON_MAP = {
+  github: <FaGithub />,
+  portfolio: <User />,
+  instagram: <AiFillInstagram />,
+};
 
 const Footer = ({ darkMode }) => {
-  // Footer data embedded in component
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -26,44 +43,6 @@ const Footer = ({ darkMode }) => {
       window.scrollTo({ top: pos - navbarHeight, behavior: "smooth" });
     }
   };
-
-  const footerLinks = [
-    {
-      title: "Sections",
-      links: [
-        { name: "Home", sectionId: "home" },
-        { name: "About", sectionId: "about" },
-        { name: "Features", sectionId: "features" },
-        { name: "Privacy", sectionId: "privacy" },
-        { name: "Platforms", sectionId: "platforms" },
-      ],
-    },
-    {
-      title: "Our Platforms",
-      items: [
-        { icon: <FaAndroid />, text: "Android App", url: "https://devuploads.com/w3thg0886brw" },
-        { icon: <FaRobot />, text: "Telegram Bot", url: "https://t.me/AdvanceLookupBot" },
-        { icon: <FaMobileAlt />, text: "Web App", url: "#home" },
-        // { icon: <FaCheckCircle />, text: "Spam Detection" },
-      ],
-    },
-    {
-      title: "Developer",
-      links: [
-        { icon: <FaExternalLinkAlt />, text: "Portfolio", url: "https://www.imgoutam.dev/" },
-        { icon: <FaGithub />, text: "GitHub", url: "https://github.com/GoutamHX" },
-        { icon: <FaTelegram />, text: "Telegram", url: "https://telegram.dog/TheAdvanceBots" },
-        { icon: <FaCode />, text: "Source Code", url: "https://github.com/GoutamHX/TrueCallCheck-Web" },
-        // { icon: <FaInfoCircle />, text: "Contact", url: "https://t.me/MR_GOUTAM08" },
-      ],
-    },
-  ];
-
-  const socialIcons = [
-    { icon: <FaGithub />, url: "https://github.com/GoutamHX", label: "GitHub" },
-    {icon : <User/>, url : "https://imgoutam.dev", label: "Portfolio" },
-    { icon: <AiFillInstagram />, url: "https://instagram.com/ig.goutam_", label: "Instagram" },
-  ];
 
   return (
     <motion.footer
@@ -87,14 +66,14 @@ const Footer = ({ darkMode }) => {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <FaMobileAlt className="brand-icon" aria-hidden="true" />
-              <h3>TrueCallCheck</h3>
+              <h3>{SITE_CONFIG.name}</h3>
             </motion.div>
             <p className="brand-description">
               Advanced phone number analysis platform providing carrier details,
               geographical location, and caller identification.
             </p>
             <div className="social-links">
-              {socialIcons.map((social, index) => (
+              {SOCIAL_LINKS_DATA.map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.url}
@@ -105,22 +84,22 @@ const Footer = ({ darkMode }) => {
                   whileTap={{ scale: 0.9 }}
                   aria-label={`Visit our ${social.label}`}
                 >
-                  {social.icon}
+                  {SOCIAL_ICON_MAP[social.type]}
                 </motion.a>
               ))}
             </div>
           </motion.div>
 
-          {/* Quick Links */}
+          {/* Quick Links Column */}
           <motion.div
             className="footer-column"
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h4 className="column-title">{footerLinks[0].title}</h4>
+            <h4 className="column-title">{FOOTER_SECTIONS_DATA[0].title}</h4>
             <ul className="footer-links">
-              {footerLinks[0].links.map((link, index) => (
+              {FOOTER_SECTIONS_DATA[0].links.map((link, index) => (
                 <motion.li
                   key={index}
                   whileHover={{ x: 5 }}
@@ -138,16 +117,16 @@ const Footer = ({ darkMode }) => {
             </ul>
           </motion.div>
 
-          {/* Features */}
+          {/* Platforms Column */}
           <motion.div
             className="footer-column"
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h4 className="column-title">{footerLinks[1].title}</h4>
+            <h4 className="column-title">{FOOTER_SECTIONS_DATA[1].title}</h4>
             <ul className="footer-features">
-              {footerLinks[1].items.map((item, index) => (
+              {FOOTER_SECTIONS_DATA[1].items.map((item, index) => (
                 <motion.li
                   key={index}
                   whileHover={{ x: 5 }}
@@ -160,12 +139,12 @@ const Footer = ({ darkMode }) => {
                       rel={item.url.startsWith("http") ? "noopener noreferrer" : undefined}
                       aria-label={item.text}
                     >
-                      {item.icon}
+                      {ICON_MAP[item.type]}
                       <span>{item.text}</span>
                     </Link>
                   ) : (
                     <>
-                      {item.icon}
+                      {ICON_MAP[item.type]}
                       <span>{item.text}</span>
                     </>
                   )}
@@ -174,16 +153,16 @@ const Footer = ({ darkMode }) => {
             </ul>
           </motion.div>
 
-          {/* Developer */}
+          {/* Developer Column */}
           <motion.div
             className="footer-column"
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <h4 className="column-title">{footerLinks[2].title}</h4>
+            <h4 className="column-title">{FOOTER_SECTIONS_DATA[2].title}</h4>
             <ul className="developer-links">
-              {footerLinks[2].links.map((link, index) => (
+              {FOOTER_SECTIONS_DATA[2].links.map((link, index) => (
                 <motion.li
                   key={index}
                   whileHover={{ x: 5 }}
@@ -195,7 +174,7 @@ const Footer = ({ darkMode }) => {
                     rel="noopener noreferrer"
                     aria-label={`Visit ${link.text}`}
                   >
-                    {link.icon}
+                    {ICON_MAP[link.type]}
                     {link.text}
                   </Link>
                 </motion.li>
@@ -212,10 +191,17 @@ const Footer = ({ darkMode }) => {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <span className="fs-6 fw-light">
-            © {new Date().getFullYear()} TrueCallCheck. All rights reserved.
+            © {SITE_CONFIG.meta.year} {SITE_CONFIG.name}. All rights reserved.
             <span className="separator"> | </span>
             Designed and developed with <FaHeart className="heart-icon" aria-hidden="true" /> by{" "}
-            <a href="https://www.imgoutam.dev/" target="_blank" rel="noopener noreferrer" className="dev-portfolio-link">Goutam シ</a>
+            <a
+              href={SITE_CONFIG.author.portfolioUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="dev-portfolio-link"
+            >
+              Goutam シ
+            </a>
           </span>
         </motion.div>
       </div>
