@@ -4,9 +4,11 @@ import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import ChatBot from "./Components/ChatBot";
 import { useAntiInspect } from "./hooks/useAntiInspect";
+import { useAuthorAttestation } from "./hooks/useAuthorAttestation";
 
 function App() {
   useAntiInspect();
+  useAuthorAttestation();
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("darkMode");
     return saved !== null ? saved === "true" : true;

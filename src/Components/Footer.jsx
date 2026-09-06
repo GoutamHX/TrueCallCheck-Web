@@ -9,6 +9,7 @@ import {
   FaAndroid,
   FaExternalLinkAlt,
   FaShieldAlt,
+  FaChevronRight,
 } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { User } from "lucide-react";
@@ -17,6 +18,7 @@ import {
   SOCIAL_LINKS_DATA,
   SITE_CONFIG,
 } from "../data";
+import { useAuthorAttestation } from "../hooks/useAuthorAttestation";
 import "../Style/Footer.css";
 
 const ICON_MAP = {
@@ -35,6 +37,7 @@ const SOCIAL_ICON_MAP = {
 };
 
 const Footer = ({ darkMode }) => {
+  const verifiedAuthor = useAuthorAttestation();
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -106,11 +109,13 @@ const Footer = ({ darkMode }) => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <button
+                    type="button"
                     className="footer-section-link"
                     onClick={() => scrollToSection(link.sectionId)}
-                    aria-label={`Navigate to ${link.name}`}
+                    aria-label={`Navigate to ${link.name} section`}
                   >
-                    {link.name}
+                    <FaChevronRight className="section-chevron" aria-hidden="true" />
+                    <span>{link.name}</span>
                   </button>
                 </motion.li>
               ))}
@@ -209,18 +214,18 @@ const Footer = ({ darkMode }) => {
           </div>
 
           <div className="bottom-bar-right">
-            <div className="dev-signature-card">
+            <div className="dev-signature-card" data-author-attestation="verified">
               <span className="dev-signature-label">
                 Crafted with <FaHeart className="heart-icon" aria-hidden="true" /> by
               </span>
               <a
-                href={SITE_CONFIG.author.portfolioUrl}
+                href={verifiedAuthor.url || SITE_CONFIG.author.portfolioUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="dev-signature-link"
-                title="Goutam Septa — Software Engineer Portfolio"
+                title={`${verifiedAuthor.name || "Goutam Septa"} — Software Engineer Portfolio`}
               >
-                <span className="dev-name">Goutam Septa</span>
+                <span className="dev-name">{verifiedAuthor.name || "Goutam Septa"}</span>
                 <FaExternalLinkAlt className="dev-link-icon" aria-hidden="true" />
               </a>
             </div>
