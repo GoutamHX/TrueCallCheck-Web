@@ -47,6 +47,20 @@ function Home({ darkMode, toggleDarkMode }) {
     try {
       const data = await trueCallCheckService.fetchNumberDetails(num);
 
+      // Handle explicit NO_DATA API response
+      if (data?.code === "NO_DATA" || (typeof data?.error === "string" && data.error.toLowerCase().includes("no data"))) {
+        setNoData({
+          error: data?.error || "⚠️ No data found for this number.",
+          code: data?.code || "NO_DATA",
+          developer: data?.developer || "Github:@GoutamHX",
+          telegram: data?.Telegram || "@MR_GOUTAM08",
+          notice: data?.notice || "",
+        });
+        if (data?.developer) setDeveloper(data.developer);
+        if (data?.Telegram) setTelegram(data.Telegram);
+        return;
+      }
+
       const main = Array.isArray(data?.data?.main_records)
         ? data.data.main_records
         : [];
@@ -55,7 +69,13 @@ function Home({ darkMode, toggleDarkMode }) {
         : [];
 
       if (main.length === 0 && alt.length === 0) {
-        setNoData(true);
+        setNoData({
+          error: data?.error || "⚠️ No data found for this number.",
+          code: data?.code || "NO_DATA",
+          developer: data?.developer || "Github:@GoutamHX",
+          telegram: data?.Telegram || "@MR_GOUTAM08",
+          notice: data?.notice || "",
+        });
       } else {
         setMainRecords(main);
         setAltRecords(alt);
@@ -70,10 +90,25 @@ function Home({ darkMode, toggleDarkMode }) {
       setDeveloper(data?.developer || "Github:@GoutamHX");
       setTelegram(data?.Telegram || "@MR_GOUTAM08");
     } catch (error) {
-      const errorMsg = trueCallCheckService.getErrorMessage(error);
-      if (errorMsg === "NOT_FOUND") {
-        setNoData(true);
+      const resData = error?.response?.data;
+      const status = error?.response?.status;
+      const isNotFound =
+        status === 404 ||
+        resData?.code === "NO_DATA" ||
+        (typeof resData?.error === "string" && resData.error.toLowerCase().includes("no data"));
+
+      if (isNotFound) {
+        setNoData({
+          error: resData?.error || "⚠️ No data found for this number.",
+          code: resData?.code || "NO_DATA",
+          developer: resData?.developer || "Github:@GoutamHX",
+          telegram: resData?.Telegram || "@MR_GOUTAM08",
+          notice: resData?.notice || "",
+        });
+        if (resData?.developer) setDeveloper(resData.developer);
+        if (resData?.Telegram) setTelegram(resData.Telegram);
       } else {
+        const errorMsg = trueCallCheckService.getErrorMessage(error);
         toast.error(errorMsg);
       }
     } finally {

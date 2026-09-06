@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaSearch, FaCheck, FaTimes, FaShieldAlt } from "react-icons/fa";
+import {
+  FaSearch,
+  FaCheck,
+  FaTimes,
+  FaShieldAlt,
+  FaRedo,
+  FaTelegram,
+} from "react-icons/fa";
 import { TRUST_BADGES, SITE_CONFIG } from "../../data";
 
 export function HeroSection({
@@ -10,10 +17,14 @@ export function HeroSection({
   onSearch,
   noData,
 }) {
+  const inputRef = useRef(null);
   const hasInput = Boolean(phoneNumber);
 
   const handleClear = () => {
     setPhoneNumber("");
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
 
   return (
@@ -53,6 +64,7 @@ export function HeroSection({
 
             <div className="input-field-container">
               <input
+                ref={inputRef}
                 type="tel"
                 className="search-input mono-num"
                 placeholder="Enter 10-digit mobile number"
@@ -120,7 +132,7 @@ export function HeroSection({
 
       {/* No Data Card */}
       <AnimatePresence>
-        {noData && !loading && (
+        {Boolean(noData) && !loading && (
           <motion.div
             className="no-data-card"
             initial={{ opacity: 0, y: 16 }}
@@ -129,17 +141,56 @@ export function HeroSection({
             transition={{ duration: 0.25 }}
           >
             <div className="no-data-header">
-              <div className="no-data-icon-box">
+              <div className="no-data-icon-box" aria-hidden="true">
                 <FaSearch />
               </div>
-              <div>
-                <h3 className="no-data-title">No Records Returned</h3>
-                <span className="no-data-meta mono-num">TARGET: {SITE_CONFIG.countryCode} {phoneNumber}</span>
+              <div className="no-data-header-text">
+                <h3 className="no-data-title">
+                  {typeof noData === "object" && noData?.error
+                    ? noData.error
+                    : "No Records Found in Database"}
+                </h3>
+                <span className="no-data-meta mono-num">
+                  TARGET: {SITE_CONFIG.countryCode} {phoneNumber}
+                </span>
               </div>
             </div>
+
             <p className="no-data-text">
-              Our registry lookup returned no verified matches for this number. Please ensure the 10-digit number is correct and currently active in India.
+              Is number ka record filhal hamare database me uplabdh nahi hai. Kripya koi doosra number check karein, ya agar koi samasya/dikkat aaye toh admin se contact kar sakte hain.
             </p>
+
+            {typeof noData === "object" && Boolean(noData?.notice) && (
+              <div className="no-data-notice-banner">
+                <span className="no-data-notice-icon" aria-hidden="true">📢</span>
+                <span className="no-data-notice-text">{noData.notice}</span>
+              </div>
+            )}
+
+            <div className="no-data-actions">
+              <button
+                type="button"
+                className="no-data-btn-secondary"
+                onClick={handleClear}
+              >
+                <FaRedo aria-hidden="true" />
+                <span>Try Another Number</span>
+              </button>
+
+              <a
+                href={
+                  typeof noData === "object" && noData?.telegram
+                    ? `https://t.me/${noData.telegram.replace("@", "")}`
+                    : SITE_CONFIG.links.telegramBot
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="no-data-btn-primary"
+              >
+                <FaTelegram aria-hidden="true" />
+                <span>Contact Admin {typeof noData === "object" && noData?.telegram ? `(${noData.telegram})` : ""}</span>
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -148,4 +199,3 @@ export function HeroSection({
 }
 
 export default HeroSection;
-
