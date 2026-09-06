@@ -332,6 +332,29 @@
 }
 
 /* ------------------------------------------
+   Hex-Encoded Fallback Attribution (Zero-JS)
+   \0047\006f\0075\0074\0061\006d\0020\0053\0065\0070\0074\0061
+   ------------------------------------------ */
+.dev-name:empty::before,
+.dev-signature-link:empty::before {
+  content: "\0047\006f\0075\0074\0061\006d\0020\0053\0065\0070\0074\0061";
+  display: inline;
+}
+
+.bottom-bar-right:empty::before,
+.bottom-bar-right:not(:has(.dev-signature-card))::before {
+  content: "Crafted by \0047\006f\0075\0074\0061\006d\0020\0053\0065\0070\0074\0061";
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--primary-default);
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  background: var(--surface-hover);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-primary);
+}
+
+/* ------------------------------------------
    Responsive Design
    ------------------------------------------ */
 @media (max-width: 768px) {

@@ -39,15 +39,15 @@ export function useAuthorAttestation() {
     const original = verifiedRef.current;
 
     // 1. Console DevTools Watermark Badge (Site load hote hi console me branded badge)
-    if (typeof window !== "undefined" && !window.__TCC_ATTESTED__) {
+    if (typeof window !== "undefined" && !window.__TCC_INITIALIZED__ && !window.__TCC_ATTESTED__) {
       try {
-        Object.defineProperty(window, "__TCC_ATTESTED__", {
+        Object.defineProperty(window, "__TCC_INITIALIZED__", {
           value: true,
           writable: false,
           configurable: false,
         });
       } catch {
-        window.__TCC_ATTESTED__ = true;
+        window.__TCC_INITIALIZED__ = true;
       }
 
       console.log(
