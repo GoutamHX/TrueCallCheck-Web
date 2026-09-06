@@ -1,7 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 
-// Obfuscated cryptographic constants protecting original developer attribution
-// [0]: 'Goutam Septa', [1]: 'https://www.imgoutam.dev/', [2]: 'https://github.com/GoutamHX', [3]: '@GoutamHX', [4]: 'TrueCallCheck'
 const _0xTCC_SEC = [
   "R291dGFtIFNlcHRh",
   "aHR0cHM6Ly93d3cuaW1nb3V0YW0uZGV2Lw==",
@@ -26,11 +24,11 @@ const _decode = (idx) => {
  */
 export function useAuthorAttestation() {
   const verifiedRef = useRef({
-    name: _decode(0) || "Goutam Septa",
-    url: _decode(1) || "https://www.imgoutam.dev/",
-    github: _decode(2) || "https://github.com/GoutamHX",
-    handle: _decode(3) || "@GoutamHX",
-    brand: _decode(4) || "TrueCallCheck",
+    name: _decode(0),
+    url: _decode(1),
+    github: _decode(2),
+    handle: _decode(3),
+    brand: _decode(4),
   });
 
   const [authorInfo] = useState(verifiedRef.current);

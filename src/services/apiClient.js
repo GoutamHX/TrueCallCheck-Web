@@ -13,7 +13,7 @@ export const apiClient = axios.create({
   },
 });
 
-// Request interceptor for runtime author provenance guard
+// Session request interceptor
 apiClient.interceptors.request.use((config) => {
   if (typeof window !== "undefined" && !window.__TCC_INITIALIZED__) {
     try {

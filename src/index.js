@@ -5,7 +5,6 @@ import App from './App';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Provenance Engine — Self-executing Author Watermark (Root bootstrap)
 (() => {
   if (typeof window === "undefined" || window.__TCC_INITIALIZED__) return;
   try {
