@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/TrueCallCheck-Web/static/css/main.ffba8571.css",
-    "main.js": "/TrueCallCheck-Web/static/js/main.d5d99f28.js",
-    "index.html": "/TrueCallCheck-Web/index.html",
-    "main.ffba8571.css.map": "/TrueCallCheck-Web/static/css/main.ffba8571.css.map",
-    "main.d5d99f28.js.map": "/TrueCallCheck-Web/static/js/main.d5d99f28.js.map"
+    "main.css": "./static/css/main.ffba8571.css",
+    "main.js": "./static/js/main.390f83dd.js",
+    "index.html": "./index.html",
+    "main.ffba8571.css.map": "./static/css/main.ffba8571.css.map",
+    "main.390f83dd.js.map": "./static/js/main.390f83dd.js.map"
   },
   "entrypoints": [
     "static/css/main.ffba8571.css",
-    "static/js/main.d5d99f28.js"
+    "static/js/main.390f83dd.js"
   ]
 }
