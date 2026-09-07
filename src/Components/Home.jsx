@@ -11,6 +11,7 @@ import {
   PrivacySection,
   PlatformsSection,
 } from "./sections";
+import AdBanner from "./AdBanner";
 import { trueCallCheckService } from "../services/trueCallCheckService";
 import "../Style/Home.css";
 
@@ -163,8 +164,15 @@ function Home({ darkMode, toggleDarkMode }) {
         {/* Informational & Value Sections */}
         <AboutSection />
         <FeaturesSection />
+
+        {/* Google AdSense - After Features Section */}
+        <AdBanner slot="8365180918" style={{ margin: "40px auto 20px" }} />
+
         <PrivacySection />
         <PlatformsSection />
+
+        {/* Google AdSense - In Bottom Ads (Above Footer) */}
+        <AdBanner slot="4449986637" style={{ margin: "50px auto 25px" }} />
       </main>
 
       <ToastContainer

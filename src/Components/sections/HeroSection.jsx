@@ -9,6 +9,7 @@ import {
   FaTelegram,
 } from "react-icons/fa";
 import { TRUST_BADGES, SITE_CONFIG } from "../../data";
+import AdBanner from "../AdBanner";
 
 export function HeroSection({
   phoneNumber,
@@ -128,6 +129,9 @@ export function HeroSection({
             </span>
           ))}
         </div>
+
+        {/* Google AdSense - After Number Lookup Button */}
+        <AdBanner slot="6294867997" />
       </motion.div>
 
       {/* No Data Card */}

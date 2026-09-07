@@ -1802,3 +1802,35 @@
     padding: 0.5rem var(--space-4);
   }
 }
+
+/* ------------------------------------------
+   Google AdSense Collapsible Layout
+   Auto-collapses to 0 height and 0 margin when unfilled/absent
+   ------------------------------------------ */
+.adsense-wrapper {
+  width: 100%;
+  max-width: 728px;
+  margin: 0 auto;
+  overflow: hidden;
+  text-align: center;
+  transition: opacity 0.3s ease, margin 0.3s ease;
+}
+
+.adsense-wrapper.is-collapsed {
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  border: none !important;
+}
+
+.adsense-wrapper.is-filled {
+  opacity: 1;
+}
+
+ins.adsbygoogle[data-ad-status="unfilled"] {
+  display: none !important;
+}
+
