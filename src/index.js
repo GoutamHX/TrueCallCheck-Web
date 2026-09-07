@@ -33,8 +33,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 })();
 
 const getBasename = () => {
-  if (typeof window !== "undefined" && window.location.hostname.includes("github.io")) {
-    return "/TrueCallCheck-Web";
+  if (typeof window !== "undefined") {
+    if (
+      window.location.hostname.includes("github.io") ||
+      window.location.pathname.startsWith("/TrueCallCheck-Web")
+    ) {
+      return "/TrueCallCheck-Web";
+    }
   }
   return "";
 };
