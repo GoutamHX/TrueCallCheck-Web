@@ -34,10 +34,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const getBasename = () => {
   if (typeof window !== "undefined") {
+    const path = window.location.pathname;
     if (
       window.location.hostname.includes("github.io") ||
-      window.location.pathname.startsWith("/TrueCallCheck-Web")
+      path.toLowerCase().startsWith("/truecallcheck-web")
     ) {
+      const segment = path.split("/")[1];
+      if (segment && segment.toLowerCase() === "truecallcheck-web") {
+        return `/${segment}`;
+      }
       return "/TrueCallCheck-Web";
     }
   }

@@ -38,10 +38,13 @@
       if (typeof window !== "undefined" && window.location.hostname.indexOf("github.io") !== -1) {
         var c = document.querySelector("link[rel='canonical']");
         if (c) c.setAttribute("href", "https://goutamhx.github.io/TrueCallCheck-Web/");
+        var og = document.querySelector("meta[property='og:url']");
+        if (og) og.setAttribute("content", "https://goutamhx.github.io/TrueCallCheck-Web/");
+        var tw = document.querySelector("meta[name='twitter:url']");
+        if (tw) tw.setAttribute("content", "https://goutamhx.github.io/TrueCallCheck-Web/");
       }
     })();
   </script>
-
   <!-- GEO (Geographical Targeting / Local SEO) Tags -->
   <meta name="geo.region" content="IN" />
   <meta name="geo.placename" content="India" />
