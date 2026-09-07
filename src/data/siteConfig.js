@@ -7,7 +7,12 @@ export const SITE_CONFIG = {
   tagline: "Advanced Phone Number Analysis",
   description:
     "Free, instant, and privacy-focused phone number lookup tool for India. Search any Indian phone number to get instant caller details — name, father name, address, carrier, email, and more.",
-  canonicalUrl: "https://goutamhx.github.io/TrueCallCheck-Web/",
+  canonicalUrl:
+    typeof window !== "undefined" && window.location.hostname.includes("truecallcheck.tech")
+      ? "https://truecallcheck.tech/"
+      : "https://goutamhx.github.io/TrueCallCheck-Web/",
+  primaryDomain: "truecallcheck.tech",
+  legacyUrl: "https://goutamhx.github.io/TrueCallCheck-Web/",
   countryCode: "+91",
   countryName: "India",
   author: {

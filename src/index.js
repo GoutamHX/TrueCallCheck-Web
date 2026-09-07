@@ -32,9 +32,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
   );
 })();
 
+const getBasename = () => {
+  if (typeof window !== "undefined" && window.location.hostname.includes("github.io")) {
+    return "/TrueCallCheck-Web";
+  }
+  return "";
+};
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter basename="/TrueCallCheck-Web">
+  <BrowserRouter basename={getBasename()}>
     <App />
   </BrowserRouter>
 );

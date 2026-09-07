@@ -5,13 +5,21 @@ import { API_CONFIG } from "../config/api.config";
  * Reusable Axios client with centralized Base URL and timeout configuration
  */
 export const apiClient = axios.create({
-  baseURL: API_CONFIG.BASE_URL,
+  baseURL: API_CONFIG.BASE_URL || undefined,
   timeout: API_CONFIG.TIMEOUT,
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
+    ...(API_CONFIG.API_KEY ? { "x-api-key": API_CONFIG.API_KEY } : {}),
   },
 });
+
+// Warn developers during development if base URL is not configured
+if (process.env.NODE_ENV === "development" && !API_CONFIG.BASE_URL) {
+  console.warn(
+    "[TrueCallCheck Security] ⚠️ REACT_APP_API_BASE_URL is not set in your .env file. Copy .env.example to .env to configure your backend endpoint."
+  );
+}
 
 // Session request interceptor
 apiClient.interceptors.request.use((config) => {

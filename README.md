@@ -94,10 +94,17 @@ cd TrueCallCheck-Web
 npm install
 ```
 
-### 4. Configure Environment (Optional)
-A `.env` file can be configured in the project root:
+### 4. Configure Environment Variables
+Copy `.env.example` to create your local `.env` file:
+```bash
+cp .env.example .env
+```
+
+Configure your environment variables in `.env`:
 ```env
-REACT_APP_API_BASE_URL=https://true-call-check.vercel.app
+REACT_APP_API_BASE_URL=https://your-api-domain.vercel.app
+REACT_APP_API_KEY=
+REACT_APP_GA_MEASUREMENT_ID=
 ```
 
 ### 5. Start Local Development Server

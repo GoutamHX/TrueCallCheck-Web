@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import "./App.css";
 import Footer from "./Components/Footer";
 import Home from "./Components/Home";
@@ -26,7 +27,8 @@ function App() {
     <>
       <Home darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <Footer darkMode={darkMode} />
-      <ChatBot/>
+      <ChatBot />
+      <Analytics />
     </>
   );
 }

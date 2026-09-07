@@ -23,7 +23,7 @@
 
 ## Endpoints & Architecture
 - Web Application: Static React single page application hosted on GitHub Pages.
-- API Backend: `https://true-call-check.vercel.app`
+- API Backend: Configured dynamically via `REACT_APP_API_BASE_URL` environment variable
   - Lookup: `GET /api/truecallcheckapi?newKey={10_digit_number}`
   - Notice / Status: `GET /web-notice`
   - Chat Assistant: `POST /api/chat` { "message": "string" }

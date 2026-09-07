@@ -10,7 +10,6 @@
   <!-- Preconnect & Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="dns-prefetch" href="https://true-call-check.vercel.app" />
 
   <!-- Primary SEO Meta Tags -->
   <title>TrueCallCheck - Free Caller ID &amp; Phone Lookup | Goutam Septa</title>
@@ -26,7 +25,8 @@
   <link rel="canonical" href="https://goutamhx.github.io/TrueCallCheck-Web/" />
 
   <!-- Search Engine Verification -->
-  <meta name="msvalidate.01" content="691E0FB536A0EC1D8E78F71705973BEA" />
+  <meta name="google-site-verification" content="%REACT_APP_GOOGLE_SITE_VERIFICATION%" />
+  <meta name="msvalidate.01" content="%REACT_APP_BING_SITE_VERIFICATION%" />
 
   <!-- Language & Hreflang -->
   <meta http-equiv="content-language" content="en-IN" />
@@ -273,13 +273,23 @@
     }
   </script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZGEZ3HMSDP"></script>
+  <!-- Google tag (gtag.js) — Dynamically loaded only when REACT_APP_GA_MEASUREMENT_ID is configured -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-ZGEZ3HMSDP');
+    (function () {
+      var gaId = "%REACT_APP_GA_MEASUREMENT_ID%";
+      if (gaId && gaId.indexOf("REACT_APP_GA_MEASUREMENT_ID") === -1 && gaId.trim() !== "") {
+        var script = document.createElement("script");
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(gaId);
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { window.dataLayer.push(arguments); }
+        window.gtag = gtag;
+        gtag("js", new Date());
+        gtag("config", gaId);
+      }
+    })();
   </script>
 </head>
 
