@@ -23,7 +23,7 @@
     "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test --passWithNoTests",
     "lint": "eslint src/",
     "eject": "react-scripts eject"

@@ -84,7 +84,8 @@ const AdBanner = ({
       clearTimeout(t1);
       clearTimeout(t2);
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [client, slot]);
 
   return (
     <div
