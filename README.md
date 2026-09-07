@@ -6,8 +6,8 @@
 
 [![Version](https://img.shields.io/badge/version-2.0.0-0284c7?style=for-the-badge&logo=react)](https://github.com/GoutamHX/TrueCallCheck-Web/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://github.com/GoutamHX/TrueCallCheck-Web/blob/main/LICENSE)
-[![Pricing](https://img.shields.io/badge/Pricing-100%25_Free-10b981?style=for-the-badge)](https://goutamhx.github.io/TrueCallCheck-Web/)
-[![Platforms](https://img.shields.io/badge/Platforms-Web_•_Android_•_Telegram-38bdf8?style=for-the-badge)](https://goutamhx.github.io/TrueCallCheck-Web/)
+[![Pricing](https://img.shields.io/badge/Pricing-100%25_Free-10b981?style=for-the-badge)](https://truecallcheck.tech/)
+[![Platforms](https://img.shields.io/badge/Platforms-Web_•_Android_•_Telegram-38bdf8?style=for-the-badge)](https://truecallcheck.tech/)
 [![GitHub Stars](https://img.shields.io/github/stars/GoutamHX/TrueCallCheck-Web?style=for-the-badge&logo=github)](https://github.com/GoutamHX/TrueCallCheck-Web/stargazers)
 
 <p align="center">
@@ -15,7 +15,7 @@
   Identify unknown callers, subscriber records, registered carriers, and linked alternate numbers in seconds.
 </p>
 
-[**🌐 Explore Live Web App**](https://goutamhx.github.io/TrueCallCheck-Web/) · [**🤖 Telegram Bot**](https://t.me/advancelookupbot) · [**📱 Download Android APK**](https://devuploads.com/w3thg0886brw) · [**👨‍💻 Developer Portfolio**](https://www.imgoutam.dev/)
+[**🌐 Official Live Domain**](https://truecallcheck.tech/) · [**🔗 GitHub Pages Mirror**](https://goutamhx.github.io/TrueCallCheck-Web/) · [**🤖 Telegram Bot**](https://t.me/advancelookupbot) · [**📱 Download Android APK**](https://devuploads.com/w3thg0886brw) · [**👨‍💻 Developer Portfolio**](https://www.imgoutam.dev/)
 
 </div>
 

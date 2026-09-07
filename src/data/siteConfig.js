@@ -8,11 +8,11 @@ export const SITE_CONFIG = {
   description:
     "Free, instant, and privacy-focused phone number lookup tool for India. Search any Indian phone number to get instant caller details — name, father name, address, carrier, email, and more.",
   canonicalUrl:
-    typeof window !== "undefined" && window.location.hostname.includes("truecallcheck.tech")
-      ? "https://truecallcheck.tech/"
-      : "https://goutamhx.github.io/TrueCallCheck-Web/",
-  primaryDomain: "truecallcheck.tech",
-  legacyUrl: "https://goutamhx.github.io/TrueCallCheck-Web/",
+    typeof window !== "undefined" && window.location.hostname.includes("github.io")
+      ? "https://goutamhx.github.io/TrueCallCheck-Web/"
+      : "https://truecallcheck.tech/",
+  primaryDomain: "https://truecallcheck.tech/",
+  githubPagesUrl: "https://goutamhx.github.io/TrueCallCheck-Web/",
   countryCode: "+91",
   countryName: "India",
   author: {

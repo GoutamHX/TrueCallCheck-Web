@@ -22,16 +22,25 @@
   <meta name="creator" content="Goutam Septa" />
   <meta name="publisher" content="Goutam Septa" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <link rel="canonical" href="https://goutamhx.github.io/TrueCallCheck-Web/" />
+  <link rel="canonical" href="https://truecallcheck.tech/" />
 
   <!-- Search Engine Verification -->
   <meta name="google-site-verification" content="%REACT_APP_GOOGLE_SITE_VERIFICATION%" />
   <meta name="msvalidate.01" content="%REACT_APP_BING_SITE_VERIFICATION%" />
 
-  <!-- Language & Hreflang -->
+  <!-- Language, Hreflang & Multi-Domain Mirror Alternates -->
   <meta http-equiv="content-language" content="en-IN" />
-  <link rel="alternate" hreflang="en-IN" href="https://goutamhx.github.io/TrueCallCheck-Web/" />
-  <link rel="alternate" hreflang="x-default" href="https://goutamhx.github.io/TrueCallCheck-Web/" />
+  <link rel="alternate" hreflang="en-IN" href="https://truecallcheck.tech/" />
+  <link rel="alternate" hreflang="en" href="https://goutamhx.github.io/TrueCallCheck-Web/" />
+  <link rel="alternate" hreflang="x-default" href="https://truecallcheck.tech/" />
+  <script>
+    (function () {
+      if (typeof window !== "undefined" && window.location.hostname.indexOf("github.io") !== -1) {
+        var c = document.querySelector("link[rel='canonical']");
+        if (c) c.setAttribute("href", "https://goutamhx.github.io/TrueCallCheck-Web/");
+      }
+    })();
+  </script>
 
   <!-- GEO (Geographical Targeting / Local SEO) Tags -->
   <meta name="geo.region" content="IN" />
@@ -46,11 +55,11 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://goutamhx.github.io/TrueCallCheck-Web/" />
+  <meta property="og:url" content="https://truecallcheck.tech/" />
   <meta property="og:title" content="TrueCallCheck - Free Caller ID &amp; Phone Lookup | Goutam Septa" />
   <meta property="og:description"
     content="Free phone number lookup and caller ID for India by Goutam Septa. Get instant caller name, carrier &amp; location with zero tracking. No login needed." />
-  <meta property="og:image" content="https://goutamhx.github.io/TrueCallCheck-Web/logo512.png" />
+  <meta property="og:image" content="https://truecallcheck.tech/logo512.png" />
   <meta property="og:image:width" content="512" />
   <meta property="og:image:height" content="512" />
   <meta property="og:image:alt" content="TrueCallCheck Logo and Caller ID Interface" />
@@ -59,11 +68,11 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://goutamhx.github.io/TrueCallCheck-Web/" />
+  <meta name="twitter:url" content="https://truecallcheck.tech/" />
   <meta name="twitter:title" content="TrueCallCheck - Free Caller ID &amp; Phone Lookup | Goutam Septa" />
   <meta name="twitter:description"
     content="Free phone number lookup and caller ID for India by Goutam Septa. Get instant caller name, carrier &amp; location with zero tracking. No login needed." />
-  <meta name="twitter:image" content="https://goutamhx.github.io/TrueCallCheck-Web/logo512.png" />
+  <meta name="twitter:image" content="https://truecallcheck.tech/logo512.png" />
   <meta name="twitter:creator" content="@GoutamHX" />
 
   <!-- Mobile App & PWA Meta Tags -->
@@ -87,8 +96,8 @@
       "@graph": [
         {
           "@type": "WebSite",
-          "@id": "https://goutamhx.github.io/TrueCallCheck-Web/#website",
-          "url": "https://goutamhx.github.io/TrueCallCheck-Web/",
+          "@id": "https://truecallcheck.tech/#website",
+          "url": "https://truecallcheck.tech/",
           "name": "TrueCallCheck",
           "description": "Free, instant, and privacy-focused phone number lookup tool for Indian phone numbers.",
           "inLanguage": "en-IN",
@@ -96,16 +105,16 @@
             "@type": "SearchAction",
             "target": {
               "@type": "EntryPoint",
-              "urlTemplate": "https://goutamhx.github.io/TrueCallCheck-Web/?search={search_term_string}"
+              "urlTemplate": "https://truecallcheck.tech/?search={search_term_string}"
             },
             "query-input": "required name=search_term_string"
           }
         },
         {
           "@type": "WebApplication",
-          "@id": "https://goutamhx.github.io/TrueCallCheck-Web/#webapp",
+          "@id": "https://truecallcheck.tech/#webapp",
           "name": "TrueCallCheck Web",
-          "url": "https://goutamhx.github.io/TrueCallCheck-Web/",
+          "url": "https://truecallcheck.tech/",
           "description": "Free, instant, and privacy-focused phone number lookup tool for India. Get caller name, father name, address, carrier, email and more without login.",
           "applicationCategory": "UtilitiesApplication",
           "operatingSystem": "Web Browser, Android, iOS, Windows, macOS",
@@ -144,7 +153,7 @@
         },
         {
           "@type": "SoftwareApplication",
-          "@id": "https://goutamhx.github.io/TrueCallCheck-Web/#androidapp",
+          "@id": "https://truecallcheck.tech/#androidapp",
           "name": "TrueCallCheck Android App",
           "operatingSystem": "Android 7.0+",
           "applicationCategory": "UtilitiesApplication",
@@ -166,7 +175,7 @@
           "alternateName": ["Goutam", "GoutamHX", "imgoutam"],
           "jobTitle": "Full Stack Software Developer",
           "url": "https://www.imgoutam.dev/",
-          "image": "https://goutamhx.github.io/TrueCallCheck-Web/logo512.png",
+          "image": "https://truecallcheck.tech/logo512.png",
           "sameAs": [
             "https://www.imgoutam.dev/",
             "https://github.com/GoutamHX",
@@ -184,7 +193,12 @@
           "creatorOf": [
             {
               "@type": "WebApplication",
-              "name": "TrueCallCheck Web",
+              "name": "TrueCallCheck Web (Primary)",
+              "url": "https://truecallcheck.tech/"
+            },
+            {
+              "@type": "WebApplication",
+              "name": "TrueCallCheck Web (GitHub Pages)",
               "url": "https://goutamhx.github.io/TrueCallCheck-Web/"
             },
             {
@@ -201,7 +215,7 @@
         },
         {
           "@type": "FAQPage",
-          "@id": "https://goutamhx.github.io/TrueCallCheck-Web/#faq",
+          "@id": "https://truecallcheck.tech/#faq",
           "mainEntity": [
             {
               "@type": "Question",
@@ -216,7 +230,7 @@
               "name": "What are projects created by Goutam Septa?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Notable projects by Goutam Septa include TrueCallCheck Web (browser-based free Indian caller ID and lookup tool), TrueCallCheck Android APK, Advance Lookup Telegram Bot (@advancelookupbot), and numerous open-source development tools hosted at https://github.com/GoutamHX."
+                "text": "Notable projects by Goutam Septa include TrueCallCheck Web (browser-based free Indian caller ID and lookup tool at https://truecallcheck.tech), TrueCallCheck Android APK, Advance Lookup Telegram Bot (@advancelookupbot), and numerous open-source development tools hosted at https://github.com/GoutamHX."
               }
             },
             {
