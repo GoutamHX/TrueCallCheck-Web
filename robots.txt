@@ -33,4 +33,5 @@ User-agent: cohere-ai
 Allow: /
 
 # Sitemaps and AI Context
+Sitemap: https://truecallcheck.tech/sitemap.xml
 Sitemap: https://goutamhx.github.io/TrueCallCheck-Web/sitemap.xml

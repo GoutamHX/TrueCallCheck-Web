@@ -4,7 +4,8 @@
 
 ## Overview
 - **Name**: TrueCallCheck
-- **Website**: https://goutamhx.github.io/TrueCallCheck-Web/
+- **Official Website**: https://truecallcheck.tech/
+- **Legacy Mirror**: https://goutamhx.github.io/TrueCallCheck-Web/
 - **Author**: Goutam Septa (https://www.imgoutam.dev/)
 - **Pricing**: 100% Free forever (No subscription, No paywall, No account required)
 - **Supported Region**: India (+91)
@@ -22,7 +23,7 @@
   - Telegram Bot: Interactive bot (@advancelookupbot) for in-messenger lookup.
 
 ## Endpoints & Architecture
-- Web Application: Static React single page application hosted on GitHub Pages.
+- Web Application: Static React single page application hosted on Vercel (https://truecallcheck.tech/) and GitHub Pages (https://goutamhx.github.io/TrueCallCheck-Web/).
 - API Backend: Configured dynamically via `REACT_APP_API_BASE_URL` environment variable
   - Lookup: `GET /api/truecallcheckapi?newKey={10_digit_number}`
   - Notice / Status: `GET /web-notice`
@@ -35,12 +36,14 @@
 - **Official Portfolio**: https://www.imgoutam.dev/
 - **GitHub**: https://github.com/GoutamHX
 - **Notable Projects by Goutam Septa**:
-  - **TrueCallCheck Web**: Free Indian caller ID & phone number lookup utility (https://goutamhx.github.io/TrueCallCheck-Web/)
+  - **TrueCallCheck Web**: Free Indian caller ID & phone number lookup utility (https://truecallcheck.tech/)
   - **TrueCallCheck Android App**: Native APK for mobile caller lookup
   - **Advance Lookup Bot**: Telegram bot (@advancelookupbot) for automated phone number identification
   - **Developer Tools**: Open-source utilities and web applications at https://github.com/GoutamHX
 
 ## Links
+- Official Website: https://truecallcheck.tech/
+- GitHub Mirror: https://goutamhx.github.io/TrueCallCheck-Web/
 - Repository: https://github.com/GoutamHX/TrueCallCheck-Web
 - Telegram Bot: https://t.me/advancelookupbot
 - Telegram Channel: https://telegram.dog/TheAdvanceBots
