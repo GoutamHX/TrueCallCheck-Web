@@ -287,21 +287,29 @@
     }
   </script>
 
-  <!-- Google tag (gtag.js) — Dynamically loaded only when REACT_APP_GA_MEASUREMENT_ID is configured -->
+  <!-- Google tag (gtag.js) — Dynamically loaded and domain-aware -->
   <script>
     (function () {
-      var gaId = "%REACT_APP_GA_MEASUREMENT_ID%";
-      if (gaId && gaId.indexOf("REACT_APP_GA_MEASUREMENT_ID") === -1 && gaId.trim() !== "") {
+      var mainGa = "%REACT_APP_GA_MEASUREMENT_ID%";
+      var ghGa = "%REACT_APP_GA_MEASUREMENT_ID_GITHUB%";
+
+      if (mainGa.indexOf("REACT_APP_GA_MEASUREMENT_ID") !== -1) mainGa = "";
+      if (ghGa.indexOf("REACT_APP_GA_MEASUREMENT_ID_GITHUB") !== -1) ghGa = "";
+
+      var isGithub = typeof window !== "undefined" && window.location.hostname.indexOf("github.io") !== -1;
+      var activeGaId = isGithub ? (ghGa || mainGa) : (mainGa || ghGa);
+
+      if (activeGaId && activeGaId.trim() !== "") {
         var script = document.createElement("script");
         script.async = true;
-        script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(gaId);
+        script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(activeGaId.trim());
         document.head.appendChild(script);
 
         window.dataLayer = window.dataLayer || [];
         function gtag() { window.dataLayer.push(arguments); }
         window.gtag = gtag;
         gtag("js", new Date());
-        gtag("config", gaId);
+        gtag("config", activeGaId.trim());
       }
     })();
   </script>
