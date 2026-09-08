@@ -107,7 +107,7 @@ const AdBanner = ({
           : {
               height: 0,
               minHeight: 0,
-              margin: "0 !important",
+              margin: 0,
               padding: 0,
               opacity: 0,
               pointerEvents: "none",
