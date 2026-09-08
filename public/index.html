@@ -321,8 +321,22 @@
 </head>
 
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <noscript>
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 2rem; text-align: center; background: #0b1220; color: #f8fafc; min-height: 100vh;">
+      <h1 style="font-size: 2rem; margin-bottom: 1rem; color: #38bdf8;">TrueCallCheck - Free Caller ID &amp; Phone Lookup</h1>
+      <p style="font-size: 1.1rem; color: #94a3b8; max-width: 600px; margin: 0 auto 1.5rem auto;">
+        Free, instant, and privacy-focused Indian phone number lookup tool by Goutam Septa. Identify unknown caller names, carrier, and details with zero tracking.
+      </p>
+      <p style="color: #cbd5e1; font-weight: 500;">Please enable JavaScript to run this application.</p>
+    </div>
+  </noscript>
+  <div id="root">
+    <!-- Initial Semantic Fallback for SEO Crawlers (Replaced on React Mount) -->
+    <header style="display: none;">
+      <h1>TrueCallCheck - Free Caller ID &amp; Phone Lookup</h1>
+      <p>Free Indian phone number lookup and caller identification tool by Goutam Septa. Instant caller name, telecom carrier, and circle information without tracking or login.</p>
+    </header>
+  </div>
 </body>
 
 </html>
