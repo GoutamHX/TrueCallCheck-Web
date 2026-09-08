@@ -136,7 +136,7 @@ function Home({ darkMode, toggleDarkMode }) {
         showNotice={showNotice}
         notice={notice}
         darkMode={darkMode}
-        onClose={() => setShowNotice(false)}
+        // onClose={() => setShowNotice(false)}
       />
 
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
