@@ -81,5 +81,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/GoutamHX/TrueCallCheck-Web/issues"
+  },
+  "overrides": {
+    "nth-check": "2.1.1"
   }
 }
+
