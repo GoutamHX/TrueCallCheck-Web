@@ -13,6 +13,7 @@ import {
 
   FaEnvelope,
   FaRobot,
+  FaGithub,
 } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { User } from "lucide-react";
@@ -24,7 +25,7 @@ import { useAuthorAttestation } from "../hooks/useAuthorAttestation";
 import "../Style/Footer.css";
 
 const SOCIAL_ICON_MAP = {
-  github: <FaCode />,
+  github: <FaGithub />,
   portfolio: <User />,
   instagram: <AiFillInstagram />,
 };

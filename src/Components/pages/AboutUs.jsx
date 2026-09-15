@@ -25,32 +25,32 @@ const AboutUs = () => {
           <strong>TrueCallCheck</strong> was created to champion an alternative: <strong>open, zero-contact-harvesting telecom intelligence</strong>. We empower users to look up mobile series, identify telecom circles, detect licensed service providers, and understand signaling data without surrendering their address books.
         </p>
 
-        <h2>Our Data & Privacy Guarantees</h2>
+        <h2>Core Principles</h2>
         <div className="row g-4 my-4">
           <div className="col-md-4">
             <div className="tcc-contact-card">
-              <div className="tcc-contact-icon">🚫</div>
-              <h5>We Never Sell Your Data</h5>
-              <p className="tcc-card-text">
-                Zero data sale policy. We never sell, rent, broker, or monetize your search queries or personal details with anyone.
-              </p>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="tcc-contact-card">
               <div className="tcc-contact-icon">🛡️</div>
-              <h5>Zero Contact Harvesting</h5>
+              <h5>Privacy First</h5>
               <p className="tcc-card-text">
-                No phonebook uploading, no app installation required, and zero tracking of your private contact records.
+                No phonebook uploading, no app installation required, and we do not sell or monetize your search queries.
               </p>
             </div>
           </div>
           <div className="col-md-4">
             <div className="tcc-contact-card">
               <div className="tcc-contact-icon">📡</div>
-              <h5>Smart Filtering Gateway</h5>
+              <h5>Smart Filtering Middleware</h5>
               <p className="tcc-card-text">
-                Custom backend middleware that queries, filters, and standardizes pre-existing third-party directory records.
+                Custom backend API gateway that queries, filters, and standardizes third-party directory data in real time.
+              </p>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="tcc-contact-card">
+              <div className="tcc-contact-icon">⚡</div>
+              <h5>Fast & Free</h5>
+              <p className="tcc-card-text">
+                Lightweight Single Page Application (SPA) designed to load instantly on any mobile or desktop web browser.
               </p>
             </div>
           </div>
@@ -64,24 +64,24 @@ const AboutUs = () => {
           You can learn more about my ongoing open-source projects, engineering notes, and public software tools at <a href="https://imgoutam.dev" target="_blank" rel="noopener noreferrer">imgoutam.dev</a>.
         </p>
 
-        <h2>Where Does the Data Come From? (Data Sourcing Reality)</h2>
+        <h2>How TrueCallCheck Works & Data Sourcing</h2>
         <p>
-          We believe in 100% transparency about how our system operates:
+          To deliver instant caller information while safeguarding user privacy, TrueCallCheck operates through a dedicated backend API gateway:
         </p>
-        <ul>
+        <ol>
           <li>
-            <strong>Pre-Existing Public & Leaked Records:</strong> TrueCallCheck does not steal or extract private contact books from your phone. Any names or alternative numbers that appear in search results originate from <strong>pre-existing third-party directory APIs, historical publicly circulated directory leaks, and open telecom circle allocation registries</strong> that already exist across the web.
+            <strong>Query Submission:</strong> When you enter a 10-digit Indian phone number, the request is sent securely to our custom backend API.
           </li>
           <li>
-            <strong>Custom API Middleware:</strong> When you enter a phone number, our custom backend queries third-party directory APIs and acts as a smart filter—removing spammy duplicates, stripping out sensitive or private fields, and formatting the carrier details.
+            <strong>Third-Party API Aggregation:</strong> Our backend queries third-party telecom directory and caller identification APIs. These providers reference public numbering plans and pre-existing directory records already circulating on the internet.
           </li>
           <li>
-            <strong>Zero Persistent Query Storage:</strong> Cleaned results are delivered directly to your screen in real time. We do not maintain any permanent database of your search queries or lookup history.
+            <strong>Filtering & Sanitization:</strong> Our custom API parses the third-party response—removing duplicates, standardizing carrier and circle allocations, and stripping out unnecessary sensitive fields.
           </li>
           <li>
-            <strong>Free Unlisting:</strong> If your number is exposed in third-party directories and visible on our search tool, we offer a 100% free unlisting service to suppress your records from our search engine upon request.
+            <strong>Ephemeral Real-Time Display:</strong> Cleaned data is returned to your browser. Queries are processed in-memory and are not stored in any permanent database or shared with advertisers.
           </li>
-        </ul>
+        </ol>
 
         <div className="tcc-callout tcc-callout-info">
           <h4 className="tcc-callout-title">Interested in learning more about Indian telecom infrastructure?</h4>

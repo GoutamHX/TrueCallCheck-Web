@@ -14,57 +14,53 @@ const PrivacyPolicy = () => {
     >
       <div className="tcc-article-body">
         <div className="tcc-callout tcc-callout-info">
-          <strong>Summary:</strong> TrueCallCheck operates on a strict zero-tracking, zero-data-sale policy. We never sell, rent, broker, or trade your personal information or search queries to anyone. All caller identity records displayed on this platform originate from pre-existing third-party directories and publicly circulated repositories—never from your personal device.
+          <strong>Summary:</strong> TrueCallCheck is a privacy-conscious telecom intelligence search utility. We do not require account registration, do not access your device's address book, and do not sell or trade search queries.
         </div>
 
         <p>
           <em>Last updated: September 15, 2026</em>
         </p>
 
-        <h2>1. Strict "Zero Data Sale" & "Zero Harvesting" Guarantee</h2>
+        <h2>1. Overview & Data Handling Principles</h2>
         <p>
-          We want to make our privacy stance 100% transparent:
+          Welcome to TrueCallCheck (accessible via <a href="https://truecallcheck.tech">https://truecallcheck.tech</a>). We recognize the importance of personal data protection and telecommunications privacy.
         </p>
-        <ul>
-          <li><strong>We Never Sell Your Data:</strong> TrueCallCheck does not sell, rent, trade, monetize, or broker user search queries, IP addresses, or personal contact information to any third-party marketing companies, data brokers, or advertisers.</li>
-          <li><strong>Zero Contact Harvesting:</strong> We do not require any app installation or permission to access your private address book. We do not harvest, upload, or sync your phone contacts.</li>
-        </ul>
+        <p>
+          Unlike traditional caller identification applications that require syncing or uploading personal address books, TrueCallCheck does not access your device's contacts. We do not sell, rent, or commercialize search queries or user information to third-party marketing companies.
+        </p>
 
-        <h2>2. Origin of Search Results & Pre-Existing Public Data</h2>
+        <h2>2. Data Sourcing & Third-Party Directory APIs</h2>
         <p>
-          A common question is: <em>"Where does the name or information displayed in search results come from?"</em>
+          To display caller names, telecom operator allocations, and geographic circles, TrueCallCheck utilizes <strong>third-party directory and telecom lookup APIs</strong>.
         </p>
         <p>
-          TrueCallCheck does <strong>not</strong> generate, collect, or private-investigate individual personal data. The subscriber records, caller names, and alternative numbers returned in search queries are fetched via third-party telecom directory APIs that aggregate:
+          Our custom backend acts as an intermediary filtering middleware. When you search for a number:
         </p>
         <ul>
-          <li>Pre-existing, publicly circulated data repositories and historical public directory leaks already accessible across the web.</li>
-          <li>Publicly indexed business directories and telecom circle numbering plan (NNP) allocations.</li>
-          <li>Open crowd-verified telecom identifiers.</li>
+          <li>The request is queried against third-party directory APIs referencing pre-existing public numbering plans, telecom circle registries, and publicly circulated directory databases.</li>
+          <li>Our backend filters and sanitizes the response—removing duplicate records and formatting the carrier details.</li>
+          <li>Queries and results are processed in-memory and are not stored in any permanent database.</li>
         </ul>
-        <p>
-          TrueCallCheck merely acts as a <strong>filtering search interface</strong> that queries these existing third-party databases, standardizes the output, and formats it so users can recognize unknown callers and verify their own digital exposure.
-        </p>
 
         <h2>3. Information We Collect and How We Use It</h2>
         <p>
-          We collect only the minimum technical metadata strictly required to operate the service and block malicious denial-of-service attempts:
+          We collect minimal information strictly required to maintain site operations, combat abusive scraping, and deliver relevant telecom analytics:
         </p>
         <ul>
           <li>
-            <strong>Lookup Queries:</strong> When you search a telephone number, our custom backend API forwards the request to third-party directory APIs, parses the response, and returns it to your browser in real time. Queries and results are processed ephemerally in-memory and are <strong>never stored, logged in persistent databases, or profiled</strong>.
+            <strong>Lookup Queries:</strong> Number searches are processed ephemerally in real time to fetch third-party directory information. We do not maintain historical logs of your search queries.
           </li>
           <li>
-            <strong>Technical Server Logs:</strong> Cloud hosting infrastructure (Vercel) automatically logs standard connection metadata (IP address, user-agent, timestamp) for security defense, rate-limiting, and DDoS mitigation.
+            <strong>Standard Web Server Logs:</strong> Standard cloud infrastructure (Vercel) automatically logs network metadata such as IP address, browser user-agent, referring URL, and timestamp for security defense, rate-limiting, and DDoS protection.
           </li>
           <li>
-            <strong>Local Preferences:</strong> We use your browser's <code>localStorage</code> solely to remember your Dark/Light theme toggle.
+            <strong>Local Browser Storage:</strong> We use your browser's <code>localStorage</code> solely to remember your UI preferences (such as Dark/Light theme mode).
           </li>
         </ul>
 
         <h2>4. Google AdSense & Third-Party Advertising</h2>
         <p>
-          We use <strong>Google AdSense</strong> (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) to display advertisements on our website. This monetization enables us to keep this directory lookup service free and publicly accessible.
+          We use <strong>Google AdSense</strong> (a service provided by Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) to display advertisements on our website. This monetization enables us to keep this directory lookup service free and publicly accessible.
         </p>
         <ul>
           <li>
@@ -77,7 +73,7 @@ const PrivacyPolicy = () => {
             <strong>Opt-Out Options:</strong> You may opt out of personalized advertising by visiting Google's <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Ads Settings</a>. Alternatively, you can opt out of third-party vendor cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">aboutads.info</a> or the Network Advertising Initiative at <a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener noreferrer">networkadvertising.org</a>.
           </li>
           <li>
-            AdSense bots and automated crawlers (including <code>Mediapartners-Google</code> and <code>AdsBot-Google</code>) are explicitly permitted access to review our content, as outlined in our <code>robots.txt</code> and authorized in our root <code>ads.txt</code>.
+            AdSense bots and automated scrapers (including <code>Mediapartners-Google</code> and <code>AdsBot-Google</code>) are explicitly permitted access to review our content, as outlined in our <code>robots.txt</code> and authorized in our root <code>ads.txt</code>.
           </li>
         </ul>
 
@@ -86,18 +82,24 @@ const PrivacyPolicy = () => {
           TrueCallCheck does not deploy proprietary user-tracking cookies. However, third-party services—including Google AdSense, analytics providers, and content delivery networks (CDNs)—may set cookies to measure advertising effectiveness, authenticate traffic integrity, and analyze aggregated performance. You can manage or disable cookie permissions at any time through your individual web browser settings.
         </p>
 
-        <h2>6. Free Number Delisting / Removal Rights (DPDP Act 2023 & GDPR)</h2>
+        <h2>6. Compliance with DPDP Act 2023 (India) & Free Delisting Rights</h2>
         <p>
-          If your personal number or business details appear in our search interface from third-party directories and you wish to have it delisted, we provide a <strong>free, no-questions-asked unlisting procedure</strong>:
+          We operate in accordance with India's <strong>Digital Personal Data Protection (DPDP) Act, 2023</strong> and the European Union's <strong>General Data Protection Regulation (GDPR)</strong>:
         </p>
+        <ul>
+          <li><strong>Right to Rectification and Erasure:</strong> If public directory information associated with your number appears on our search interface and you wish to have it delisted, you can request free removal.</li>
+          <li><strong>Data Minimization:</strong> We do not store, distribute, or broker bulk consumer phone directories or consumer address book dumps.</li>
+          <li><strong>Zero Sensitive Personal Data:</strong> We never handle passwords, payment card details, biometric data, or government identity tokens.</li>
+        </ul>
+
         <div className="tcc-callout tcc-callout-info">
-          <h4 className="tcc-callout-title">How to Request Removal:</h4>
+          <h4 className="tcc-callout-title">How to Request Number Delisting:</h4>
           <p className="tcc-callout-desc">
-            Send an email to <a href="mailto:hello@imgoutam.dev">hello@imgoutam.dev</a> with the subject line <code>[Unlist Request] +91 XXXXXXXXXX</code> or reach out on Telegram at <a href="https://t.me/MR_GOUTAM08" target="_blank" rel="noopener noreferrer">@MR_GOUTAM08</a>. We manually review and suppress requested numbers from our search engine within <strong>24 to 48 business hours</strong>.
+            To unlist your phone number from our search interface, email <a href="mailto:hello@imgoutam.dev">hello@imgoutam.dev</a> with the subject line <code>[Unlist Request] +91 XXXXXXXXXX</code> or reach out on Telegram at <a href="https://t.me/MR_GOUTAM08" target="_blank" rel="noopener noreferrer">@MR_GOUTAM08</a>. We manually process requests within <strong>24 to 48 business hours</strong>.
           </p>
         </div>
 
-        <h2>7. Contact Information & Data Protection Officer</h2>
+        <h2>7. Contact Information</h2>
         <p>
           For privacy inquiries, unlisting requests, or questions regarding our data policies, please contact our Data Protection Officer:
         </p>
