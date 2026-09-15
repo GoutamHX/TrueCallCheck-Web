@@ -4,6 +4,25 @@
 User-agent: *
 Allow: /
 
+# Google AdSense & AdsBot Crawlers
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 # AI Crawlers & LLM Agents
 User-agent: GPTBot
 Allow: /
