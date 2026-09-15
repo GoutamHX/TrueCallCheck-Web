@@ -13,7 +13,7 @@
 }
 
 .footer-container {
-  max-width: 1160px;
+  max-width: 1240px;
   margin: 0 auto;
 }
 
@@ -22,15 +22,26 @@
    ------------------------------------------ */
 .footer-grid {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-  gap: var(--space-10);
+  grid-template-columns: minmax(0, 1.8fr) repeat(4, minmax(0, 1fr));
+  gap: var(--space-8);
   margin-bottom: var(--space-12);
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1100px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+  .footer-brand {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: 768px) {
   .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-8);
+    gap: var(--space-6);
   }
 
   .footer-brand {
@@ -38,10 +49,10 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 500px) {
   .footer-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-8);
+    gap: var(--space-6);
   }
 
   .footer-brand {
@@ -78,7 +89,7 @@
   font-size: 0.875rem;
   line-height: 1.65;
   color: var(--text-secondary);
-  max-width: 340px;
+  max-width: 320px;
   margin: 0;
 }
 
@@ -147,7 +158,7 @@
   align-items: center;
   gap: var(--space-2);
   font-family: inherit;
-  font-size: 0.9375rem;
+  font-size: 0.9rem;
   font-weight: 400;
   color: var(--text-secondary);
   text-decoration: none;
@@ -157,23 +168,15 @@
   margin: 0;
   cursor: pointer;
   text-align: left;
-  line-height: 1.5;
+  line-height: 1.4;
   transition: color var(--transition-fast), transform var(--transition-fast);
-  white-space: nowrap;
 }
 
 .footer-links a:hover,
 .developer-links a:hover,
 .footer-section-link:hover {
   color: var(--primary-default);
-  transform: translateX(4px);
-}
-
-.footer-section-link:focus-visible {
-  outline: 2px solid var(--primary-default);
-  outline-offset: 4px;
-  border-radius: var(--radius-sm);
-  color: var(--primary-default);
+  transform: translateX(3px);
 }
 
 .section-chevron {
@@ -186,35 +189,6 @@
 .footer-section-link:hover .section-chevron {
   color: var(--primary-default);
   transform: translateX(2px);
-}
-
-/* Feature / Platform List */
-.footer-features li {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: 0.9375rem;
-  color: var(--text-secondary);
-}
-
-.footer-features li a {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color var(--transition-fast), transform var(--transition-fast);
-  white-space: nowrap;
-}
-
-.footer-features li a:hover {
-  color: var(--primary-default);
-  transform: translateX(4px);
-}
-
-.feature-icon {
-  font-size: 0.875rem;
-  color: var(--success);
 }
 
 /* ------------------------------------------
@@ -323,61 +297,4 @@
 
 .dev-link-icon {
   font-size: 0.6875rem;
-}
-
-/* ------------------------------------------
-   Fallback Attribution
-   ------------------------------------------ */
-.dev-name:empty::before,
-.dev-signature-link:empty::before {
-  content: "\0047\006f\0075\0074\0061\006d\0020\0053\0065\0070\0074\0061";
-  display: inline;
-}
-
-.bottom-bar-right:empty::before,
-.bottom-bar-right:not(:has(.dev-signature-card))::before {
-  content: "Crafted by \0047\006f\0075\0074\0061\006d\0020\0053\0065\0070\0074\0061";
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--primary-default);
-  display: inline-block;
-  padding: 0.35rem 0.75rem;
-  background: var(--surface-hover);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-primary);
-}
-
-/* ------------------------------------------
-   Responsive Design
-   ------------------------------------------ */
-@media (max-width: 768px) {
-  .footer {
-    padding: var(--space-12) var(--space-4) var(--space-6);
-  }
-
-  .footer-grid {
-    gap: var(--space-6);
-  }
-
-  .brand-description {
-    max-width: 100%;
-  }
-
-  .footer-bottom-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-4);
-  }
-}
-
-@media (max-width: 480px) {
-  .bottom-pills-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .dev-signature-card {
-    width: 100%;
-    justify-content: center;
-  }
 }

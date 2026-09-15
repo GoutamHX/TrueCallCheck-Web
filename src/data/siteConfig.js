@@ -21,13 +21,14 @@ export const SITE_CONFIG = {
     adminUrl: "https://imgoutam.dev",
     githubUrl: "https://github.com/GoutamHX",
     instagramUrl: "https://instagram.com/ig.goutam_",
-    telegramBot: "https://t.me/AdvanceLookupBot",
-    telegramChannel: "https://telegram.dog/TheAdvanceBots",
+    telegramChannel: "https://t.me/TheAdvanceBots",
     telegramUsername: "@MR_GOUTAM08",
+    telegramSupport: "https://t.me/MR_GOUTAM08",
   },
   links: {
     androidApk: "https://devuploads.com/w3thg0886brw",
     telegramBot: "https://t.me/advancelookupbot",
+    telegramChannel: "https://t.me/TheAdvanceBots",
     githubRepo: "https://github.com/GoutamHX/TrueCallCheck-Web",
   },
   meta: {

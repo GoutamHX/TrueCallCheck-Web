@@ -1,0 +1,686 @@
+/* ============================================================
+   TrueCallCheck Page Layout & Legal/Guide Styles
+   Optimized for High-Contrast Dark & Light Modes
+   ============================================================ */
+
+.tcc-page-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--tcc-bg, #090d16);
+  color: var(--tcc-text, #f1f5f9);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Light Theme Variables */
+.tcc-page-layout.light,
+.tcc-page-layout.theme-light {
+  --tcc-bg: #f8fafc;
+  --tcc-surface: #ffffff;
+  --tcc-surface-muted: #f1f5f9;
+  --tcc-border: #e2e8f0;
+  --tcc-border-strong: #cbd5e1;
+  --tcc-text: #0f172a;
+  --tcc-text-muted: #475569;
+  --tcc-text-subtle: #64748b;
+  --tcc-primary: #0284c7;
+  --tcc-primary-hover: #0369a1;
+  --tcc-primary-glow: rgba(2, 132, 199, 0.15);
+  --tcc-card-bg: #ffffff;
+  --tcc-callout-bg: #f0f9ff;
+  --tcc-pill-bg: #e2e8f0;
+  --tcc-pill-text: #334155;
+}
+
+/* Dark Theme Variables */
+.tcc-page-layout.dark,
+.tcc-page-layout.theme-dark {
+  --tcc-bg: #090d16;
+  --tcc-surface: #111827;
+  --tcc-surface-muted: #1e293b;
+  --tcc-border: #1f293d;
+  --tcc-border-strong: #334155;
+  --tcc-text: #f1f5f9;
+  --tcc-text-muted: #cbd5e1;
+  --tcc-text-subtle: #94a3b8;
+  --tcc-primary: #38bdf8;
+  --tcc-primary-hover: #7dd3fc;
+  --tcc-primary-glow: rgba(56, 189, 248, 0.22);
+  --tcc-card-bg: #111827;
+  --tcc-callout-bg: #0f1b2d;
+  --tcc-pill-bg: #1e293b;
+  --tcc-pill-text: #e2e8f0;
+}
+
+/* Global Dark Mode Overrides for Bootstrap helper classes */
+.tcc-page-layout.dark .text-muted,
+.tcc-page-layout.dark .text-secondary {
+  color: var(--tcc-text-muted) !important;
+}
+
+.tcc-page-layout.dark h1,
+.tcc-page-layout.dark h2,
+.tcc-page-layout.dark h3,
+.tcc-page-layout.dark h4,
+.tcc-page-layout.dark h5,
+.tcc-page-layout.dark h6 {
+  color: #ffffff !important;
+}
+
+/* ============================================================
+   Navbar Header
+   ============================================================ */
+.tcc-page-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background-color: rgba(9, 13, 22, 0.92);
+  border-bottom: 1px solid var(--tcc-border);
+  transition: background-color 0.25s ease;
+}
+.light .tcc-page-header {
+  background-color: rgba(255, 255, 255, 0.92);
+}
+
+.tcc-page-nav-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.tcc-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--tcc-text);
+}
+.tcc-nav-brand:hover {
+  color: var(--tcc-primary);
+}
+
+.nav-brand-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+.nav-brand-text {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.nav-brand-name {
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--tcc-text);
+}
+
+.nav-brand-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background-color: var(--tcc-primary-glow);
+  color: var(--tcc-primary);
+}
+
+.tcc-page-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tcc-link-btn {
+  color: var(--tcc-text-muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.tcc-link-btn:hover {
+  color: var(--tcc-primary);
+  background-color: var(--tcc-surface-muted);
+}
+.back-icon {
+  font-size: 0.8rem;
+}
+
+.tcc-page-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-switch-btn {
+  background: var(--tcc-surface-muted);
+  border: 1px solid var(--tcc-border);
+  color: var(--tcc-text);
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.theme-switch-btn:hover {
+  transform: scale(1.05);
+}
+.theme-glyph.sun {
+  color: #f59e0b;
+}
+.theme-glyph.moon {
+  color: #38bdf8;
+}
+
+.tcc-lookup-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.tcc-lookup-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
+}
+
+/* ============================================================
+   Hero Section
+   ============================================================ */
+.tcc-page-hero {
+  padding: 56px 24px 40px;
+  border-bottom: 1px solid var(--tcc-border);
+  background: radial-gradient(circle at 50% 0%, var(--tcc-primary-glow) 0%, transparent 70%);
+}
+
+.tcc-page-hero-container {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.tcc-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--tcc-text-subtle);
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.tcc-breadcrumbs a {
+  color: var(--tcc-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+.tcc-breadcrumbs a:hover {
+  text-decoration: underline;
+}
+.crumb-sep {
+  opacity: 0.5;
+}
+.crumb-current {
+  color: var(--tcc-text);
+  font-weight: 600;
+}
+
+.tcc-hero-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: var(--tcc-primary-glow);
+  color: var(--tcc-primary);
+  margin-bottom: 14px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.tcc-hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  color: var(--tcc-text);
+}
+
+.tcc-hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--tcc-text-muted);
+  line-height: 1.6;
+  max-width: 800px;
+}
+
+/* ============================================================
+   Article Body & Content Wrapper
+   ============================================================ */
+.tcc-page-content-wrapper {
+  flex: 1 0 auto;
+  max-width: 920px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.tcc-article-body {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--tcc-text);
+}
+
+.tcc-article-body h2 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin: 44px 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--tcc-border);
+  color: var(--tcc-text);
+}
+
+.tcc-article-body h3 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 30px 0 14px;
+  color: var(--tcc-text);
+}
+
+.tcc-article-body h4 {
+  font-size: 1.18rem;
+  font-weight: 600;
+  margin: 22px 0 10px;
+  color: var(--tcc-text);
+}
+
+.tcc-article-body p {
+  margin-bottom: 20px;
+  color: var(--tcc-text);
+}
+
+.tcc-article-body ul,
+.tcc-article-body ol {
+  margin-bottom: 24px;
+  padding-left: 28px;
+}
+
+.tcc-article-body li {
+  margin-bottom: 10px;
+  color: var(--tcc-text);
+}
+
+.tcc-article-body a {
+  color: var(--tcc-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+.tcc-article-body a:hover {
+  filter: brightness(1.25);
+}
+
+/* ============================================================
+   Meta Tags & Pill Bar (Published, Read Time, Tags)
+   ============================================================ */
+.tcc-guide-meta-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--tcc-border);
+}
+
+.tcc-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background-color: var(--tcc-pill-bg);
+  color: var(--tcc-pill-text);
+  font-size: 0.84rem;
+  font-weight: 600;
+  border: 1px solid var(--tcc-border-strong);
+}
+
+.tcc-meta-pill-verified {
+  background-color: rgba(16, 185, 129, 0.14);
+  color: #10b981;
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+/* ============================================================
+   Callout Boxes (Editorial, Warning, Info, Success)
+   ============================================================ */
+.tcc-callout {
+  border-left: 4px solid var(--tcc-primary);
+  background-color: var(--tcc-callout-bg);
+  border-radius: 0 12px 12px 0;
+  padding: 22px 26px;
+  margin: 32px 0;
+  border-top: 1px solid var(--tcc-border);
+  border-right: 1px solid var(--tcc-border);
+  border-bottom: 1px solid var(--tcc-border);
+}
+
+.tcc-callout-warning {
+  border-left-color: #f59e0b;
+  background-color: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.25);
+}
+.tcc-callout-info {
+  border-left-color: var(--tcc-primary);
+  background-color: var(--tcc-callout-bg);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+.tcc-callout-success {
+  border-left-color: #10b981;
+  background-color: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+.tcc-callout h4,
+.tcc-callout h5,
+.tcc-callout-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--tcc-text) !important;
+  margin-bottom: 10px;
+}
+
+.tcc-callout p,
+.tcc-callout-desc {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--tcc-text) !important;
+  margin-bottom: 8px;
+}
+
+.tcc-callout-sub {
+  font-size: 0.88rem;
+  color: var(--tcc-text-muted) !important;
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   Cards (Core Principles, Contact Cards, Guide Cards)
+   ============================================================ */
+.tcc-contact-card {
+  background-color: var(--tcc-card-bg);
+  border: 1px solid var(--tcc-border);
+  border-radius: 14px;
+  padding: 28px 24px;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.tcc-contact-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--tcc-primary);
+  box-shadow: 0 10px 24px var(--tcc-primary-glow);
+}
+
+.tcc-contact-icon {
+  font-size: 2.4rem;
+  margin-bottom: 14px;
+}
+
+.tcc-contact-card h4,
+.tcc-contact-card h5 {
+  color: var(--tcc-text) !important;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.tcc-contact-card p,
+.tcc-card-text {
+  color: var(--tcc-text-muted) !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+/* Contact Email Badge */
+.tcc-email-badge-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px 0 18px;
+}
+
+.tcc-code-pill {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.92rem;
+  padding: 7px 14px;
+  border-radius: 8px;
+  background-color: var(--tcc-surface-muted);
+  border: 1px solid var(--tcc-border-strong);
+  color: var(--tcc-primary);
+  font-weight: 600;
+}
+
+/* Telegram Username Highlight */
+.tcc-telegram-username {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background-color: rgba(0, 136, 204, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(0, 136, 204, 0.3);
+  margin: 8px 0 18px;
+}
+
+/* Guide Cards */
+.tcc-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.tcc-guide-card {
+  background-color: var(--tcc-card-bg);
+  border: 1px solid var(--tcc-border);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none !important;
+  color: var(--tcc-text) !important;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.tcc-guide-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--tcc-primary);
+  box-shadow: 0 12px 28px var(--tcc-primary-glow);
+}
+
+.tcc-card-badge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--tcc-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.tcc-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.35;
+  color: var(--tcc-text);
+}
+
+.tcc-card-desc {
+  font-size: 0.94rem;
+  color: var(--tcc-text-muted);
+  line-height: 1.55;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.tcc-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.86rem;
+  color: var(--tcc-text-muted);
+  border-top: 1px solid var(--tcc-border);
+  padding-top: 14px;
+}
+
+/* ============================================================
+   Buttons & Interactive Elements
+   ============================================================ */
+.tcc-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none !important;
+  border: none;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  cursor: pointer;
+}
+.tcc-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
+  filter: brightness(1.1);
+  color: #ffffff !important;
+}
+
+.tcc-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: var(--tcc-surface-muted);
+  color: var(--tcc-text) !important;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none !important;
+  border: 1px solid var(--tcc-border-strong);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.tcc-btn-secondary:hover {
+  background-color: var(--tcc-border);
+  border-color: var(--tcc-primary);
+  color: var(--tcc-primary) !important;
+  transform: translateY(-2px);
+}
+
+.tcc-btn-telegram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0088cc 0%, #006699 100%);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none !important;
+  border: none;
+  box-shadow: 0 4px 14px rgba(0, 136, 204, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.tcc-btn-telegram:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 136, 204, 0.5);
+  color: #ffffff !important;
+}
+
+.tcc-btn-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  background-color: var(--tcc-surface-muted);
+  color: var(--tcc-text);
+  border: 1px solid var(--tcc-border-strong);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.tcc-btn-copy:hover {
+  background-color: var(--tcc-primary);
+  color: #ffffff;
+  border-color: var(--tcc-primary);
+}
+.tcc-btn-copy.copied {
+  background-color: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+}
+
+/* ============================================================
+   Responsive Design
+   ============================================================ */
+@media (max-width: 768px) {
+  .tcc-page-links {
+    display: none;
+  }
+  .tcc-hero-title {
+    font-size: 1.85rem;
+  }
+  .tcc-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
