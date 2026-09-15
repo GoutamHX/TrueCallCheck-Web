@@ -137,9 +137,9 @@ const Footer = ({ darkMode }) => {
             <ul className="footer-links">
               <motion.li whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
                 <Link to="/guides" className="footer-section-link">
-                  <FaBookOpen className="section-chevron text-primary" aria-hidden="true" />
+                  <FaChevronRight className="section-chevron" aria-hidden="true" />
                   <span>All Telecom Guides</span>
-                </Link>
+                </Link>``
               </motion.li>
               <motion.li whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
                 <Link to="/guides/identifying-spam-and-fraud-calls-india" className="footer-section-link">
@@ -173,7 +173,7 @@ const Footer = ({ darkMode }) => {
             <ul className="footer-links">
               <motion.li whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
                 <Link to="/privacy-policy" className="footer-section-link">
-                  <FaShieldAlt className="section-chevron text-info" aria-hidden="true" />
+                  <FaChevronRight className="section-chevron" aria-hidden="true" />
                   <span>Privacy Policy</span>
                 </Link>
               </motion.li>
@@ -215,7 +215,7 @@ const Footer = ({ darkMode }) => {
                   rel="noopener noreferrer"
                   aria-label="Telegram Channel"
                 >
-                  <FaTelegram className="text-info" />
+                  <FaTelegram className="" />
                   <span>Telegram Channel</span>
                 </a>
               </motion.li>
