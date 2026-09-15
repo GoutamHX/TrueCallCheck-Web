@@ -20,9 +20,9 @@ const TermsOfService = () => {
           By accessing or using TrueCallCheck (<a href="https://truecallcheck.tech">https://truecallcheck.tech</a>), you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must refrain from using the service immediately.
         </p>
 
-        <h2>2. Nature of Service & Educational Purpose</h2>
+        <h2>2. Nature of Service & Third-Party Aggregation</h2>
         <p>
-          TrueCallCheck is an informational utility designed to help Indian mobile and landline subscribers decode telecom series, identify licensed telecom service providers (such as Airtel, Jio, Vi, BSNL), recognize geographic operating circles, and cross-reference publicly indexed caller names.
+          TrueCallCheck is an informational utility and search interface designed to help Indian mobile subscribers decode telecom series, identify licensed service providers (such as Airtel, Jio, Vi, BSNL), recognize geographic operating circles, and cross-reference caller details via <strong>third-party directory APIs and custom filtering middleware</strong>.
         </p>
         <div className="tcc-callout tcc-callout-warning">
           <strong>Important Disclaimer:</strong> TrueCallCheck is an independent educational and verification platform. It is not affiliated with, endorsed by, or connected to Truecaller AB, the Department of Telecommunications (DoT), or any mobile network operator.
@@ -37,12 +37,12 @@ const TermsOfService = () => {
           <li>Attempt to decompile, reverse-engineer, or disassemble any part of the service infrastructure.</li>
         </ul>
 
-        <h2>4. Data Accuracy & Limitation of Liability</h2>
+        <h2>4. Third-Party Data Accuracy & Limitation of Liability</h2>
         <p>
-          While we strive for high accuracy by indexing standardized DoT National Numbering Plans (NNP) and public telecom registry tables, caller identification records are dynamic. Number series get reallocated through Mobile Number Portability (MNP), and caller names may change over time.
+          TrueCallCheck retrieves caller identification information dynamically from third-party API providers and standard National Numbering Plan (NNP) allocations. Because records are maintained by third parties, numbers may be reallocated through Mobile Number Portability (MNP), and caller names may change over time.
         </p>
         <p>
-          Consequently, TrueCallCheck provides all information on an <strong>"as is" and "as available"</strong> basis without warranties of any kind. Under no circumstances shall the operators or creators of TrueCallCheck be liable for any direct, indirect, incidental, or consequential damages resulting from reliance on any information retrieved on this site.
+          Consequently, TrueCallCheck provides all information on an <strong>"as is" and "as available"</strong> basis without warranties of any kind. TrueCallCheck does not warrant that information from third-party APIs is completely error-free or exhaustive. Under no circumstances shall the operators or creators of TrueCallCheck be liable for any direct, indirect, incidental, or consequential damages resulting from reliance on any information retrieved on this site.
         </p>
 
         <h2>5. Intellectual Property</h2>

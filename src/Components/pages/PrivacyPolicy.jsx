@@ -32,7 +32,7 @@ const PrivacyPolicy = () => {
         </p>
         <ul>
           <li>
-            <strong>Lookup Queries:</strong> When you enter a telephone number or name in our search interface, the query is processed ephemerally against public telecom circle databases, MSC/HLR numbering plans, and open directory interfaces. Queries are not tied to any personal identifier or stored in persistent user dossiers.
+            <strong>Lookup Queries & Third-Party API Architecture:</strong> When you enter a telephone number in our search interface, our custom backend API queries third-party telecom directory and caller identification API providers to fetch public caller details. Our backend acts as a filtering middleware that parses, sanitizes, and normalizes the data before presenting it. Queries and third-party results are processed ephemerally in-memory and are <strong>never</strong> logged, stored in persistent user databases, or sold.
           </li>
           <li>
             <strong>Standard Web Server Logs:</strong> Like standard web hosts, our cloud infrastructure (Vercel) automatically logs network connection metadata such as IP address, browser user-agent, referring URL, and timestamp for security filtering, DDoS prevention, and rate-limiting.

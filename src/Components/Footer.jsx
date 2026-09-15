@@ -10,7 +10,7 @@ import {
   FaHeart,
   FaShieldAlt,
   FaChevronRight,
-  FaBookOpen,
+
   FaEnvelope,
   FaRobot,
 } from "react-icons/fa";
@@ -139,7 +139,7 @@ const Footer = ({ darkMode }) => {
                 <Link to="/guides" className="footer-section-link">
                   <FaChevronRight className="section-chevron" aria-hidden="true" />
                   <span>All Telecom Guides</span>
-                </Link>``
+                </Link>
               </motion.li>
               <motion.li whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 300 }}>
                 <Link to="/guides/identifying-spam-and-fraud-calls-india" className="footer-section-link">

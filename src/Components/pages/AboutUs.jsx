@@ -39,9 +39,9 @@ const AboutUs = () => {
           <div className="col-md-4">
             <div className="tcc-contact-card">
               <div className="tcc-contact-icon">📡</div>
-              <h5>Standards-Driven</h5>
+              <h5>Middleware Architecture</h5>
               <p className="tcc-card-text">
-                Built upon the official Department of Telecommunications (DoT) National Numbering Plan and public telecom registry tables.
+                Custom backend gateway that queries, filters, and standardizes third-party telecom directory data.
               </p>
             </div>
           </div>
@@ -64,14 +64,23 @@ const AboutUs = () => {
           You can learn more about my ongoing open-source projects, engineering notes, and public software tools at <a href="https://imgoutam.dev" target="_blank" rel="noopener noreferrer">imgoutam.dev</a>.
         </p>
 
-        <h2>How TrueCallCheck Works</h2>
+        <h2>How TrueCallCheck Works & Data Sourcing</h2>
         <p>
-          When you enter an Indian 10-digit telephone number into TrueCallCheck:
+          To deliver instant, accurate caller information without building intrusive user dossiers, TrueCallCheck utilizes a dedicated backend API gateway and filtering middleware:
         </p>
         <ol>
-          <li><strong>Prefix Extraction:</strong> The 4-digit or 5-digit operator allocation prefix is parsed according to DoT allocation bands.</li>
-          <li><strong>Circle & Licensee Resolution:</strong> The platform cross-references our telecom database to identify the registered licensee (e.g. Bharti Airtel, Reliance Jio, Vodafone Idea, or BSNL) and the geographic Licensed Service Area (LSA/Circle).</li>
-          <li><strong>Public Name Cross-Reference:</strong> Where public records or open directory entries exist, associated identification names are presented alongside security analysis.</li>
+          <li>
+            <strong>Query Submission:</strong> When you enter a 10-digit Indian phone number on our web app, the query is sent securely to our custom backend API.
+          </li>
+          <li>
+            <strong>Third-Party API Aggregation:</strong> Our backend API queries trusted third-party telecom directory and caller identification API providers that index publicly available and registered phone information.
+          </li>
+          <li>
+            <strong>Filtering & Normalization:</strong> Our custom API acts as a smart filter—it validates the raw response, removes duplicate or unverified entries, formats the carrier and telecom circle data, and filters out unnecessary or sensitive fields.
+          </li>
+          <li>
+            <strong>Ephemeral Delivery:</strong> The structured, sanitized intelligence is returned to your browser in real time. We do not store, log, or maintain a persistent database of your search queries.
+          </li>
         </ol>
 
         <div className="tcc-callout tcc-callout-info">
