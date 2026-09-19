@@ -12,7 +12,7 @@ export const trueCallCheckService = {
    */
   async fetchNumberDetails(phoneNumber) {
     const response = await apiClient.get(API_CONFIG.ENDPOINTS.LOOKUP, {
-      params: { newKey: phoneNumber },
+      params: { num: phoneNumber },
     });
     return response.data;
   },
