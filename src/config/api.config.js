@@ -15,7 +15,7 @@ export const API_CONFIG = {
   
   // Relative API routes
   ENDPOINTS: {
-    LOOKUP: process.env.REACT_APP_ENDPOINT_LOOKUP || "/web/lookup",
+    LOOKUP: process.env.REACT_APP_ENDPOINT_LOOKUP || "/api/web/lookup",
     WEB_NOTICE: process.env.REACT_APP_ENDPOINT_NOTICE || "/web-notice",
     CHAT: process.env.REACT_APP_ENDPOINT_CHAT || "/api/chat",
   },
