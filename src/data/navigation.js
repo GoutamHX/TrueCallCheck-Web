@@ -33,7 +33,7 @@ export const FOOTER_SECTIONS_DATA = [
       { type: "portfolio", text: "Portfolio", url: SITE_CONFIG.author.portfolioUrl },
       { type: "github", text: "GitHub", url: SITE_CONFIG.author.githubUrl },
       { type: "telegram", text: "Telegram", url: SITE_CONFIG.author.telegramChannel },
-      { type: "code", text: "Source Code", url: SITE_CONFIG.links.githubRepo },
+      { type: "code", text: "Frontend Code", url: SITE_CONFIG.links.githubRepo },
     ],
   },
 ];

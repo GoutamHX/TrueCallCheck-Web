@@ -7,7 +7,7 @@ export const ABOUT_HIGHLIGHTS = [
   "Carrier & Location Info — See the service provider and telecom circle",
   "100% Free — No charges, subscriptions, or hidden fees",
   "Mobile Responsive — Works seamlessly on both mobile and desktop",
-  "Open Source — Community-supported, customizable project",
+  "Open Frontend — Client web interface available on GitHub",
 ];
 
 export const DATA_POINTS = [
@@ -52,9 +52,9 @@ export const FEATURES_LIST = [
   },
   {
     iconType: "openSource",
-    title: "Open Source",
+    title: "Open Frontend",
     description:
-      "Community-supported, transparent, and fully customizable. Contribute on GitHub.",
+      "Client application is open-source on GitHub. Built with transparent UI code and zero client-side tracking.",
   },
 ];
 

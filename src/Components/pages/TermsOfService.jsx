@@ -53,9 +53,9 @@ const TermsOfService = () => {
           If your personal or business number appears in our search interface from third-party sources and you wish to have it delisted, you may request free removal by contacting <a href="mailto:hello@imgoutam.dev">hello@imgoutam.dev</a> or on Telegram at <a href="https://t.me/MR_GOUTAM08" target="_blank" rel="noopener noreferrer">@MR_GOUTAM08</a>.
         </p>
 
-        <h2>6. Intellectual Property</h2>
+        <h2>6. Intellectual Property & Open Source Licensing</h2>
         <p>
-          All proprietary source code, graphic designs, custom layouts, and original written telecom documentation on TrueCallCheck are protected under applicable copyright and intellectual property laws. Third-party trademarks and brand logos (such as telecom operator names) are the property of their respective owners.
+          The TrueCallCheck frontend web client source code is open-source and distributed under the MIT License on GitHub. Backend API architectures, data routing algorithms, proprietary gateway infrastructure, visual branding, and telecom documentation are proprietary and protected under applicable copyright laws. Third-party trademarks and brand logos (such as telecom operator names) are the property of their respective owners.
         </p>
 
         <h2>7. Modifications to the Service</h2>

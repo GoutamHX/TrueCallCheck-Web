@@ -65,7 +65,7 @@ const Footer = ({ darkMode }) => {
               <h3>{SITE_CONFIG.name}</h3>
             </Link>
             <p className="brand-description">
-              An open-source telecom intelligence and caller identification directory for India. Zero contact harvesting, 100% privacy-first.
+              Privacy-conscious telecom intelligence directory for India with an open-source web client. Zero contact harvesting, 100% privacy-first.
             </p>
             {/* Clean Social Links Only */}
             <div className="social-links">
@@ -265,7 +265,7 @@ const Footer = ({ darkMode }) => {
                   aria-label="GitHub Repository"
                 >
                   <FaCode />
-                  <span>Source Code</span>
+                  <span>Frontend Code</span>
                 </a>
               </motion.li>
             </ul>
@@ -282,7 +282,7 @@ const Footer = ({ darkMode }) => {
         >
           <div className="bottom-bar-left">
             <span className="copyright-statement">
-              © {SITE_CONFIG.meta.year} {SITE_CONFIG.name}. Licensed under MIT. Contact: <a href="mailto:hello@imgoutam.dev" className="text-secondary">hello@imgoutam.dev</a>
+              © {SITE_CONFIG.meta.year} {SITE_CONFIG.name}. Web client licensed under MIT. Contact: <a href="mailto:hello@imgoutam.dev" className="text-secondary">hello@imgoutam.dev</a>
             </span>
             <div className="bottom-pills-row">
               <span className="bottom-meta-pill">

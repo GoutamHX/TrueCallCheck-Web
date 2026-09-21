@@ -45,8 +45,8 @@ const FEATURE_METAS = {
   openSource: {
     icon: <FaGithub />,
     category: "TRANSPARENCY",
-    badge: "MIT License",
-    chips: ["Public Repo", "Community Audited", "Zero Tracking"],
+    badge: "Open Client",
+    chips: ["Frontend Repo", "Community Audited", "Zero Tracking"],
   },
 };
 

@@ -23,7 +23,7 @@
 
 ## ⚡ Overview
 
-**TrueCallCheck Web** is a fast, responsive open-source caller identification and number analysis platform designed for Indian (+91) phone numbers. 
+**TrueCallCheck Web** is a fast, responsive open-source web frontend for Indian (+91) caller identification and phone number analysis. 
 
 Simply enter any 10-digit mobile number to retrieve comprehensive subscriber details — full name, father's name, registered address, carrier network, circle location, and linked contact numbers — directly in your browser without requiring an account or login.
 
@@ -74,6 +74,8 @@ Access TrueCallCheck across your preferred device:
 - **Icon Sets**: React Icons (`react-icons`) & Lucide React (`lucide-react`)
 - **Toast Alerts**: React Toastify (`react-toastify`)
 - **Deployment**: GitHub Pages (`gh-pages`)
+
+> 🔒 **Architecture Notice:** This repository contains the public, open-source React web client application (`TrueCallCheck-Web`). Upstream telecom directory routing gateways, data sanitization microservices, and backend APIs operate on private, protected infrastructure to ensure service stability, enforce anti-scraping controls, and uphold provider terms.
 
 ---
 
@@ -193,4 +195,4 @@ Contributions, issues, and feature requests are welcome!
 
 ## 📄 License
 
-Distributed under the **MIT License**. See [`LICENSE`](https://github.com/GoutamHX/TrueCallCheck-Web/blob/main/LICENSE) for full legal text.
+The frontend web client application is distributed under the **MIT License**. See [`LICENSE`](https://github.com/GoutamHX/TrueCallCheck-Web/blob/main/LICENSE) for full legal text.

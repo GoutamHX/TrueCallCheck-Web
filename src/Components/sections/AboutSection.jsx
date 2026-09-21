@@ -52,7 +52,7 @@ export function AboutSection() {
 
           <div className="about-footer-note">
             <p className="about-provenance-text">
-              Open-source project engineered and maintained by{" "}
+              Web application engineered and maintained by{" "}
               <a
                 href={SITE_CONFIG.author.portfolioUrl}
                 target="_blank"
@@ -61,9 +61,9 @@ export function AboutSection() {
               >
                 {SITE_CONFIG.author.name}
               </a>{" "}
-              (imgoutam.dev). Public source repository hosted on{" "}
+              (imgoutam.dev). Open-source frontend repository hosted on{" "}
               <a
-                href={SITE_CONFIG.author.githubUrl}
+                href={SITE_CONFIG.links.githubRepo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="about-inline-link"

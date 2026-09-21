@@ -83,6 +83,19 @@ const AboutUs = () => {
           </li>
         </ol>
 
+        <h2>Architecture & Code Transparency</h2>
+        <p>
+          TrueCallCheck balances transparent client software with secure server infrastructure:
+        </p>
+        <ul>
+          <li>
+            <strong>Open-Source Web Frontend:</strong> The complete client web interface is open-source and publicly viewable on GitHub at <a href="https://github.com/GoutamHX/TrueCallCheck-Web" target="_blank" rel="noopener noreferrer">@GoutamHX/TrueCallCheck-Web</a>. Anyone can review the React application code, inspect client-side security headers, and verify that there is zero user tracking or phonebook harvesting.
+          </li>
+          <li>
+            <strong>Private Backend Infrastructure:</strong> The core API aggregation gateway, upstream carrier data routing, and rate-limiting microservices operate on private infrastructure. Keeping the backend services private protects upstream directory provider integrations, safeguards server resources against scraping abuse, and ensures stable uptime for all users.
+          </li>
+        </ul>
+
         <div className="tcc-callout tcc-callout-info">
           <h4 className="tcc-callout-title">Interested in learning more about Indian telecom infrastructure?</h4>
           <p className="tcc-callout-desc">

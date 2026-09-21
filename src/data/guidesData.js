@@ -96,7 +96,7 @@ export const TELECOM_GUIDES_DATA = [
     updatedDate: "March 2026",
     author: "Goutam Septa",
     excerpt:
-      "A technical walkthrough of how caller identification works: from traditional SS7 CNAM databases to modern carrier HLR signaling, crowdsourced contact sync, and open-source directory lookups.",
+      "A technical walkthrough of how caller identification works: from traditional SS7 CNAM databases to modern carrier HLR signaling, crowdsourced contact sync, and public directory lookups.",
     sections: [
       {
         heading: "1. The Anatomy of a Cellular Call Setup",
