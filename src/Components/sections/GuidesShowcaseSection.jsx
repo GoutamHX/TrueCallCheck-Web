@@ -8,7 +8,7 @@ export function GuidesShowcaseSection() {
   const featuredGuides = TELECOM_GUIDES_DATA.slice(0, 3);
 
   return (
-    <section id="guides-preview" className="guides-preview-section" style={{ padding: "70px 20px", maxWidth: "1200px", margin: "0 auto" }}>
+    <section id="guides" className="guides-preview-section" style={{ padding: "70px 20px", maxWidth: "1200px", margin: "0 auto" }}>
       <div className="section-header" style={{ textAlign: "center", marginBottom: "36px" }}>
         <span className="section-tag" style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
           <FaBookOpen /> Editorial & Research

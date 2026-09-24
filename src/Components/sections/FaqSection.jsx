@@ -1,34 +1,34 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaChevronDown, FaQuestionCircle, FaShieldAlt } from "react-icons/fa";
+import { FaChevronDown, FaQuestionCircle, FaInfoCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../../Style/Home.css";
 
 const FAQ_ITEMS = [
   {
-    question: "How does TrueCallCheck look up unknown phone numbers?",
+    question: "How does TrueCallCheck work?",
     answer:
-      "TrueCallCheck queries telecom directory routing networks, National Numbering Plan (NNP) circle allocation tables, and public caller identification registers across India (+91). It correlates caller names, telecom operators (Airtel, Jio, Vi, BSNL), and circle regions without logging or storing your search history.",
+      "TrueCallCheck provides a clean web interface to search Indian 10-digit phone numbers. Our private backend service fetches and filters records from available third-party and public lookup sources to display available name and circle details directly on your screen.",
   },
   {
-    question: "Is TrueCallCheck compliant with Indian privacy laws and DPDP Act?",
+    question: "Do you save or log my search data?",
     answer:
-      "Yes. TrueCallCheck operates strictly on a zero-tracking, read-only principle. Unlike contact-harvesting mobile apps that upload your entire personal address book to third-party databases, TrueCallCheck does not harvest, store, or sell any user contacts or private data.",
+      "No. From our side, we do not require any login, user registration, or contact synchronization. We do not store your search queries, phone lookups, or IP logs in our databases.",
   },
   {
-    question: "What is TRAI's CNAP (Calling Name Presentation) system?",
+    question: "Where does the caller details come from?",
     answer:
-      "CNAP is a regulatory initiative introduced by the Telecom Regulatory Authority of India (TRAI). It displays the verified subscriber identity (name recorded on the official Customer Acquisition Form / CAF during SIM purchase) directly on the recipient's handset for incoming cellular calls.",
+      "The information shown is aggregated and filtered via third-party web directory sources and previously indexed public records. We do not maintain or claim ownership of third-party upstream data.",
   },
   {
-    question: "How can I block spam or report fraudulent calls in India?",
+    question: "Is TrueCallCheck free to use?",
     answer:
-      "To stop unsolicited commercial calls, activate Do Not Disturb (DND) by sending 'START 0' via SMS to 1909. If you encounter cyber fraud, bank impersonation, or extortion calls, immediately file a complaint on the National Cyber Crime Portal (cybercrime.gov.in) or call the national cyber helpline 1930.",
+      "Yes. The web lookup tool is 100% free to use for looking up numbers without paying any subscription fees or installing intrusive apps.",
   },
   {
-    question: "How do Indian telecom circles and Mobile Number Portability (MNP) work?",
+    question: "What should I do if I get spam or scam calls?",
     answer:
-      "India is divided into 22 Licensed Telecom Service Areas (Circles). While the initial 4 to 5 digits of a 10-digit number indicate its original issuing circle and operator, Nationwide MNP enables subscribers to retain their mobile number while switching providers across circles.",
+      "Never share OTPs, bank details, or passwords with unknown callers. You can register your number with TRAI's Do Not Disturb (DND) by sending 'START 0' via SMS to 1909, or report cyber fraud on the National Cyber Helpline 1930.",
   },
 ];
 
@@ -40,20 +40,20 @@ export function FaqSection() {
   };
 
   return (
-    <section id="faq" className="faq-section" style={{ padding: "80px 20px", maxWidth: "1000px", margin: "0 auto" }}>
-      <div className="section-header" style={{ textAlign: "center", marginBottom: "40px" }}>
+    <section id="faq" className="faq-section" style={{ padding: "70px 20px", maxWidth: "960px", margin: "0 auto" }}>
+      <div className="section-header" style={{ textAlign: "center", marginBottom: "36px" }}>
         <span className="section-tag" style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
-          <FaQuestionCircle /> Telecom & Security FAQs
+          <FaQuestionCircle /> General FAQs
         </span>
         <h2 className="section-title" style={{ marginTop: "12px", fontSize: "2rem" }}>
           Frequently Asked <span className="highlight-text">Questions</span>
         </h2>
-        <p className="about-desc" style={{ maxWidth: "650px", margin: "12px auto 0" }}>
-          Clear, expert answers on caller identification, Indian telecom regulations, privacy safeguards, and scam prevention.
+        <p className="about-desc" style={{ maxWidth: "600px", margin: "12px auto 0" }}>
+          Simple and honest answers about TrueCallCheck and how the lookup service works.
         </p>
       </div>
 
-      <div className="faq-accordion" style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <div className="faq-accordion" style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
         {FAQ_ITEMS.map((item, idx) => {
           const isOpen = openIndex === idx;
           return (
@@ -65,7 +65,7 @@ export function FaqSection() {
                 borderRadius: "14px",
                 background: "var(--card-bg, rgba(255,255,255,0.03))",
                 overflow: "hidden",
-                transition: "all 0.3s ease",
+                transition: "all 0.25s ease",
               }}
             >
               <button
@@ -73,7 +73,7 @@ export function FaqSection() {
                 onClick={() => toggleAccordion(idx)}
                 style={{
                   width: "100%",
-                  padding: "20px 24px",
+                  padding: "18px 22px",
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
@@ -82,19 +82,19 @@ export function FaqSection() {
                   cursor: "pointer",
                   textAlign: "left",
                   color: "inherit",
-                  fontSize: "1.05rem",
+                  fontSize: "1.02rem",
                   fontWeight: 600,
                 }}
                 aria-expanded={isOpen}
               >
-                <span style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  <FaShieldAlt style={{ color: "var(--primary-color, #38bdf8)", flexShrink: 0 }} />
+                <span style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                  <FaInfoCircle style={{ color: "var(--primary-color, #38bdf8)", flexShrink: 0 }} />
                   {item.question}
                 </span>
                 <FaChevronDown
                   style={{
                     transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                    transition: "transform 0.3s ease",
+                    transition: "transform 0.25s ease",
                     flexShrink: 0,
                     marginLeft: "12px",
                   }}
@@ -107,13 +107,13 @@ export function FaqSection() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.25 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <div
                       style={{
-                        padding: "0 24px 20px 52px",
-                        fontSize: "0.95rem",
-                        lineHeight: 1.65,
+                        padding: "0 22px 18px 48px",
+                        fontSize: "0.93rem",
+                        lineHeight: 1.6,
                         color: "var(--text-secondary, #94a3b8)",
                       }}
                     >
@@ -127,10 +127,7 @@ export function FaqSection() {
         })}
       </div>
 
-      <div style={{ textAlign: "center", marginTop: "36px" }}>
-        <p style={{ fontSize: "0.95rem", color: "var(--text-secondary, #94a3b8)", marginBottom: "16px" }}>
-          Need in-depth cybersecurity advice and telecom tutorials?
-        </p>
+      <div style={{ textAlign: "center", marginTop: "32px" }}>
         <Link
           to="/guides"
           className="nav-quick-cta"
@@ -138,11 +135,12 @@ export function FaqSection() {
             display: "inline-flex",
             alignItems: "center",
             gap: "8px",
-            padding: "12px 24px",
+            padding: "10px 20px",
             textDecoration: "none",
+            fontSize: "0.92rem",
           }}
         >
-          <span>Explore All 5 Telecom & Safety Guides →</span>
+          <span>Read Scam & Fraud Prevention Guides →</span>
         </Link>
       </div>
     </section>

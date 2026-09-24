@@ -19,71 +19,111 @@ function Navbar({ darkMode, toggleDarkMode }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Smooth scroll to section or navigate to home with anchor
+  const isHomePage = location.pathname === "/";
+
+  // Smooth scroll to an element by ID
+  const scrollToElement = useCallback((id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const navbarHeight = 84;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: Math.max(0, elementPosition - navbarHeight),
+        behavior: "smooth",
+      });
+      setActiveSection(id);
+    }
+  }, []);
+
+  // Handle hash scroll after cross-page navigation
+  useEffect(() => {
+    if (isHomePage && location.hash) {
+      const targetId = location.hash.replace("#", "");
+      const timer = setTimeout(() => {
+        scrollToElement(targetId);
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [isHomePage, location.hash, scrollToElement]);
+
+  // Click handler for navigation items
   const handleNavClick = useCallback(
     (link) => {
       setMobileMenuOpen(false);
 
-      if (link.path) {
-        navigate(link.path);
-        return;
-      }
-
-      if (link.id) {
-        if (location.pathname !== "/") {
+      if (isHomePage) {
+        // On homepage, always scroll smoothly to the section
+        scrollToElement(link.id);
+      } else {
+        // On inner pages:
+        // If clicking a section that only lives on homepage (e.g. features, faq), navigate to /#sectionId
+        if (link.id === "home") {
+          navigate("/");
+        } else if (link.pageUrl && location.pathname.startsWith(link.pageUrl)) {
+          // Already on this page, scroll to top
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else if (link.pageUrl) {
+          navigate(link.pageUrl);
+        } else {
           navigate(`/#${link.id}`);
-          return;
         }
-
-        const element = document.getElementById(link.id);
-        if (element) {
-          const navbarHeight = 84;
-          const elementPosition =
-            element.getBoundingClientRect().top + window.pageYOffset;
-          window.scrollTo({
-            top: elementPosition - navbarHeight,
-            behavior: "smooth",
-          });
-        }
-        setActiveSection(link.id);
       }
     },
-    [location.pathname, navigate]
+    [isHomePage, location.pathname, navigate, scrollToElement]
   );
 
-  // Track scroll position to highlight active section when on homepage
+  // Active section tracking on scroll (for Homepage)
   useEffect(() => {
-    if (location.pathname !== "/") {
-      if (location.pathname.startsWith("/guides")) setActiveSection("guides");
-      else if (location.pathname === "/about") setActiveSection("about");
-      else if (location.pathname === "/privacy-policy") setActiveSection("privacy");
+    if (!isHomePage) {
+      // Set active indicator based on route when on inner pages
+      if (location.pathname.startsWith("/guides")) {
+        setActiveSection("guides");
+      } else if (location.pathname === "/about") {
+        setActiveSection("about");
+      } else if (location.pathname === "/privacy-policy") {
+        setActiveSection("privacy");
+      } else {
+        setActiveSection("");
+      }
       return;
     }
 
-    function handleScroll() {
-      setScrolled(window.scrollY > 16);
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 16);
 
-      const navbarHeight = 90;
-      const sections = NAV_LINKS.filter((l) => l.id && !l.path).map((link) => ({
+      // If at top of the page, highlight 'home'
+      if (scrollY < 120) {
+        setActiveSection("home");
+        return;
+      }
+
+      const navbarOffset = 110;
+      const sectionElements = NAV_LINKS.map((link) => ({
         id: link.id,
         el: document.getElementById(link.id),
-      }));
+      })).filter((item) => item.el !== null);
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section.el) {
-          const top = section.el.getBoundingClientRect().top;
-          if (top <= navbarHeight + 50) {
-            setActiveSection(section.id);
-            break;
-          }
+      // Check sections in reverse order to find the deepest visible one
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const { id, el } = sectionElements[i];
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= navbarOffset) {
+          setActiveSection(id);
+          return;
         }
       }
-    }
+
+      setActiveSection("home");
+    };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    // Run once on mount to set initial state
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [location.pathname]);
+  }, [isHomePage, location.pathname]);
 
   return (
     <header className={`hallmark-nav-wrapper ${scrolled ? "is-scrolled" : ""}`}>
@@ -94,6 +134,12 @@ function Navbar({ darkMode, toggleDarkMode }) {
           className="nav-brand"
           aria-label="TrueCallCheck Home"
           style={{ textDecoration: "none" }}
+          onClick={(e) => {
+            if (isHomePage) {
+              e.preventDefault();
+              scrollToElement("home");
+            }
+          }}
         >
           <div className="nav-brand-icon">
             <FaPhoneAlt />
@@ -101,19 +147,19 @@ function Navbar({ darkMode, toggleDarkMode }) {
           </div>
           <div className="nav-brand-text">
             <span className="nav-brand-name">{SITE_CONFIG.name}</span>
-            <span className="nav-brand-badge mono-num">v{SITE_CONFIG.meta.version || "2.0"}</span>
+            <span className="nav-brand-badge mono-num">
+              v{SITE_CONFIG.meta.version || "2.0"}
+            </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
         <ul className="nav-links-cluster">
           {NAV_LINKS.map((link) => {
-            const isActive =
-              (link.path && location.pathname === link.path) ||
-              (!link.path && activeSection === link.id && location.pathname === "/");
+            const isActive = activeSection === link.id;
 
             return (
-              <li key={link.id || link.name} className="nav-item">
+              <li key={link.id} className="nav-item">
                 <button
                   type="button"
                   className={`nav-pill-btn ${isActive ? "is-active" : ""}`}
@@ -124,7 +170,11 @@ function Navbar({ darkMode, toggleDarkMode }) {
                     <motion.span
                       className="nav-active-pill"
                       layoutId="activeNavIndicator"
-                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 32,
+                      }}
                     />
                   )}
                 </button>
@@ -138,15 +188,27 @@ function Navbar({ darkMode, toggleDarkMode }) {
           <button
             className="theme-switch-btn"
             onClick={toggleDarkMode}
-            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+            aria-label={
+              darkMode ? "Switch to light mode" : "Switch to dark mode"
+            }
             title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
           >
-            {darkMode ? <FaSun className="theme-glyph sun" /> : <FaMoon className="theme-glyph moon" />}
+            {darkMode ? (
+              <FaSun className="theme-glyph sun" />
+            ) : (
+              <FaMoon className="theme-glyph moon" />
+            )}
           </button>
 
           <button
             className="nav-quick-cta"
-            onClick={() => handleNavClick({ id: "home" })}
+            onClick={() => {
+              if (isHomePage) {
+                scrollToElement("home");
+              } else {
+                navigate("/#home");
+              }
+            }}
             aria-label="Start number lookup"
           >
             <FaSearch className="cta-icon" />
@@ -157,7 +219,9 @@ function Navbar({ darkMode, toggleDarkMode }) {
           <button
             className="mobile-hamburger-btn"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={
+              mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
+            }
             aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <FaTimes /> : <FaBars />}
@@ -177,15 +241,15 @@ function Navbar({ darkMode, toggleDarkMode }) {
           >
             <ul className="mobile-links-list">
               {NAV_LINKS.map((link) => {
-                const isActive =
-                  (link.path && location.pathname === link.path) ||
-                  (!link.path && activeSection === link.id && location.pathname === "/");
+                const isActive = activeSection === link.id;
 
                 return (
-                  <li key={link.id || link.name}>
+                  <li key={link.id}>
                     <button
                       type="button"
-                      className={`mobile-sheet-item ${isActive ? "is-active" : ""}`}
+                      className={`mobile-sheet-item ${
+                        isActive ? "is-active" : ""
+                      }`}
                       onClick={() => handleNavClick(link)}
                     >
                       <span>{link.name}</span>
@@ -206,7 +270,11 @@ function Navbar({ darkMode, toggleDarkMode }) {
                 aria-label="Toggle theme"
               >
                 {darkMode ? <FaSun /> : <FaMoon />}
-                <span>{darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}</span>
+                <span>
+                  {darkMode
+                    ? "Switch to Light Mode"
+                    : "Switch to Dark Mode"}
+                </span>
               </button>
             </div>
           </motion.div>
