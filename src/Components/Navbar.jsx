@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FaSun,
   FaMoon,
@@ -15,30 +16,55 @@ function Navbar({ darkMode, toggleDarkMode }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // Smooth scroll to section
-  const scrollToSection = useCallback((id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const navbarHeight = 84;
-      const elementPosition =
-        element.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: elementPosition - navbarHeight,
-        behavior: "smooth",
-      });
-    }
-    setMobileMenuOpen(false);
-    setActiveSection(id);
-  }, []);
+  // Smooth scroll to section or navigate to home with anchor
+  const handleNavClick = useCallback(
+    (link) => {
+      setMobileMenuOpen(false);
 
-  // Track scroll position to highlight active section
+      if (link.path) {
+        navigate(link.path);
+        return;
+      }
+
+      if (link.id) {
+        if (location.pathname !== "/") {
+          navigate(`/#${link.id}`);
+          return;
+        }
+
+        const element = document.getElementById(link.id);
+        if (element) {
+          const navbarHeight = 84;
+          const elementPosition =
+            element.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: elementPosition - navbarHeight,
+            behavior: "smooth",
+          });
+        }
+        setActiveSection(link.id);
+      }
+    },
+    [location.pathname, navigate]
+  );
+
+  // Track scroll position to highlight active section when on homepage
   useEffect(() => {
+    if (location.pathname !== "/") {
+      if (location.pathname.startsWith("/guides")) setActiveSection("guides");
+      else if (location.pathname === "/about") setActiveSection("about");
+      else if (location.pathname === "/privacy-policy") setActiveSection("privacy");
+      return;
+    }
+
     function handleScroll() {
       setScrolled(window.scrollY > 16);
 
       const navbarHeight = 90;
-      const sections = NAV_LINKS.map((link) => ({
+      const sections = NAV_LINKS.filter((l) => l.id && !l.path).map((link) => ({
         id: link.id,
         el: document.getElementById(link.id),
       }));
@@ -57,19 +83,17 @@ function Navbar({ darkMode, toggleDarkMode }) {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   return (
     <header className={`hallmark-nav-wrapper ${scrolled ? "is-scrolled" : ""}`}>
       <nav className="hallmark-nav-pill" aria-label="Main Navigation">
         {/* Brand Identity */}
-        <div
+        <Link
+          to="/"
           className="nav-brand"
-          onClick={() => scrollToSection("home")}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => e.key === "Enter" && scrollToSection("home")}
           aria-label="TrueCallCheck Home"
+          style={{ textDecoration: "none" }}
         >
           <div className="nav-brand-icon">
             <FaPhoneAlt />
@@ -79,17 +103,21 @@ function Navbar({ darkMode, toggleDarkMode }) {
             <span className="nav-brand-name">{SITE_CONFIG.name}</span>
             <span className="nav-brand-badge mono-num">v{SITE_CONFIG.meta.version || "2.0"}</span>
           </div>
-        </div>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <ul className="nav-links-cluster">
           {NAV_LINKS.map((link) => {
-            const isActive = activeSection === link.id;
+            const isActive =
+              (link.path && location.pathname === link.path) ||
+              (!link.path && activeSection === link.id && location.pathname === "/");
+
             return (
-              <li key={link.id} className="nav-item">
+              <li key={link.id || link.name} className="nav-item">
                 <button
+                  type="button"
                   className={`nav-pill-btn ${isActive ? "is-active" : ""}`}
-                  onClick={() => scrollToSection(link.id)}
+                  onClick={() => handleNavClick(link)}
                 >
                   <span className="nav-pill-text">{link.name}</span>
                   {isActive && (
@@ -118,7 +146,7 @@ function Navbar({ darkMode, toggleDarkMode }) {
 
           <button
             className="nav-quick-cta"
-            onClick={() => scrollToSection("home")}
+            onClick={() => handleNavClick({ id: "home" })}
             aria-label="Start number lookup"
           >
             <FaSearch className="cta-icon" />
@@ -148,23 +176,31 @@ function Navbar({ darkMode, toggleDarkMode }) {
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <ul className="mobile-links-list">
-              {NAV_LINKS.map((link) => (
-                <li key={link.id}>
-                  <button
-                    className={`mobile-sheet-item ${activeSection === link.id ? "is-active" : ""}`}
-                    onClick={() => scrollToSection(link.id)}
-                  >
-                    <span>{link.name}</span>
-                    {activeSection === link.id && (
-                      <span className="mobile-active-dot mono-num">●</span>
-                    )}
-                  </button>
-                </li>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isActive =
+                  (link.path && location.pathname === link.path) ||
+                  (!link.path && activeSection === link.id && location.pathname === "/");
+
+                return (
+                  <li key={link.id || link.name}>
+                    <button
+                      type="button"
+                      className={`mobile-sheet-item ${isActive ? "is-active" : ""}`}
+                      onClick={() => handleNavClick(link)}
+                    >
+                      <span>{link.name}</span>
+                      {isActive && (
+                        <span className="mobile-active-dot mono-num">●</span>
+                      )}
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
 
             <div className="mobile-sheet-footer">
               <button
+                type="button"
                 className="mobile-theme-pill"
                 onClick={toggleDarkMode}
                 aria-label="Toggle theme"

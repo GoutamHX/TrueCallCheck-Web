@@ -7,3 +7,5 @@ export * from "./AboutSection";
 export * from "./FeaturesSection";
 export * from "./PrivacySection";
 export * from "./PlatformsSection";
+export * from "./FaqSection";
+export * from "./GuidesShowcaseSection";

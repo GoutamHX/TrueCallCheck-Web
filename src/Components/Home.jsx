@@ -10,6 +10,8 @@ import {
   FeaturesSection,
   PrivacySection,
   PlatformsSection,
+  FaqSection,
+  GuidesShowcaseSection,
 } from "./sections";
 import AdBanner from "./AdBanner";
 import { trueCallCheckService } from "../services/trueCallCheckService";
@@ -136,7 +138,7 @@ function Home({ darkMode, toggleDarkMode }) {
         showNotice={showNotice}
         notice={notice}
         darkMode={darkMode}
-        // onClose={() => setShowNotice(false)}
+        onClose={() => setShowNotice(false)}
       />
 
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
@@ -165,8 +167,14 @@ function Home({ darkMode, toggleDarkMode }) {
         <AboutSection />
         <FeaturesSection />
 
-        {/* Google AdSense - After Features Section */}
+        {/* Educational Guides Showcase */}
+        <GuidesShowcaseSection />
+
+        {/* Google AdSense - After Guides Section */}
         <AdBanner slot="8365180918" style={{ margin: "40px auto 20px" }} />
+
+        {/* Frequently Asked Questions */}
+        <FaqSection />
 
         <PrivacySection />
         <PlatformsSection />

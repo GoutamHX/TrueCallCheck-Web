@@ -2,10 +2,11 @@ import { SITE_CONFIG } from "./siteConfig";
 
 export const NAV_LINKS = [
   { name: "Home", id: "home" },
-  { name: "About", id: "about" },
+  { name: "Guides", path: "/guides", id: "guides" },
   { name: "Features", id: "features" },
-  { name: "Privacy", id: "privacy" },
-  { name: "Platforms", id: "platforms" },
+  { name: "FAQ", id: "faq" },
+  { name: "About", path: "/about", id: "about" },
+  { name: "Privacy", path: "/privacy-policy", id: "privacy" },
 ];
 
 export const FOOTER_SECTIONS_DATA = [
