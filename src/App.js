@@ -56,7 +56,7 @@ function App() {
           }
         />
 
-        {/* AdSense Compliance & Legal Documentation */}
+        {/* Legal Documentation & Policies */}
         <Route
           path="/privacy-policy"
           element={<PrivacyPolicy darkMode={darkMode} toggleDarkMode={toggleDarkMode} />}

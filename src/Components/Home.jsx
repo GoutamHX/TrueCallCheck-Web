@@ -13,7 +13,6 @@ import {
   FaqSection,
   GuidesShowcaseSection,
 } from "./sections";
-import AdBanner from "./AdBanner";
 import { trueCallCheckService } from "../services/trueCallCheckService";
 import "../Style/Home.css";
 
@@ -170,17 +169,11 @@ function Home({ darkMode, toggleDarkMode }) {
         {/* Educational Guides Showcase */}
         <GuidesShowcaseSection />
 
-        {/* Google AdSense - After Guides Section */}
-        <AdBanner slot="8365180918" style={{ margin: "40px auto 20px" }} />
-
         {/* Frequently Asked Questions */}
         <FaqSection />
 
         <PrivacySection />
         <PlatformsSection />
-
-        {/* Google AdSense - In Bottom Ads (Above Footer) */}
-        <AdBanner slot="4449986637" style={{ margin: "50px auto 25px" }} />
       </main>
 
       <ToastContainer

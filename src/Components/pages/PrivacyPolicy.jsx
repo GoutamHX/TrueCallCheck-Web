@@ -5,7 +5,7 @@ const PrivacyPolicy = () => {
   return (
     <PageLayout
       title="Privacy Policy"
-      subtitle="How TrueCallCheck respects your privacy, handles telephone queries, and complies with Google AdSense, GDPR, and DPDP Act 2023 requirements."
+      subtitle="How TrueCallCheck respects your privacy, handles telephone queries, and complies with GDPR and DPDP Act 2023 requirements."
       category="Compliance"
       breadcrumbs={[
         { label: 'Legal', href: '#' },
@@ -58,28 +58,14 @@ const PrivacyPolicy = () => {
           </li>
         </ul>
 
-        <h2>4. Google AdSense & Third-Party Advertising</h2>
+        <h2>4. Advertising Policy & Zero Ad-Tracking</h2>
         <p>
-          We use <strong>Google AdSense</strong> (a service provided by Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) to display advertisements on our website. This monetization enables us to keep this directory lookup service free and publicly accessible.
+          TrueCallCheck is committed to an ad-free user experience. We do not display Google AdSense or third-party advertisements on our platform, nor do we partner with third-party behavioral advertising networks or sell user lookup data to advertisers.
         </p>
-        <ul>
-          <li>
-            Google and its certified third-party advertising partners use cookies (such as the DoubleClick DART cookie) to serve advertisements based on your prior visits to TrueCallCheck or other websites across the Internet.
-          </li>
-          <li>
-            Google's use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the Internet.
-          </li>
-          <li>
-            <strong>Opt-Out Options:</strong> You may opt out of personalized advertising by visiting Google's <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Ads Settings</a>. Alternatively, you can opt out of third-party vendor cookies for personalized advertising by visiting <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">aboutads.info</a> or the Network Advertising Initiative at <a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener noreferrer">networkadvertising.org</a>.
-          </li>
-          <li>
-            AdSense bots and automated scrapers (including <code>Mediapartners-Google</code> and <code>AdsBot-Google</code>) are explicitly permitted access to review our content, as outlined in our <code>robots.txt</code> and authorized in our root <code>ads.txt</code>.
-          </li>
-        </ul>
 
-        <h2>5. Cookies & Web Beacons</h2>
+        <h2>5. Cookies & Technical Infrastructure</h2>
         <p>
-          TrueCallCheck does not deploy proprietary user-tracking cookies. However, third-party services—including Google AdSense, analytics providers, and content delivery networks (CDNs)—may set cookies to measure advertising effectiveness, authenticate traffic integrity, and analyze aggregated performance. You can manage or disable cookie permissions at any time through your individual web browser settings.
+          TrueCallCheck does not deploy proprietary user-tracking cookies or advertising cookies. Any necessary functional third-party services—such as content delivery networks (CDNs) or security infrastructure—may set strictly technical cookies solely to authenticate traffic integrity and ensure rapid content delivery. You can manage or disable cookie permissions at any time through your individual web browser settings.
         </p>
 
         <h2>6. Compliance with DPDP Act 2023 (India) & Free Delisting Rights</h2>
