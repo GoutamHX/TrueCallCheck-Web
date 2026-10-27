@@ -13,6 +13,7 @@ import Disclaimer from "./Components/pages/Disclaimer";
 import GuidesHub from "./Components/pages/GuidesHub";
 import GuideDetail from "./Components/pages/GuideDetail";
 import { useAuthorAttestation } from "./hooks/useAuthorAttestation";
+import { useAntiInspect } from "./hooks/useAntiInspect";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -26,7 +27,7 @@ function ScrollToTop() {
 
 function App() {
   useAuthorAttestation();
-
+  useAntiInspect()
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("darkMode");
     return saved !== null ? saved === "true" : true;
