@@ -29,6 +29,7 @@ export const SITE_CONFIG = {
     androidApk: "https://devuploads.com/w3thg0886brw",
     telegramBot: "https://t.me/advancelookupbot",
     telegramChannel: "https://t.me/TheAdvanceBots",
+    sponsoredBot: "https://t.me/videoshubzbot",
     githubRepo: "https://github.com/GoutamHX/TrueCallCheck-Web",
   },
   meta: {

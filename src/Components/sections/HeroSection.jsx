@@ -9,6 +9,7 @@ import {
   FaTelegram,
 } from "react-icons/fa";
 import { TRUST_BADGES, SITE_CONFIG } from "../../data";
+import { SponsoredBanner } from "./SponsoredBanner";
 
 export function HeroSection({
   phoneNumber,
@@ -194,6 +195,8 @@ export function HeroSection({
           </motion.div>
         )}
       </AnimatePresence>
+
+      <SponsoredBanner />
     </section>
   );
 }

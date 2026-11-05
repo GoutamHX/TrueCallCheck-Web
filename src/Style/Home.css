@@ -539,6 +539,71 @@
 }
 
 /* ------------------------------------------
+   Sponsored Banner (bottom of hero, 18+ gated)
+   ------------------------------------------ */
+.sponsored-banner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 740px;
+  margin-top: var(--space-6);
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-default);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.sponsored-age-badge {
+  flex-shrink: 0;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.sponsored-copy {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 180px;
+  min-width: 0;
+}
+
+.sponsored-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sponsored-text {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+}
+
+.sponsored-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.sponsored-label {
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 480px) {
+  .sponsored-actions {
+    width: 100%;
+  }
+}
+
+/* ------------------------------------------
    Results Section & Telemetry Bar
    ------------------------------------------ */
 .results-section {
