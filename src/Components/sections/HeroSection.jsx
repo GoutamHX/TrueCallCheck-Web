@@ -9,7 +9,7 @@ import {
   FaTelegram,
 } from "react-icons/fa";
 import { TRUST_BADGES, SITE_CONFIG } from "../../data";
-import { SponsoredBanner } from "./SponsoredBanner";
+// import { SponsoredBanner } from "./SponsoredBanner";
 
 export function HeroSection({
   phoneNumber,
@@ -46,7 +46,7 @@ export function HeroSection({
           <span className="hero-brand-name">{SITE_CONFIG.name}</span>
           <span className="hero-title-sub">{SITE_CONFIG.tagline}</span>
         </h1>
-        
+
         <p className="hero-subtitle">{SITE_CONFIG.description}</p>
 
         {/* Tactical Search Workbench Console */}
@@ -196,7 +196,7 @@ export function HeroSection({
         )}
       </AnimatePresence>
 
-      <SponsoredBanner />
+      {/* <SponsoredBanner /> */}
     </section>
   );
 }
