@@ -31,7 +31,7 @@ export function NoticeModal({ showNotice, notice, darkMode, onClose }) {
             exit={{ scale: 0.95, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            {onClose && (
+            {/* {onClose && (
               <button
                 type="button"
                 className="modal-dismiss-btn"
@@ -41,7 +41,7 @@ export function NoticeModal({ showNotice, notice, darkMode, onClose }) {
               >
                 <FaTimes />
               </button>
-            )}
+            )} */}
             <div className="maintenance-decoration">
               <div className="corner corner-tl" />
               <div className="corner corner-tr" />
